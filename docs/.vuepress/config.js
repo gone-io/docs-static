@@ -4,7 +4,7 @@ module.exports = {
     ],
 
     locales: {
-        '/': {
+        '/zh/': {
             lang: 'zh-CN',
             title: 'Gone 文档',
             description: '做一个对Spring程序员最友好的Golang框架',
@@ -24,7 +24,7 @@ module.exports = {
         logo: '/assets/img/logo.png',
 
         locales: {
-            '/': {
+            '/zh/': {
                 label: '简体中文',
                 selectText: '选择语言',
                 editLinkText: '在 GitHub 上编辑此页',
@@ -32,26 +32,27 @@ module.exports = {
                 nav: [
                     {
                         text: '指南',
-                        link: '/guide/'
+                        link: '/zh/guide/'
                     },
 
                     {
                         text: '快速开始',
-                        link: '/quick-start/'
+                        link: '/zh/quick-start/'
                     },
                     {
                         text: 'API 参考',
-                        link: '/api/'
+                        link: '/zh/api/'
                     },
                     {
                         text: '故事',
-                        link: '/story/'
+                        link: '/zh/story/'
                     },
                 ],
 
                 sidebar: [
-                    ['/', '介绍'],
-                    '/guide/',
+                    ['/zh/', '介绍'],
+                    '/zh/quick-start/',
+                    '/zh/guide/',
                 ],
             },
 
@@ -81,9 +82,21 @@ module.exports = {
 
                 sidebar: [
                     ['/en/', 'Introduction'],
+                    '/en/quick-start/',
                     '/en/guide/',
                 ],
             },
         },
-    }
+    },
+
+    plugins: [
+        [
+            'redirect',
+            {
+                // 提供多语言重定向功能
+                // 它会自动从 `/foo/bar/` 定向到 `/:locale/foo/bar/`，如果对应的页面存在
+                locales: true,
+            },
+        ],
+    ],
 };
