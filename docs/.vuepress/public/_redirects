@@ -1,0 +1,20 @@
+/               /zh/
+/api            /zh/api
+/guide          /zh/guide
+/quick-start    /zh/quick-start
+/story          /zh/story
+
+/zh/            /zh/
+/zh/api.html    /zh/api/
+/zh/basic.html  /zh/guide/
+/zh/*           /zh/guide/:splat
+
+/ru/            /ru/
+/ru/api.html    /ru/api/
+/ru/basic.html  /ru/guide/
+/ru/*           /ru/guide/:splat
+
+/ja/            /ja/
+/ja/api.html    /ja/api/
+/ja/basic.html  /ja/guide/
+/ja/*           /ja/guide/:splat
