@@ -43,17 +43,21 @@ type BGoner struct{
 
 Spring之所以能够实现这样的功能，Java有一个特性很关键，就是Java代码在编译成jar后，会保留所有class的字节码，哪怕是没有被`main`函数依赖的class代码；然而，在Golang中，编译后的代码会被裁剪，二进制文件中只会保留`main`函数依赖的相关代码。所以我们仅是定义Goner，在编译后我们会发现我们Goner代码全部被裁剪了。
 
-我们如何让我们的代码不被裁剪掉呢？答案很简单，我们显示的将所有Goner加入到一个”仓库“中；在Gone中，这个仓库叫做`Cemetery`。`Goner`有死者的意思；`Cemetery`是墓地，用于埋葬（Bury）`Goner`。
+如何让我们的**Goners**不被裁剪掉呢？答案很简单，我们显式的将所有Goner加入到一个”仓库“中；在Gone中，这个仓库叫做`Cemetery`。`Goner`有“死者”的意思；`Cemetery`是墓地，用于埋葬（Bury）`Goner`。我们可以在程序启动时，将所有的**Goner**实例化后并加入到**Cemetery**中：
 ```go
 package main
 
-import example
+import "example"
+import "github.com/gone-io/gone"
 
 func main() {
 	gone.Run(func(cemetery gone.Cemetery) error {
-        cemetery.Bury(&AGoner{})
-		cemetery.Bury(&BGoner{})
+        cemetery.Bury(&example.AGoner{})
+		cemetery.Bury(&example.BGoner{})
         return nil
 	})
 }
 ```
+
+在上面的代码中，我们看到`gone.Run`可以接收形式如 **`func (cemetery gone.Cemetery) error`** 的函数；实际上这个函数，我们称之为 **Priest**，是牧师的意思，他专门负责将 **Goner** 埋葬到 墓地（**Cemetery**）。
+
