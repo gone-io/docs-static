@@ -40,12 +40,20 @@ module.exports = {
                         link: '/zh/quick-start/'
                     },
                     {
+                        text: 'Web开发',
+                        link: '/zh/web/',
+                    },
+
+                    {
                         text: 'API 参考',
                         link: '/zh/api/'
                     },
                     {
                         text: '故事',
                         link: '/zh/story/'
+                    }, {
+                        text: 'Goner 组件库',
+                        link: '/zh/goners/'
                     },
                 ],
 
