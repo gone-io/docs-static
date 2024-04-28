@@ -29,39 +29,38 @@ module.exports = {
                 selectText: '选择语言',
                 editLinkText: '在 GitHub 上编辑此页',
 
-                // nav: [
-                //     {
-                //         text: '指南',
-                //         link: '/zh/guide/'
-                //     },
+                nav: [
+                    {
+                        text: '介绍',
+                        link: '/zh/'
+                    },
+                    {
+                        text: '快速开始',
+                        link: '/zh/quick-start/'
+                    },
+                    //     {
+                    //         text: 'Web开发',
+                    //         link: '/zh/web/',
+                    //     },
 
-                //     {
-                //         text: '快速开始',
-                //         link: '/zh/quick-start/'
-                //     },
-                //     {
-                //         text: 'Web开发',
-                //         link: '/zh/web/',
-                //     },
+                    //     {
+                    //         text: 'API 参考',
+                    //         link: '/zh/api/'
+                    //     },
+                    //     {
+                    //         text: '故事',
+                    //         link: '/zh/story/'
+                    //     }, {
+                    //         text: 'Goner 组件库',
+                    //         link: '/zh/goners/'
+                    //     },
+                ],
 
-                //     {
-                //         text: 'API 参考',
-                //         link: '/zh/api/'
-                //     },
-                //     {
-                //         text: '故事',
-                //         link: '/zh/story/'
-                //     }, {
-                //         text: 'Goner 组件库',
-                //         link: '/zh/goners/'
-                //     },
-                // ],
-
-                // sidebar: [
-                //     ['/zh/', '介绍'],
-                //     '/zh/quick-start/',
-                //     '/zh/guide/',
-                // ],
+                sidebar: [
+                    ['/zh/', '介绍'],
+                    '/zh/quick-start/',
+                    // '/zh/guide/',
+                ],
             },
 
             '/en/': {
