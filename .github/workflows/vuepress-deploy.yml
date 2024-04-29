@@ -12,6 +12,7 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.FOR_DEPLOY }}
         TARGET_REPO: gone-io/docs-static
+        TARGET_LINK: https://degfy:${{secrets.FOR_DEPLOY}}@github.com/gone-io/docs-static.git
         BUILD_SCRIPT: yarn && yarn build
         BUILD_DIR: docs/.vuepress/dist
-        CNAME: http://gone.openviewtech.com
+        CNAME: https://goner.fun
