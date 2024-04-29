@@ -1,6 +1,6 @@
 # docs-static
 
-Gone Document Project. Live at [gone.openviewtech.com](https://gone.openviewtech.com/)
+Gone Document Project. Live at [https://goner.fun/](https://goner.fun/)
 
 ## Development
 
