@@ -241,3 +241,72 @@ Revive main/Computer
 I want to compute!
 1000 add 2000 is 3000
 ```
+
+## 匿名注入与具名注入
+
+在前面的篇章中，我们所有的例子实际上都是按类型的匿名注入；匿名注入时，如果存在多个同类型的**Goner**，被注入只会是其中一个，通常是最先被复活的那个。在Gone中，是支持按名字注入的（也就是**具名注入**）。
+
+首先，**`Cemetery.Bury`** 函数的完整定义是这样的 **`Bury(Goner, ...GonerId) Cemetery`**，这样的定义有两层考虑：
+- 1. 用于支持**具名埋葬**，第二个参数是可选的，允许传入一个字符串作为**Goner**的**ID**（**GonerId**）；
+- 2. 使Bury函数支持链式调用。
+
+
+### 具名埋葬
+
+实现**具名埋葬**，我们的代码可以这样写：
+
+```go
+// Priest Responsible for putting Goners that need to be used into the framework
+func Priest(cemetery gone.Cemetery) error {
+	cemetery.
+		Bury(&AGoner{Name: "Injected Goner1"}, "A1"). //埋葬第一个AGoner，ID=A1
+		Bury(&AGoner{Name: "Injected Goner2"}, "A2"). //埋葬第二个AGoner，ID=A2
+		Bury(&BGoner{})
+	return nil
+}
+```
+另外也可以这样写，这样写的好处是将Goner的构造和埋葬进行解耦：
+```go
+// NewA1 构造A1 AGoner
+func NewA1() (gone.Goner, gone.GonerId) {
+	return &AGoner{Name: "Injected Goner1"}, "A1"
+}
+
+// NewA2 构造A2 AGoner
+func NewA2() (gone.Goner, gone.GonerId) {
+	return &AGoner{Name: "Injected Goner2"}, "A2"
+}
+
+// Priest Responsible for putting Goners that need to be used into the framework
+func Priest(cemetery gone.Cemetery) error {
+	cemetery.
+		Bury(NewA1()).
+		Bury(NewA2()).
+		Bury(&BGoner{})
+	return nil
+}
+```
+
+然后，就是结构体的具名注入，举个例子就能立刻明白：
+```go
+type BGoner struct {
+	gone.Flag         //tell the framework that this struct is a Goner
+	a         *AGoner `gone:"*"` //匿名注入一个AGoner
+	a1        *AGoner `gone:"A1"` //具名注入A1
+	a2        *AGoner `gone:"A2"` //具名注入A2
+}
+```
+注意：上面代码，结构体属性后的标签：
+- `gone:"*"`是按类型的**匿名注入**；
+- `gone:"A1"`是注入`ID=A1`的AGoner的**具名注入**。
+就说，`gone`标签后的值如果是`*`就是匿名注入，如果不是`*`就是要注入Goner的名字；当然因为go是强类型的，所以具名注入的Goner也必须是类型兼容的。
+
+
+
+## 指针注入、接口注入和值注入
+
+## 数组注入和map注入
+
+## 私有属性注入
+
+## 配置注入
