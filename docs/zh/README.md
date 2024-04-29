@@ -299,11 +299,69 @@ type BGoner struct {
 注意：上面代码，结构体属性后的标签：
 - `gone:"*"`是按类型的**匿名注入**；
 - `gone:"A1"`是注入`ID=A1`的AGoner的**具名注入**。
-就说，`gone`标签后的值如果是`*`就是匿名注入，如果不是`*`就是要注入Goner的名字；当然因为go是强类型的，所以具名注入的Goner也必须是类型兼容的。
+
+就是说，`gone`标签的值如果是`*`就是匿名注入；如果不是`*`，标签值就是要注入Goner的名字，也就是具名注入；当然，因为go是强类型的，所以无论 匿名注入 还是 具名注入 的 **Goner** 都必须是类型兼容的，否则注入失败。
 
 
+## 指针注入、值注入 和 接口注入
+如果被注入的结构属性是一个指针，那么这个注入就是指针注入；同样，值注入和接口注入的定义也是类似的。让我们来举个例子：
+```go
+type AGoner struct {
+	gone.Flag //tell the framework that this struct is a Goner
+	Name      string
+}
 
-## 指针注入、接口注入和值注入
+func (g *AGoner) Say() {
+	println("I am the AGoner, My name is", g.Name)
+}
+
+type Speaker interface {
+	Say()
+}
+
+type BGoner struct {
+	gone.Flag         //tell the framework that this struct is a Goner
+	a0         *AGoner `gone:"*"`  //匿名注入一个AGoner; 指针注入
+	a1        *AGoner `gone:"A1"` //具名注入A1； 指针注入
+
+	a2 AGoner  `gone:"A1"` // 值注入
+	a3 Speaker `gone:"A2"` // 接口注入
+}
+```
+上面代码中，`BGoner.a0` 和 `BGoner.a1` 是指针注入；`BGoner.a2`是值注入；`BGoner.a3`是接口注入。在这里，需要特别提醒：“在go语言中，值类型的赋值和传参都是传递的拷贝”，这意味着我们如果使用值注入时，实际上重新构造了一个新的“对象”，并且只有在构造之初他们是相等的，可能会导致一些不符合“直觉”的结果。举个例子：
+
+```go
+type BGoner struct {
+	gone.Flag
+
+	a1 AGoner  `gone:"A1"` // 值注入
+	a2 AGoner  `gone:"A1"` // 值注入
+}
+
+func (g *BGoner) AfterRevive() gone.AfterReviveError {
+	g.a1.Name = "dapeng"
+	g.a2.Name = "wang"
+
+	fmt.Printf("a1 is eq a2: %v", g.a1 == g.a2)
+
+	return nil
+}
+
+```
+在上面的代码中，`BGoner.a1` 和 `BGoner.a2` 都被注入了 `A1` Goner，但是因为是**值注入**，注入的过程能做的实际只是将 `A1` Goner 的值拷贝给了 `BGoner.a1` 和 `BGoner.a2`；`BGoner.a1` 和 `BGoner.a2`被注入后，就没有了任何联系；`AfterRevive()`方法打印的结果也会是 `false`。
+
+考虑到作为基础框架更多意义只是提供可能性，所以我们保留了 `值注入` 功能；然而**大多数情况下，我们推荐使用 `指针注入` 和 `接口注入`**。
+
+### 指针注入 vs 接口注入
+在Goner的Bury过程中，我们要求的是传递的一个引用，即是`Cemetery.Bury`方法的第一个参数必须是引用类型。指针注入和接口注入都能很好的把引用传递到属性上。接口（interface）做为go语言中最精华的设计之一，设置的目的就在于完成 业务 和 实现 的解耦，让接口的使用方不用关系实现的细节。在Gone框架中，如果两个Goner之间存在相互依赖，一般需要通过接口来完成解耦依赖，否则导致了go的package的循环依赖，代码会无法正常编译。
+
+循环依赖：  
+![循环依赖](../img/image6.png)
+
+使用接口接触循环依赖：  
+![使用接口接触模块间的循环依赖](../img/image7.png)
+
+接口能够隐藏实现的细节，接口能够降低模块间的耦合性。所以，如果为了更好的遵守“开放封闭”原则，我们推荐使用**接口注入**；但是完事没有绝对，引入接口一定会增加额外的成本，因此我们也保留了**指针注入**。
 
 ## 数组注入和map注入
 
