@@ -365,7 +365,111 @@ func (g *BGoner) AfterRevive() gone.AfterReviveError {
 
 使用接口能够隐藏业务逻辑的实现细节，能够有效的降低模块间的耦合，也更好的遵守“开放封闭”原则；因此，我们推荐使用 **接口注入**。但是万事没有绝对，引入接口一定会增加额外的成本，所以我们还是支持了 **指针注入**。
 
-## 数组注入和map注入
+## Slice注入和 Map注入
+Gone 支持对`Slice`和`Map`进行注入，即支持如下写法的：
+```go
+type BGoner struct {
+	gone.Flag
+
+	aSlice1 []*AGoner `gone:"*"` //被注入的属性为Goner指针Slice
+	aSlice2 []AGoner  `gone:"*"` //被注入的属性为Goner值Slice
+
+	aMap1 map[string]*AGoner `gone:"*"` //被注入的属性为Goner指针的map
+	aMap2 map[string]AGoner  `gone:"*"` //被注入的属性为Goner值的map
+}
+```
+**注入的规则如下：**
+- 1. Slice 和 Map 的元素类型可以是 Goner指针类型 和 Goner的值类型，也可以是一个接口；
+- 2. Gone会将所有类型兼容的Goner注入到Slice 和 Map；
+- 3. Map key的类型只能是string；
+- 4. Map key的值为被注入Goner的GonerId，埋葬时没有指定GonerId的匿名Goner，Gone会自动生成一个Id。
+
+
+::: danger
+不推荐使用值作为Slice和Map的类型。
+:::
+
+
+下面是完整的例子：
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/gone-io/gone"
+)
+
+type AGoner struct {
+	gone.Flag //tell the framework that this struct is a Goner
+	Name      string
+}
+
+func (g *AGoner) Say() string {
+	return fmt.Sprintf("I am the AGoner, My name is: %s", g.Name)
+}
+
+type BGoner struct {
+	gone.Flag
+
+	aSlice1 []*AGoner `gone:"*"` //被注入的属性为Goner指针Slice
+	aSlice2 []AGoner  `gone:"*"` //被注入的属性为Goner值Slice
+
+	aMap1 map[string]*AGoner `gone:"*"` //被注入的属性为Goner指针的map
+	aMap2 map[string]AGoner  `gone:"*"` //被注入的属性为Goner值的map
+}
+
+// AfterRevive executed After the Goner is revived; After `gone.Run`, gone framework detects the AfterRevive function on goners and runs it.
+func (g *BGoner) AfterRevive() gone.AfterReviveError {
+	for _, a := range g.aSlice1 {
+		fmt.Printf("aSlice1:%s\n", a.Say())
+	}
+
+	println("")
+
+	for _, a := range g.aSlice2 {
+		fmt.Printf("aSlice2:%s\n", a.Say())
+	}
+
+	println("")
+
+	for k, a := range g.aMap1 {
+		fmt.Printf("aMap1[%s]:%s\n", k, a.Say())
+	}
+
+	println("")
+
+	for k, a := range g.aMap2 {
+		fmt.Printf("aMap2[%s]:%s\n", k, a.Say())
+	}
+
+	return nil
+}
+
+// NewA1 构造A1 AGoner
+func NewA1() (gone.Goner, gone.GonerId) {
+	return &AGoner{Name: "Injected Goner1"}, "A1"
+}
+
+// NewA2 构造A2 AGoner
+func NewA2() (gone.Goner, gone.GonerId) {
+	return &AGoner{Name: "Injected Goner2"}, "A2"
+}
+
+func main() {
+
+	gone.Run(func(cemetery gone.Cemetery) error {
+		cemetery.
+			Bury(NewA1()).
+			Bury(&AGoner{Name: "Anonymous"}).
+			Bury(NewA2()).
+			Bury(&BGoner{})
+		return nil
+	})
+}
+```
+例子执行的结果如下：
+![slice map injected example result](../img/image8.png)
+
 
 ## 私有属性注入
 

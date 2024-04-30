@@ -38,10 +38,17 @@ module.exports = {
                         text: '快速开始',
                         link: '/zh/quick-start/'
                     },
-                    //     {
-                    //         text: 'Web开发',
-                    //         link: '/zh/web/',
-                    //     },
+                    {
+                        text: '开发指南',
+                        link: '/zh/guide/',
+                        items: [{
+                            text: 'Gone的核心概念',
+                            link: '/zh/guide/core-concept.md',
+                        }, {
+                            text: 'Gone支持哪些方式注入？',
+                            link: '/zh/guide/goner-inject.md',
+                        }],
+                    },
 
                     //     {
                     //         text: 'API 参考',
@@ -59,7 +66,7 @@ module.exports = {
                 sidebar: [
                     ['/zh/', '介绍'],
                     '/zh/quick-start/',
-                    // '/zh/guide/',
+                    '/zh/guide/',
                 ],
             },
 
