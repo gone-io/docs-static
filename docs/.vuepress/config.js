@@ -42,13 +42,26 @@ module.exports = {
                         text: '开发指南',
                         link: '/zh/guide/',
                         items: [{
-                            text: 'Gone的核心概念',
+                            text: '核心概念',
                             link: '/zh/guide/core-concept.md',
                         }, {
-                            text: 'Gone支持哪些方式注入？',
+                            text: '支持哪些方式注入？',
                             link: '/zh/guide/goner-inject.md',
+                        }, {
+                            text: '优雅使用内置Goners',
+                            link: '/zh/guide/innner-goner.md',
+                        }, {
+                            text: '支持配置文件',
+                            link: '/zh/guide/config.md',
+                        }, {
+                            text: '数据库连接',
+                            link: '/zh/guide/xorm.md',
                         }],
                     },
+                    {
+                        text: "Goners",
+                        link: '/zh/goners/',
+                    }
 
                     //     {
                     //         text: 'API 参考',
