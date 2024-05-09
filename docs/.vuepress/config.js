@@ -10,11 +10,11 @@ module.exports = {
             description: '做一个对Spring程序员最友好的Golang框架',
         },
 
-        '/en/': {
-            lang: 'en-US',
-            title: 'Gone Document',
-            description: 'Build the Golang framework which is most friendly to Spring programmers'
-        },
+        // '/en/': {
+        //     lang: 'en-US',
+        //     title: 'Gone Document',
+        //     description: 'Build the Golang framework which is most friendly to Spring programmers'
+        // },
     },
 
     themeConfig: {
