@@ -4,6 +4,8 @@ sidebar: auto
 
 # 通过内置Goners支持配置文件
 
+[[toc]]
+
 在gone中提供了通过内置Goners读取配置文件的方法，配置文件格式暂时只支持`.properties`。
 
 

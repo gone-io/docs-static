@@ -54,7 +54,7 @@ module.exports = {
                             text: '支持配置文件',
                             link: '/zh/guide/config.md',
                         }, {
-                            text: '数据库连接',
+                            text: '操作数据库',
                             link: '/zh/guide/xorm.md',
                         }],
                     },
