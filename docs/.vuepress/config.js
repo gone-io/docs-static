@@ -56,6 +56,9 @@ module.exports = {
                         }, {
                             text: '操作数据库',
                             link: '/zh/guide/xorm.md',
+                        }, {
+                            text: 'Hook函数',
+                            link: '/zh/guide/hooks.md',
                         }],
                     },
                     {
@@ -117,6 +120,7 @@ module.exports = {
     },
 
     plugins: [
+        'mermaidjs',
         [
             'redirect',
             {

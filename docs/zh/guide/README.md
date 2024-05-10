@@ -9,3 +9,4 @@ sidebar: auto
 ## [如何优雅使用内置Goners?](./use-innner-goner.md)
 ## [通过内置Goners支持配置文件](./config.md)
 ## [通过内置Goners支持数据库连接](./xorm.md)
+## [Hook函数](./hooks.md)
