@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>通过内置Goners支持数据库操作 | Gone 文档</title>
-    <meta name="generator" content="VuePress 1.9.7">
+    <meta name="generator" content="VuePress 1.9.10">
     <link rel="icon" href="/assets/img/logo.png">
     <meta name="description" content="做一个对Spring程序员最友好的Golang框架">
-    <link rel="preload" href="/assets/css/0.styles.d6ad21ed.css" as="style"><link rel="preload" href="/assets/js/app.de97acb0.js" as="script"><link rel="preload" href="/assets/js/2.67e5e57c.js" as="script"><link rel="preload" href="/assets/js/21.db7c96c4.js" as="script"><link rel="prefetch" href="/assets/js/10.47cb09ae.js"><link rel="prefetch" href="/assets/js/11.ad86f544.js"><link rel="prefetch" href="/assets/js/12.d368cacb.js"><link rel="prefetch" href="/assets/js/13.afda280e.js"><link rel="prefetch" href="/assets/js/14.47cf372f.js"><link rel="prefetch" href="/assets/js/15.e16dd082.js"><link rel="prefetch" href="/assets/js/16.85bd81d8.js"><link rel="prefetch" href="/assets/js/17.31bba68e.js"><link rel="prefetch" href="/assets/js/18.1e5c069b.js"><link rel="prefetch" href="/assets/js/19.3e81a444.js"><link rel="prefetch" href="/assets/js/20.72860f09.js"><link rel="prefetch" href="/assets/js/22.15960ddb.js"><link rel="prefetch" href="/assets/js/23.3af92239.js"><link rel="prefetch" href="/assets/js/3.3e06cd46.js"><link rel="prefetch" href="/assets/js/4.8d5d2cd9.js"><link rel="prefetch" href="/assets/js/5.ef7ecbde.js"><link rel="prefetch" href="/assets/js/6.eb737008.js"><link rel="prefetch" href="/assets/js/7.e534f20b.js"><link rel="prefetch" href="/assets/js/8.8baaccd0.js"><link rel="prefetch" href="/assets/js/9.1f2b09ab.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.d6ad21ed.css">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.cc389081.js" as="script"><link rel="preload" href="/assets/js/2.ee202d8a.js" as="script"><link rel="preload" href="/assets/js/1.c48f06f0.js" as="script"><link rel="preload" href="/assets/js/37.0fe90fb0.js" as="script"><link rel="prefetch" href="/assets/js/10.6d6b4918.js"><link rel="prefetch" href="/assets/js/11.d0c1cff5.js"><link rel="prefetch" href="/assets/js/12.06b4dcac.js"><link rel="prefetch" href="/assets/js/13.097715df.js"><link rel="prefetch" href="/assets/js/14.7af5b523.js"><link rel="prefetch" href="/assets/js/15.382aeb06.js"><link rel="prefetch" href="/assets/js/16.561233d3.js"><link rel="prefetch" href="/assets/js/17.502e827b.js"><link rel="prefetch" href="/assets/js/18.7a45a425.js"><link rel="prefetch" href="/assets/js/19.48c2a444.js"><link rel="prefetch" href="/assets/js/20.cbafdf24.js"><link rel="prefetch" href="/assets/js/21.e2702513.js"><link rel="prefetch" href="/assets/js/22.afcc8afe.js"><link rel="prefetch" href="/assets/js/23.d0cd3157.js"><link rel="prefetch" href="/assets/js/24.255fb18d.js"><link rel="prefetch" href="/assets/js/25.edb164c5.js"><link rel="prefetch" href="/assets/js/26.f4e3b8e5.js"><link rel="prefetch" href="/assets/js/27.0a4164a2.js"><link rel="prefetch" href="/assets/js/28.5465a544.js"><link rel="prefetch" href="/assets/js/29.9890dde8.js"><link rel="prefetch" href="/assets/js/3.764f8c95.js"><link rel="prefetch" href="/assets/js/30.e9822c70.js"><link rel="prefetch" href="/assets/js/31.40be2ed7.js"><link rel="prefetch" href="/assets/js/32.aabb414e.js"><link rel="prefetch" href="/assets/js/33.980701b9.js"><link rel="prefetch" href="/assets/js/34.a4b4af6c.js"><link rel="prefetch" href="/assets/js/35.333887e9.js"><link rel="prefetch" href="/assets/js/36.d76ecf86.js"><link rel="prefetch" href="/assets/js/38.5e8aedc9.js"><link rel="prefetch" href="/assets/js/39.31c59da2.js"><link rel="prefetch" href="/assets/js/4.80efa019.js"><link rel="prefetch" href="/assets/js/40.ff97290a.js"><link rel="prefetch" href="/assets/js/5.c0d7f84d.js"><link rel="prefetch" href="/assets/js/6.55856494.js"><link rel="prefetch" href="/assets/js/7.c8087d7b.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5e758b7f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
@@ -25,6 +25,8 @@
   支持配置文件
 </a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
 </a></li></ul></div></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
   Goners
 </a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
@@ -43,6 +45,8 @@
   支持配置文件
 </a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
 </a></li></ul></div></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
   Goners
 </a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
@@ -169,6 +173,6 @@ demo records<span class="token operator">:</span><span class="token punctuation"
 	<span class="token string">&quot;github.com/gone-io/gone/goner/xorm&quot;</span> #📢⚠️需要特别注意，导入的是gone封装的xorm包
 <span class="token punctuation">)</span>
 </code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.de97acb0.js" defer></script><script src="/assets/js/2.67e5e57c.js" defer></script><script src="/assets/js/21.db7c96c4.js" defer></script>
+    <script src="/assets/js/app.cc389081.js" defer></script><script src="/assets/js/2.ee202d8a.js" defer></script><script src="/assets/js/1.c48f06f0.js" defer></script><script src="/assets/js/37.0fe90fb0.js" defer></script>
   </body>
 </html>
