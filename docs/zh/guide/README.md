@@ -10,3 +10,4 @@ sidebar: auto
 ## [通过内置Goners支持配置文件](./config.md)
 ## [通过内置Goners支持数据库连接](./xorm.md)
 ## [Hook函数](./hooks.md)
+## [日志输出](./logrus.md)

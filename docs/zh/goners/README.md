@@ -23,7 +23,7 @@ sidebar: auto
 |目录/组件|实现功能|文档|
 |---|--|--|
 |config|读取config目录下的配置文件，允许配置项注入到Goner|[通过内置Goners支持配置文件](../guide/config.md)|
-|logrus|封装`github.com/sirupsen/logrus`，提供日志打印相关的方法，支持将日志按格式打印|-|
+|logrus|封装`github.com/sirupsen/logrus`，提供日志打印相关的方法，支持将日志按格式打印|[日志打印](../guide/logrus.md)|
 |tracer|日志追踪，提供traceId；在处理同一请求时，日志打印可以拥有相同的traceId|-|
 |gin|封装`github.com/gin-gonic/gin`，使gone支持web开发|-|
 |xorm|封装`xorm.io/xorm`，用于操作数据|[通过内置Goners支持数据库连接](../guide/xorm.md)|

@@ -59,6 +59,9 @@ module.exports = {
                         }, {
                             text: 'Hook函数',
                             link: '/zh/guide/hooks.md',
+                        },{
+                            text: '日志输出',
+                            link: '/zh/guide/logrus.md',
                         }],
                     },
                     {
