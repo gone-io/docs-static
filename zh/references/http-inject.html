@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>http 注入说明 | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <meta name="description" content="做一个对Spring程序员最友好的Golang框架">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.4c84687b.js" as="script"><link rel="preload" href="/assets/js/2.ee202d8a.js" as="script"><link rel="preload" href="/assets/js/1.c48f06f0.js" as="script"><link rel="preload" href="/assets/js/40.f3561ebe.js" as="script"><link rel="prefetch" href="/assets/js/10.6d6b4918.js"><link rel="prefetch" href="/assets/js/11.d0c1cff5.js"><link rel="prefetch" href="/assets/js/12.06b4dcac.js"><link rel="prefetch" href="/assets/js/13.097715df.js"><link rel="prefetch" href="/assets/js/14.7af5b523.js"><link rel="prefetch" href="/assets/js/15.382aeb06.js"><link rel="prefetch" href="/assets/js/16.019ff376.js"><link rel="prefetch" href="/assets/js/17.502e827b.js"><link rel="prefetch" href="/assets/js/18.7a45a425.js"><link rel="prefetch" href="/assets/js/19.48c2a444.js"><link rel="prefetch" href="/assets/js/20.1cc1fb9f.js"><link rel="prefetch" href="/assets/js/21.2d1a458e.js"><link rel="prefetch" href="/assets/js/22.afcc8afe.js"><link rel="prefetch" href="/assets/js/23.d0cd3157.js"><link rel="prefetch" href="/assets/js/24.255fb18d.js"><link rel="prefetch" href="/assets/js/25.edb164c5.js"><link rel="prefetch" href="/assets/js/26.f4e3b8e5.js"><link rel="prefetch" href="/assets/js/27.0a4164a2.js"><link rel="prefetch" href="/assets/js/28.5465a544.js"><link rel="prefetch" href="/assets/js/29.08aa2f5f.js"><link rel="prefetch" href="/assets/js/3.764f8c95.js"><link rel="prefetch" href="/assets/js/30.aa78aee7.js"><link rel="prefetch" href="/assets/js/31.634df48e.js"><link rel="prefetch" href="/assets/js/32.b1b379d0.js"><link rel="prefetch" href="/assets/js/33.df2a8ece.js"><link rel="prefetch" href="/assets/js/34.7c9102a5.js"><link rel="prefetch" href="/assets/js/35.8236b8da.js"><link rel="prefetch" href="/assets/js/36.c4227878.js"><link rel="prefetch" href="/assets/js/37.ad3d55da.js"><link rel="prefetch" href="/assets/js/38.32b22bac.js"><link rel="prefetch" href="/assets/js/39.b1e3a4c5.js"><link rel="prefetch" href="/assets/js/4.80efa019.js"><link rel="prefetch" href="/assets/js/41.e285e990.js"><link rel="prefetch" href="/assets/js/42.b57fec4f.js"><link rel="prefetch" href="/assets/js/43.cfc3b3e3.js"><link rel="prefetch" href="/assets/js/5.c0d7f84d.js"><link rel="prefetch" href="/assets/js/6.55856494.js"><link rel="prefetch" href="/assets/js/7.c8087d7b.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5e758b7f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><a href="/zh/quick-start/" class="nav-link">
+  快速开始
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/innner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><a href="/zh/quick-start/" class="nav-link">
+  快速开始
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/innner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>http 注入说明</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/references/http-inject.html#http-依赖注入标签的格式" class="sidebar-link">http 依赖注入标签的格式</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="http-注入说明"><a href="#http-注入说明" class="header-anchor">#</a> http 注入说明</h1> <h2 id="http-依赖注入标签的格式"><a href="#http-依赖注入标签的格式" class="header-anchor">#</a> http 依赖注入标签的格式</h2> <div class="language- extra-class"><pre class="language-text"><code>${attributeName} ${attributeType} gone:&quot;http,${kind}=${key}&quot;
+</code></pre></div><table><thead><tr><th>名称</th> <th>属性类型<code>${attributeType}</code></th> <th>注入类型<code>${kind}</code></th> <th>注入键值<code>${key}</code></th> <th>说明</th></tr></thead> <tbody><tr><td><strong>上下文注入</strong></td> <td><code>gin.Context</code></td> <td>/</td> <td>/</td> <td>（不推荐）注入<code>github.com/gone-io/gone/tree/main/goner/gin.Context</code>，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>上下文注入</strong></td> <td><code>*gin.Context</code></td> <td>/</td> <td>/</td> <td>（推荐）使用指针注入<code>github.com/gone-io/gone/tree/main/goner/gin.Context</code>，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>请求注入</strong></td> <td><code>http.Request</code></td> <td>/</td> <td>/</td> <td>不推荐）注入http.Request对象，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>请求注入</strong></td> <td><code>*http.Request</code></td> <td>/</td> <td>/</td> <td>（推荐）注入http.Request指针，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>地址注入</strong></td> <td><code>url.URL</code></td> <td>/</td> <td>/</td> <td>（不推荐）注入url.URL，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>地址注入</strong></td> <td><code>*url.URL</code></td> <td>/</td> <td>/</td> <td>（推荐）注入url.URL指针，不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>请求头注入</strong></td> <td><code>http.Header</code></td> <td>/</td> <td>/</td> <td>（推荐）注入http.Header（请求头），不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>响应注入</strong></td> <td><code>gin.ResponseWriter</code></td> <td>/</td> <td>/</td> <td>（推荐）注入gin.ResponseWriter（用于直接写入响应数据），不需要 “注入类型<code>${kind}</code>”和“注入键值<code>${key}</code>”。</td></tr> <tr><td><strong>Body注入</strong></td> <td>结构体、结构体指针</td> <td><code>body</code></td> <td>/</td> <td><strong>body注入</strong>；将请求body解析后注入到属性，注入类型为 <code>body</code>，不需要“注入键值<code>${key}</code>”；框架根据<code>Content-Type</code>自动判定是json还是xml等格式；每个请求处理函数只允许存在一个<strong>body注入</strong>。</td></tr> <tr><td><strong>请求头单值注入</strong></td> <td>number | string</td> <td>header</td> <td>缺省取字段名</td> <td>以“注入键值<code>${key}</code>”为<code>key</code>调用函数<code>ctx.Request.Header.Get(key)</code>获取请求头，属性类型支持<code>string</code>和<code>int</code>,<code>uint</code>,<code>float64</code>等数字类型，解析不了会返回参数错误</td></tr> <tr><td><strong>URL参数注入</strong></td> <td>number | string</td> <td>param</td> <td>缺省取字段名</td> <td>以“注入键值<code>${key}</code>”为<code>key</code>调用函数<code>ctx.Param(key)</code>获取Url中定义的参数值，属性类型支持<code>string</code>和<code>int</code>,<code>uint</code>,<code>float64</code>等数字类型，解析不了会返回参数错误</td></tr> <tr><td><strong>Query参数注入</strong></td> <td>number | string | []number | []string</td> <td>query</td> <td>缺省取字段名</td> <td>以“注入键值<code>${key}</code>”为<code>key</code>调用函数<code>ctx.Query(key)</code>获取Query中的参数，属性类型支持<code>string</code>和<code>int</code>,<code>uint</code>,<code>float64</code>等数字类型，<strong>支持数组[1]</strong>，解析不了会返回参数错误</td></tr> <tr><td><strong>Cookie注入</strong></td> <td>number | string</td> <td>cookie</td> <td>缺省取字段名</td> <td>以“注入键值<code>${key}</code>”为<code>key</code>调用函数<code>ctx.Context.Cookie(key)</code>获取Cookie的值，属性类型支持<code>string</code>和<code>int</code>,<code>uint</code>,<code>float64</code>等数字类型，解析不了会返回参数错误</td></tr></tbody></table> <p>[1].支持数组，举例说明如下：
+如果请求的query为<code>?select=1&amp;select=2&amp;select=3</code>，下面代码中的 <code>in.selects</code> 的值将会为 <code>[]int{1,2,3}</code>。</p> <div class="language-go extra-class"><pre class="language-go"><code>router<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/search&quot;</span><span class="token punctuation">,</span> <span class="token function">function</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span><span class="token punctuation">{</span>
+    selects <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token string">`gone:&quot;http,query=select&quot;`</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//注入值in.selects为`[]int{1,2,3}`</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%v&quot;</span><span class="token punctuation">,</span> in<span class="token punctuation">.</span>selects<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.4c84687b.js" defer></script><script src="/assets/js/2.ee202d8a.js" defer></script><script src="/assets/js/1.c48f06f0.js" defer></script><script src="/assets/js/40.f3561ebe.js" defer></script>
+  </body>
+</html>
