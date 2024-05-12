@@ -62,6 +62,9 @@ module.exports = {
                         },{
                             text: '日志输出',
                             link: '/zh/guide/logrus.md',
+                        },{
+                            text: '使用traceId追踪日志',
+                            link: '/zh/guide/tracer.md',
                         }],
                     },
                     {

@@ -10,7 +10,7 @@ sidebar: auto
 
 > tip: 了解Gone的核心概念和术语请阅读：[Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)
 
-在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的**`BasePriest`**来完成相关Goners的埋葬。在`BasePriest`中同时被埋葬到Cemetery还包括配置和trace相关的Goners，这三个包一般一起使用。
+在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的 **`BasePriest`** 来完成相关Goners的埋葬。在`BasePriest`中同时被埋葬到Cemetery还包括配置和trace相关的Goners，这三个包一般一起使用。
 
 ```go
 
