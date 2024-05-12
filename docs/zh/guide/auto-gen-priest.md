@@ -3,6 +3,8 @@ sidebar: auto
 ---
 
 # 自动生成Priest
+[[toc]]
+[什么是Priest?](./core-concept.md)
 
 ## 小试牛刀
 `gone priest`命令可以扫描代码中的特殊注释`//go:gone`生成Priest函数；`//go:gone`暂时只能用于标记`func () gone.Goner` 和 `func () (gone.Goner, gone.GonerId)`这两种形式的函数，函数必须是公开（以大写字母开头）。
@@ -86,5 +88,5 @@ func MasterPriest(cemetery gone.Cemetery) error {
 - 在MasterPriest函数中，调用调用生成的Priest函数；
 - git忽略掉生成文件，将生成的文件加入到`.gitignore`文件中。
 
-[Demo](https://github.com/gone-io/examples/tree/main/empty)是一个可供参考的web空白项目；也可以运行`gone create web-app`生成一个空白项目，参考[快速开始
+按照上面逻辑，我们编写了一个可供参考的Web空白项目[Demo](https://github.com/gone-io/examples/tree/main/empty)，已经放到github上，快点击打开吧；另外也可以运行`gone create web-app`生成一个空白项目，参考[快速开始
 ](https://goner.fun/zh/quick-start/)。
