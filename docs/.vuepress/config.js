@@ -59,12 +59,15 @@ module.exports = {
                         }, {
                             text: 'Hook函数',
                             link: '/zh/guide/hooks.md',
-                        },{
+                        }, {
                             text: '日志输出',
                             link: '/zh/guide/logrus.md',
-                        },{
+                        }, {
                             text: '使用traceId追踪日志',
                             link: '/zh/guide/tracer.md',
+                        }, {
+                            text: '自动生成Priest',
+                            link: '/zh/guide/auto-gen-priest.md',
                         }],
                     },
                     {

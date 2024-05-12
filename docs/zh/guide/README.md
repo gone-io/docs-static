@@ -12,3 +12,4 @@ sidebar: auto
 ## [Hook函数](./hooks.md)
 ## [日志输出](./logrus.md)
 ## [使用traceId追踪日志](./tracer.md)
+## [自动生成Priest](./auto-gen-priest.md)
