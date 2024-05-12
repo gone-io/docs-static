@@ -179,7 +179,7 @@ type IDemo interface {
 服务的逻辑实现，放到`internal/module`目录分模块实现。
 
 
-## 数据库
+## [数据库](https://goner.fun/zh/guide/xorm.html)
 
 
 ## 服务启动流程
