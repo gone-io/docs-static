@@ -1,6 +1,25 @@
 module.exports = {
     head: [
         ['link', { rel: 'icon', href: `/assets/img/logo.png` }],
+        [
+            'script',
+            {
+                type: 'text/javascript',
+            },
+            `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+if(location.pathname == '/'){
+    location.pathname='/zh/'
+}
+`
+        ],
     ],
 
     locales: {
@@ -10,7 +29,7 @@ module.exports = {
             description: '做一个对Spring程序员最友好的Golang框架',
         },
 
-        // '/en/': {
+        // '/': {
         //     lang: 'en-US',
         //     title: 'Gone Document',
         //     description: 'Build the Golang framework which is most friendly to Spring programmers'
@@ -24,6 +43,37 @@ module.exports = {
         logo: '/assets/img/logo.png',
 
         locales: {
+            '/': {
+                label: 'English',
+                selectText: 'Languages',
+                editLinkText: 'Edit this page on GitHub',
+
+
+                // nav: [
+                //     {
+                //         text: 'Guide',
+                //         link: '/guide/'
+                //     },
+                //     {
+                //         text: 'Quick Start',
+                //         link: '/quick-start/'
+                //     },
+                //     {
+                //         text: 'API Reference',
+                //         link: '/api/'
+                //     },
+                //     {
+                //         text: 'Gone Story',
+                //         link: '/story/'
+                //     },
+                // ],
+
+                // sidebar: [
+                //     ['/en/', 'Introduction'],
+                //     '/en/quick-start/',
+                //     '/en/guide/',
+                // ],
+            },
             '/zh/': {
                 label: '简体中文',
                 selectText: '选择语言',
@@ -95,36 +145,7 @@ module.exports = {
                 ],
             },
 
-            '/en/': {
-                label: 'English',
-                selectText: 'Languages',
-                editLinkText: 'Edit this page on GitHub',
 
-                nav: [
-                    {
-                        text: 'Guide',
-                        link: '/en/guide/'
-                    },
-                    {
-                        text: 'Quick Start',
-                        link: '/en/quick-start/'
-                    },
-                    {
-                        text: 'API Reference',
-                        link: '/en/api/'
-                    },
-                    {
-                        text: 'Gone Story',
-                        link: '/en/story/'
-                    },
-                ],
-
-                sidebar: [
-                    ['/en/', 'Introduction'],
-                    '/en/quick-start/',
-                    '/en/guide/',
-                ],
-            },
         },
     },
 
