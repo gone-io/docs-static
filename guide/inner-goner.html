@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How to Gracefully Use Built-in Goners? | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.1bdf1963.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/36.d8aad33f.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.41c07631.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d119e561.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.4e688c90.js"><link rel="prefetch" href="/assets/js/29.21472e9e.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.18eeb4fa.js"><link rel="prefetch" href="/assets/js/31.b7392ba6.js"><link rel="prefetch" href="/assets/js/32.27e6b4f4.js"><link rel="prefetch" href="/assets/js/33.b1d76de0.js"><link rel="prefetch" href="/assets/js/34.cf6f0a54.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/37.f0b2eb4e.js"><link rel="prefetch" href="/assets/js/38.1b8b11cd.js"><link rel="prefetch" href="/assets/js/39.feafefe4.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/40.114f190b.js"><link rel="prefetch" href="/assets/js/41.7a580400.js"><link rel="prefetch" href="/assets/js/42.e79ab512.js"><link rel="prefetch" href="/assets/js/43.3c915f26.js"><link rel="prefetch" href="/assets/js/44.8d040b5c.js"><link rel="prefetch" href="/assets/js/45.444a0c74.js"><link rel="prefetch" href="/assets/js/46.3cfaf2f9.js"><link rel="prefetch" href="/assets/js/47.59cb61ac.js"><link rel="prefetch" href="/assets/js/48.a1f39fab.js"><link rel="prefetch" href="/assets/js/49.71203825.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.66e7ae43.js"><link rel="prefetch" href="/assets/js/51.dee43b05.js"><link rel="prefetch" href="/assets/js/52.c0fe54f8.js"><link rel="prefetch" href="/assets/js/53.1b873ca6.js"><link rel="prefetch" href="/assets/js/54.7822f8a2.js"><link rel="prefetch" href="/assets/js/55.bf0b9b30.js"><link rel="prefetch" href="/assets/js/56.f73388e7.js"><link rel="prefetch" href="/assets/js/57.f5cb1c45.js"><link rel="prefetch" href="/assets/js/58.2dbd560d.js"><link rel="prefetch" href="/assets/js/59.8732e23d.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.cdac8fdf.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>How to Gracefully Use Built-in Goners?</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/inner-goner.html#built-in-goners" class="sidebar-link">Built-in Goners</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/inner-goner.html#the-priest-function" class="sidebar-link">The Priest Function</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/inner-goner.html#how-to-use" class="sidebar-link">How to Use</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/inner-goner.html#goneid-for-built-in-goners" class="sidebar-link">GoneId for Built-in Goners</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="how-to-gracefully-use-built-in-goners"><a href="#how-to-gracefully-use-built-in-goners" class="header-anchor">#</a> How to Gracefully Use Built-in Goners?</h1> <p></p><div class="table-of-contents"><ul><li><a href="#built-in-goners">Built-in Goners</a></li><li><a href="#the-priest-function">The Priest Function</a></li><li><a href="#how-to-use">How to Use</a></li><li><a href="#goneid-for-built-in-goners">GoneId for Built-in Goners</a></li></ul></div><p></p> <h2 id="built-in-goners"><a href="#built-in-goners" class="header-anchor">#</a> Built-in Goners</h2> <p>To lower the entry barrier for using Gone, we have developed some <a href="/goners/#built-in-framework-goners">built-in Goners</a> to provide basic functionality.</p> <h2 id="the-priest-function"><a href="#the-priest-function" class="header-anchor">#</a> The <code>Priest</code> Function</h2> <p>The <code>Priest</code> function is defined within the gone framework, and it allows for the bulk burial of Goners. Additionally, the <code>Priest</code> function can be nested, meaning A can call B, and B can call C. Therefore, after developing a set of features, you can provide a <code>Priest</code> function that buries all the Goners used.</p> <p>In fact, when developing built-in Goners for the framework, we adopt this approach. Additionally, for ease of use, we have defined some shortcuts in <code>goner/priest.go</code>, as shown below:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> goner
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/config&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/gin&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/logrus&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/redis&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/schedule&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/tracer&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/urllib&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/xorm&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">BasePriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> tracer<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> logrus<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> config<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">GinPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> gin<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">XormPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> xorm<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">RedisPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">SchedulePriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> schedule<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">UrllibPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> urllib<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="how-to-use"><a href="#how-to-use" class="header-anchor">#</a> How to Use</h2> <p>This way, if we want to use basic logging, tracing, and configuration functionality, we only need to:</p> <ol><li><p>Add <code>gone.BasePriest(cemetery)</code> in the main <code>Priest</code> function:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">MasterPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Bury Goners related to logging, tracing, and configuration</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">BasePriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token comment">// Call other Priests</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>If logging is needed, inject it into the necessary Goners:</p></li></ol> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> demo
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/gin&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/logrus&quot;</span>
+	<span class="token string">&quot;web-app/internal/interface/domain&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">//go:gone</span>
+<span class="token keyword">func</span> <span class="token function">NewDemoService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>demoService<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> demoService <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">// Named injection to nested anonymous property</span>
+	log logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">// Named injection to nested log property</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>svc <span class="token operator">*</span>demoService<span class="token punctuation">)</span> <span class="token function">Echo</span><span class="token punctuation">(</span>input <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Using inherited method</span>
+	svc<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;input content is %s&quot;</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+    <span class="token comment">// Using method on property</span>
+	svc<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;input content is %s&quot;</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> input<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>When injecting built-in components, named injection should be used.</p></div> <h2 id="goneid-for-built-in-goners"><a href="#goneid-for-built-in-goners" class="header-anchor">#</a> GoneId for Built-in Goners</h2> <p>The GonerId for built-in Goners is centrally defined in <code>https://github.com/gone-io/gone/blob/main/ids.go</code>:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> gone
+<span class="token comment">// ID for built-in components in the Gone framework</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+	<span class="token comment">// IdGoneHeaven ID of the Heaven component, which represents the program itself and is automatically injected when the Gone program starts</span>
+	IdGoneHeaven <span class="token operator">=</span> <span class="token string">&quot;gone-heaven&quot;</span>
+	<span class="token comment">// IdGoneCemetery ID of the Cemetery component, which is essential for completing dependency injection and is automatically injected when the Gone program starts</span>
+	IdGoneCemetery <span class="token operator">=</span> <span class="token string">&quot;gone-cemetery&quot;</span>
+	<span class="token comment">//IdGoneTestKit ID of the TestKit component, which is injected into the program when calling gone.Test or gone.TestAt; it should not be injected into non-test code</span>
+	IdGoneTestKit <span class="token operator">=</span> <span class="token string">&quot;gone-test-kit&quot;</span>
+	<span class="token comment">// Configuration, logging, and Tracer together form the foundation of the Gone framework, and can be buried together using [goner.BasePriest](goner#BasePriest)</span>
+	<span class="token comment">//IdConfig ID of the configuration Goner, providing configuration capability</span>
+	IdConfig <span class="token operator">=</span> <span class="token string">&quot;config&quot;</span>
+	<span class="token comment">//IdGoneConfigure ID of the configurator Goner</span>
+	IdGoneConfigure <span class="token operator">=</span> <span class="token string">&quot;gone-configure&quot;</span>
+	<span class="token comment">// IdGoneTracer ID of the Tracer Goner, providing logging and tracing capabilities</span>
+	IdGoneTracer <span class="token operator">=</span> <span class="token string">&quot;gone-tracer&quot;</span>
+	<span class="token comment">// IdGoneLogger ID of the Logger Goner, used for logging</span>
+	IdGoneLogger <span class="token operator">=</span> <span class="token string">&quot;gone-logger&quot;</span>
+	<span class="token comment">//IdGoneCumx [cmux Goner](/goner/cmux#Server) ID</span>
+	IdGoneCumx <span class="token operator">=</span> <span class="token string">&quot;gone-cumx&quot;</span>
+	<span class="token comment">//IdGoneGin IDs related to Gin components, which can be buried together using [goner.GinPriest](goner#GinPriest)</span>
+	IdGoneGin          <span class="token operator">=</span> <span class="token string">&quot;gone-gin&quot;</span>
+	IdGoneGinRouter    <span class="token operator">=</span> <span class="token string">&quot;gone-gin-router&quot;</span>
+	IdGoneGinProcessor <span class="token operator">=</span> <span class="token string">&quot;gone-gin-processor&quot;</span>
+	IdGoneGinProxy     <span class="token operator">=</span> <span class="token string">&quot;gone-gin-proxy&quot;</span>
+	IdGoneGinResponser <span class="token operator">=</span> <span class="token string">&quot;gone-gin-responser&quot;</span>
+	<span class="token comment">//IdGoneXorm ID of the Xorm Goner, encapsulating xorm for database operations; can be buried using [goner.XormPriest](goner#XormPriest)</span>
+	IdGoneXorm <span class="token operator">=</span> <span class="token string">&quot;gone-xorm&quot;</span>
+	<span class="token comment">//IdGoneRedisPool ID of the redis pool Goner; Redis-related Goners can be buried using [goner.RedisPriest](goner#RedisPriest)</span>
+	IdGoneRedisPool     <span class="token operator">=</span> <span class="token string">&quot;gone-redis-pool&quot;</span>
+	IdGoneRedisCache    <span class="token operator">=</span> <span class="token string">&quot;gone-redis-cache&quot;</span>
+	IdGoneRedisKey      <span class="token operator">=</span> <span class="token string">&quot;gone-redis-key&quot;</span>
+	IdGoneRedisLocker   <span class="token operator">=</span> <span class="token string">&quot;gone-redis-locker&quot;</span>
+	IdGoneRedisProvider <span class="token operator">=</span> <span class="token string">&quot;gone-redis-provider&quot;</span>
+	<span class="token comment">// IdGoneSchedule ID of the Scheduler Goner; can be buried using [goner.SchedulePriest](goner#SchedulePriest)</span>
+	IdGoneSchedule <span class="token operator">=</span> <span class="token string">&quot;gone-schedule&quot;</span>
+	IdGoneReq <span class="token operator">=</span> <span class="token string">&quot;gone-urllib&quot;</span>
+<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/goner-inject.html" class="prev">
+        Injection Methods Supported by Gone
+      </a></span> <span class="next"><a href="/guide/config.html">
+        Configuring with Built-in Goners Support
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1bdf1963.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/36.d8aad33f.js" defer></script>
+  </body>
+</html>

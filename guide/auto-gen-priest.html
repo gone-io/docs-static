@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Auto-generate Priest | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.1bdf1963.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/32.27e6b4f4.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.41c07631.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d119e561.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.4e688c90.js"><link rel="prefetch" href="/assets/js/29.21472e9e.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.18eeb4fa.js"><link rel="prefetch" href="/assets/js/31.b7392ba6.js"><link rel="prefetch" href="/assets/js/33.b1d76de0.js"><link rel="prefetch" href="/assets/js/34.cf6f0a54.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/36.d8aad33f.js"><link rel="prefetch" href="/assets/js/37.f0b2eb4e.js"><link rel="prefetch" href="/assets/js/38.1b8b11cd.js"><link rel="prefetch" href="/assets/js/39.feafefe4.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/40.114f190b.js"><link rel="prefetch" href="/assets/js/41.7a580400.js"><link rel="prefetch" href="/assets/js/42.e79ab512.js"><link rel="prefetch" href="/assets/js/43.3c915f26.js"><link rel="prefetch" href="/assets/js/44.8d040b5c.js"><link rel="prefetch" href="/assets/js/45.444a0c74.js"><link rel="prefetch" href="/assets/js/46.3cfaf2f9.js"><link rel="prefetch" href="/assets/js/47.59cb61ac.js"><link rel="prefetch" href="/assets/js/48.a1f39fab.js"><link rel="prefetch" href="/assets/js/49.71203825.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.66e7ae43.js"><link rel="prefetch" href="/assets/js/51.dee43b05.js"><link rel="prefetch" href="/assets/js/52.c0fe54f8.js"><link rel="prefetch" href="/assets/js/53.1b873ca6.js"><link rel="prefetch" href="/assets/js/54.7822f8a2.js"><link rel="prefetch" href="/assets/js/55.bf0b9b30.js"><link rel="prefetch" href="/assets/js/56.f73388e7.js"><link rel="prefetch" href="/assets/js/57.f5cb1c45.js"><link rel="prefetch" href="/assets/js/58.2dbd560d.js"><link rel="prefetch" href="/assets/js/59.8732e23d.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.cdac8fdf.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Auto-generate Priest</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/auto-gen-priest.html#getting-started" class="sidebar-link">Getting Started</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/auto-gen-priest.html#_1-install-the-gone-auxiliary-tool" class="sidebar-link">1. Install the gone auxiliary tool</a></li><li class="sidebar-sub-header"><a href="/guide/auto-gen-priest.html#_2-write-the-goner" class="sidebar-link">2. Write the Goner</a></li><li class="sidebar-sub-header"><a href="/guide/auto-gen-priest.html#_3-generate-code" class="sidebar-link">3. Generate code</a></li></ul></li><li><a href="/guide/auto-gen-priest.html#best-practices" class="sidebar-link">Best Practices</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="auto-generate-priest"><a href="#auto-generate-priest" class="header-anchor">#</a> Auto-generate Priest</h1> <p></p><div class="table-of-contents"><ul><li><a href="#getting-started">Getting Started</a><ul><li><a href="#_1-install-the-gone-auxiliary-tool">1. Install the gone auxiliary tool</a></li><li><a href="#_2-write-the-goner">2. Write the Goner</a></li><li><a href="#_3-generate-code">3. Generate code</a></li></ul></li><li><a href="#best-practices">Best Practices</a></li></ul></div> <a href="/guide/core-concept.html">What is Priest?</a><p></p> <h2 id="getting-started"><a href="#getting-started" class="header-anchor">#</a> Getting Started</h2> <p>The <code>gone priest</code> command scans for special comments in the code <code>//go:gone</code> to generate Priest functions. Currently, <code>//go:gone</code> is only used to mark functions in the form of <code>func() gone.Goner</code> and <code>func() (gone.Goner, gone.GonerId)</code>. The functions must be exported (starting with a capital letter).</p> <h3 id="_1-install-the-gone-auxiliary-tool"><a href="#_1-install-the-gone-auxiliary-tool" class="header-anchor">#</a> 1. Install the gone auxiliary tool</h3> <p>Run the following command:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>go <span class="token function">install</span> github.com/gone-io/gone/tools/gone@latest
+</code></pre></div><p>For more information on gone, refer to the <a href="/references/gone-tool.html">gone auxiliary tools</a> documentation.</p> <h3 id="_2-write-the-goner"><a href="#_2-write-the-goner" class="header-anchor">#</a> 2. Write the Goner</h3> <p>Create a project and a file:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> demo
+<span class="token builtin class-name">cd</span> demo
+go mod init demo
+<span class="token function">touch</span> demo.go
+</code></pre></div><p>Edit the demo.go file with the following code:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> demo
+<span class="token keyword">import</span> <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+<span class="token comment">//go:gone</span>
+<span class="token keyword">func</span> <span class="token function">NewDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>Demo<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Demo <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_3-generate-code"><a href="#_3-generate-code" class="header-anchor">#</a> 3. Generate code</h3> <p>Execute:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>gone priest <span class="token parameter variable">-s</span> ./ <span class="token parameter variable">-f</span> Priest <span class="token parameter variable">-o</span> priest.go <span class="token parameter variable">-p</span> demo
+</code></pre></div><p>This will generate the file priest.go with the following content:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// Code generated by gone; DO NOT EDIT.</span>
+<span class="token keyword">package</span> demo
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="best-practices"><a href="#best-practices" class="header-anchor">#</a> Best Practices</h2> <ul><li>Create a MasterPriest function for the Gone framework startup.</li> <li>Call the Priest functions of project dependency packages in the MasterPriest function.</li> <li>Place the &quot;gone priest&quot; command after the <code>//go:generate</code> comment in the MasterPriest function, for example:</li></ul> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> internal
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+    <span class="token string">&quot;github.com/gone-io/gone/goner&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">//go:generate gone priest -s . -p $GOPACKAGE -f Priest -o priest.go</span>
+<span class="token keyword">func</span> <span class="token function">MasterPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Call the Priest function of project dependency packages</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">GinPriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token comment">// Call the generated Priest function</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>tips: Running <code>go generate ./...</code> executes all commands following <code>//go:generate</code> comments.</p></blockquote> <ul><li>Call the generated Priest function in the MasterPriest function.</li> <li>Ignore the generated files in git by adding them to the <code>.gitignore</code> file.</li></ul> <p>Following this logic, we have created a reference Web blank project <a href="https://github.com/gone-io/examples/tree/main/empty" target="_blank" rel="noopener noreferrer">Demo<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>, which has been pushed to GitHub. Click to open it now. Additionally, you can run <code>gone create web-app</code> to generate a blank project, as explained in the <a href="https://goner.fun/en/quick-start/" target="_blank" rel="noopener noreferrer">Quick Start<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> guide.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/tracer.html" class="prev">
+        Trace Log with traceId
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1bdf1963.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/32.27e6b4f4.js" defer></script>
+  </body>
+</html>

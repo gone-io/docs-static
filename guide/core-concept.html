@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Core Concepts of Gone | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.1bdf1963.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/34.cf6f0a54.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.41c07631.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d119e561.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.4e688c90.js"><link rel="prefetch" href="/assets/js/29.21472e9e.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.18eeb4fa.js"><link rel="prefetch" href="/assets/js/31.b7392ba6.js"><link rel="prefetch" href="/assets/js/32.27e6b4f4.js"><link rel="prefetch" href="/assets/js/33.b1d76de0.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/36.d8aad33f.js"><link rel="prefetch" href="/assets/js/37.f0b2eb4e.js"><link rel="prefetch" href="/assets/js/38.1b8b11cd.js"><link rel="prefetch" href="/assets/js/39.feafefe4.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/40.114f190b.js"><link rel="prefetch" href="/assets/js/41.7a580400.js"><link rel="prefetch" href="/assets/js/42.e79ab512.js"><link rel="prefetch" href="/assets/js/43.3c915f26.js"><link rel="prefetch" href="/assets/js/44.8d040b5c.js"><link rel="prefetch" href="/assets/js/45.444a0c74.js"><link rel="prefetch" href="/assets/js/46.3cfaf2f9.js"><link rel="prefetch" href="/assets/js/47.59cb61ac.js"><link rel="prefetch" href="/assets/js/48.a1f39fab.js"><link rel="prefetch" href="/assets/js/49.71203825.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.66e7ae43.js"><link rel="prefetch" href="/assets/js/51.dee43b05.js"><link rel="prefetch" href="/assets/js/52.c0fe54f8.js"><link rel="prefetch" href="/assets/js/53.1b873ca6.js"><link rel="prefetch" href="/assets/js/54.7822f8a2.js"><link rel="prefetch" href="/assets/js/55.bf0b9b30.js"><link rel="prefetch" href="/assets/js/56.f73388e7.js"><link rel="prefetch" href="/assets/js/57.f5cb1c45.js"><link rel="prefetch" href="/assets/js/58.2dbd560d.js"><link rel="prefetch" href="/assets/js/59.8732e23d.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.cdac8fdf.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Core Concepts of Gone</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/core-concept.html#goner" class="sidebar-link">Goner</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/core-concept.html#🔮-prophet" class="sidebar-link">🔮 Prophet</a></li><li class="sidebar-sub-header"><a href="/guide/core-concept.html#😇-angel" class="sidebar-link">😇 Angel</a></li><li class="sidebar-sub-header"><a href="/guide/core-concept.html#🧛🏻‍♀️-vampire" class="sidebar-link">🧛🏻‍♀️ Vampire</a></li></ul></li><li><a href="/guide/core-concept.html#cemetery" class="sidebar-link">Cemetery</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/core-concept.html#burying" class="sidebar-link">Burying</a></li><li class="sidebar-sub-header"><a href="/guide/core-concept.html#reviving" class="sidebar-link">Reviving</a></li></ul></li><li><a href="/guide/core-concept.html#heaven" class="sidebar-link">Heaven</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/core-concept.html#priest" class="sidebar-link">Priest</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="core-concepts-of-gone"><a href="#core-concepts-of-gone" class="header-anchor">#</a> Core Concepts of Gone</h1> <p>&quot;Our code, after all, is just lifeless matter, unless it's resurrected in <strong>Heaven</strong>; for that, we need to <strong>bury</strong> it in a <strong>Cemetery</strong>.&quot;</p> <h2 id="goner"><a href="#goner" class="header-anchor">#</a> Goner</h2> <p>In the Gone framework, the most fundamental and core concept is <strong>Goner</strong>, which refers to a structure anonymously embedded with <code>gone.Flag</code>. For example:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Worker <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+<span class="token punctuation">}</span>
+</code></pre></div><p>Goner serves as a component in the Gone framework and is crucial for implementing dependency injection:</p> <ol><li>A Goner can be injected as a property into other structures.</li> <li>The properties of a Goner can be injected into other types.</li></ol> <p>The reason for embedding a <code>gone.Flag</code> is to limit the scope of dependency injection, ensuring that injection occurs only among Goners, thereby providing a unified pattern for component implementation in the Gone framework.</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Below is the source code for Goner and gone.Flag:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Flag <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>g <span class="token operator">*</span>Flag<span class="token punctuation">)</span> <span class="token function">goneFlag</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment">//...</span>
+<span class="token comment">// Goner represents the deceased.</span>
+<span class="token keyword">type</span> Goner <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token function">goneFlag</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>As an interface, Goner demands that objects implementing it have a private method <code>goneFlag()</code>. Due to Go's visibility restrictions, it's not possible to implement the internally defined private method <code>goneFlag()</code> outside the <code>github.com/gone-io/gone</code> package. Therefore, a structure can only become a Goner by embedding <code>gone.Flag</code>. This might be a bit complex, but essentially, it means that implementing Goner can only be achieved by embedding <code>gone.Flag</code>, not by directly implementing the <code>goneFlag()</code> method.</p></div> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>When referring to multiple Goners, we use the plural form <strong>Goners</strong>.</p></div> <p>The Gone framework also includes three special types of Goners:</p> <h3 id="🔮-prophet"><a href="#🔮-prophet" class="header-anchor">#</a> 🔮 Prophet</h3> <p>A special type of <strong>Goner</strong> that implements the <strong><code>AfterRevive() AfterReviveError</code></strong> method on regular <strong>Goners</strong>; <strong>Prophet</strong>'s <strong>AfterRevive</strong> is executed after a <strong>Goner</strong> is resurrected.</p> <p>The Prophet interface is defined as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// Prophet represents the prophet.</span>
+<span class="token keyword">type</span> Prophet <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	Goner
+	<span class="token comment">// AfterRevive is executed after the Goner is revived.</span>
+	<span class="token function">AfterRevive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> AfterReviveError
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="😇-angel"><a href="#😇-angel" class="header-anchor">#</a> 😇 Angel</h3> <p>A special type of <strong>Goner</strong> possessing the angelic powers of <strong><code>Start(Cemetery) error</code></strong> on its left wing and <strong><code>Stop(Cemetery) error</code></strong> on its right wing, responsible for initiating (allocating resources, starting a service) and terminating (stopping a service, reclaiming resources) tasks, respectively.</p> <p>The Angel interface is defined as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Angel <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	Goner
+	<span class="token function">Start</span><span class="token punctuation">(</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span>
+	<span class="token function">Stop</span><span class="token punctuation">(</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="🧛🏻‍♀️-vampire"><a href="#🧛🏻‍♀️-vampire" class="header-anchor">#</a> 🧛🏻‍♀️ Vampire</h3> <p>A special type of <strong>Goner</strong> with a unique ability — sucking with <strong><code>Suck(conf string, v reflect.Value) SuckError</code></strong>. <strong>Suck</strong> enables injecting values that are not Goners into Goners' properties.</p> <p>The Vampire interface is defined as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> SuckError <span class="token builtin">error</span>
+<span class="token keyword">type</span> Vampire <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	Goner
+	<span class="token function">Suck</span><span class="token punctuation">(</span>conf <span class="token builtin">string</span><span class="token punctuation">,</span> v reflect<span class="token punctuation">.</span>Value<span class="token punctuation">)</span> SuckError
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="cemetery"><a href="#cemetery" class="header-anchor">#</a> Cemetery</h2> <p>Cemetery is used to manage Goners, primarily providing methods for <strong>Burying</strong> and <strong>Reviving</strong> Goners. Its interface is defined as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Cemetery <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token comment">// ... Other methods</span>
+	Goner
+	<span class="token function">Bury</span><span class="token punctuation">(</span>Goner<span class="token punctuation">,</span> <span class="token operator">...</span>GonerId<span class="token punctuation">)</span> Cemetery  <span class="token comment">// Burying a Goner in the Cemetery</span>
+	<span class="token comment">// ReviveAllFromTombs revives all Goners.</span>
+	<span class="token function">ReviveAllFromTombs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
+	<span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>From the code, it's evident that Cemetery itself is a Goner, automatically buried and resurrected when the Gone framework starts.</p> <h3 id="burying"><a href="#burying" class="header-anchor">#</a> Burying</h3> <p>Burying a Goner in a Cemetery means registering the Goner with the framework for later property injection. In code implementation, <strong>Bury</strong> is a public method of <strong>Cemetery</strong>, typically called through the <strong>Priest</strong> function.</p> <h3 id="reviving"><a href="#reviving" class="header-anchor">#</a> Reviving</h3> <p>Reviving entails completing the injection of properties required by a Goner. In the <code>ReviveAllFromTombs() error</code> function, all Goners buried in the Cemetery are attempted to be revived. If any property injection fails, the program panics.</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>After reviving all Goners, <strong>ReviveAllFromTombs</strong> calls the <strong>AfterRevive</strong> method of all <strong>Prophets</strong>.</p></div> <h2 id="heaven"><a href="#heaven" class="header-anchor">#</a> Heaven</h2> <p>Heaven represents a Gone program, responsible for managing the program's startup, shutdown, and associated processes (resurrection completed before startup). It facilitates executing certain hook tasks before and after startup and before program termination. Heaven accepts a priest function to begin its operation, as shown below:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+<span class="token keyword">func</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token comment">// Call cemetery.Bury to bury Goners</span>
+	<span class="token comment">// Or call other Priest functions</span>
+	<span class="token comment">// TODO</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>Priest<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Or:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+<span class="token keyword">func</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token comment">// Call cemetery.Bury to bury Goners</span>
+	<span class="token comment">// Or call other Priest functions</span>
+	<span class="token comment">// TODO</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>
+		<span class="token function">Prepare</span><span class="token punctuation">(</span>Priest<span class="token punctuation">)</span><span class="token punctuation">.</span>
+		<span class="token function">AfterStart</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token comment">//TODO: Perform operations after startup</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+		<span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="priest"><a href="#priest" class="header-anchor">#</a> Priest</h2> <p>Priest is a function responsible for burying Goners in the Cemetery. Its definition is as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Priest <span class="token keyword">func</span><span class="token punctuation">(</span>cemetery Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span>
+</code></pre></div><p>In the implementation of the <strong>Priest</strong> function, you can call <strong>cemetery.Bury</strong> to accomplish this, as shown below:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Worker <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	Name <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Boss <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	Name <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">aPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Boss<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Jim&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;boss-jim&quot;</span><span class="token punctuation">)</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Worker<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Bob&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;worker-bob&quot;</span><span class="token punctuation">)</span>
+	<span class="token comment">// Anonymous burial, not specifying the GonerId of the buried Goner</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>Worker<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;X&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//...</span>
+</code></pre></div><p>Alternatively, you can accomplish this by calling other <strong>Priest</strong> functions:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">a1Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token comment">//todo</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">a2Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token comment">//todo</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">aPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">a1Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">a2Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token comment">//todo</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>If we develop a component package where multiple <strong>Goners</strong> are used to accomplish various functionalities, and we need to <strong>bury</strong> these <strong>Goners</strong> simultaneously when using them, we can write a <strong>Priest</strong> function to facilitate bulk <strong>burying</strong> of these <strong>Goners</strong> in business code.</p> <p>That's exactly what we do with the built-in component package of the framework. Here's how it's done, along with the <a href="https://github.com/gone-io/gone/blob/main/goner/priest.go" target="_blank" rel="noopener noreferrer">code<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> and <a href="https://goner.fun/goners/#%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AEgoners" target="_blank" rel="noopener noreferrer">documentation<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <p>Additionally, we've developed a command-line utility called <strong>gone</strong>, which scans for special comments <code>//go:gone</code> to automatically generate <strong>Priest</strong> functions. You can refer to <a href="/guide/auto-gen-priest.html">Auto-generating Priest</a> for more information.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/guide/gone-and-inject.html">
+        Goner and Dependency Injection
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1bdf1963.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/34.cf6f0a54.js" defer></script>
+  </body>
+</html>

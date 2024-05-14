@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Trace Log with traceId | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.1bdf1963.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/38.1b8b11cd.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.41c07631.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d119e561.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.4e688c90.js"><link rel="prefetch" href="/assets/js/29.21472e9e.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.18eeb4fa.js"><link rel="prefetch" href="/assets/js/31.b7392ba6.js"><link rel="prefetch" href="/assets/js/32.27e6b4f4.js"><link rel="prefetch" href="/assets/js/33.b1d76de0.js"><link rel="prefetch" href="/assets/js/34.cf6f0a54.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/36.d8aad33f.js"><link rel="prefetch" href="/assets/js/37.f0b2eb4e.js"><link rel="prefetch" href="/assets/js/39.feafefe4.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/40.114f190b.js"><link rel="prefetch" href="/assets/js/41.7a580400.js"><link rel="prefetch" href="/assets/js/42.e79ab512.js"><link rel="prefetch" href="/assets/js/43.3c915f26.js"><link rel="prefetch" href="/assets/js/44.8d040b5c.js"><link rel="prefetch" href="/assets/js/45.444a0c74.js"><link rel="prefetch" href="/assets/js/46.3cfaf2f9.js"><link rel="prefetch" href="/assets/js/47.59cb61ac.js"><link rel="prefetch" href="/assets/js/48.a1f39fab.js"><link rel="prefetch" href="/assets/js/49.71203825.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.66e7ae43.js"><link rel="prefetch" href="/assets/js/51.dee43b05.js"><link rel="prefetch" href="/assets/js/52.c0fe54f8.js"><link rel="prefetch" href="/assets/js/53.1b873ca6.js"><link rel="prefetch" href="/assets/js/54.7822f8a2.js"><link rel="prefetch" href="/assets/js/55.bf0b9b30.js"><link rel="prefetch" href="/assets/js/56.f73388e7.js"><link rel="prefetch" href="/assets/js/57.f5cb1c45.js"><link rel="prefetch" href="/assets/js/58.2dbd560d.js"><link rel="prefetch" href="/assets/js/59.8732e23d.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.cdac8fdf.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Trace Log with traceId</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/tracer.html#burying-related-goners-in-the-cemetery" class="sidebar-link">Burying Related Goners in the Cemetery</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/tracer.html#simple-usage" class="sidebar-link">Simple Usage</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/tracer.html#passing-traceid-across-goroutines" class="sidebar-link">Passing TraceId Across Goroutines</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/tracer.html#passing-traceid-across-processes-services" class="sidebar-link">Passing TraceId Across Processes/Services</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/tracer.html#multi-language-support" class="sidebar-link">Multi-language Support</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="trace-log-with-traceid"><a href="#trace-log-with-traceid" class="header-anchor">#</a> Trace Log with traceId</h1> <p>In web applications, a single request may go through many business processes. To facilitate troubleshooting, we want all logs generated by different business processes to have a unified traceId. Having a traceId allows us to link all logs related to the entire business process, making it easier to trace and analyze where problems occur in the business flow.</p> <p>In other open-source frameworks, it's generally recommended to pass a <code>context.Context</code> parameter to <strong>all</strong> functions, which is also recommended by the official Golang documentation. However, we believe that adding this extra parameter to every function is burdensome. We aim to avoid passing additional parameters to every function just to print a traceId in logs. Therefore, in Gone, we provide a built-in Goner to achieve this functionality.</p> <h2 id="burying-related-goners-in-the-cemetery"><a href="#burying-related-goners-in-the-cemetery" class="header-anchor">#</a> Burying Related Goners in the Cemetery</h2> <blockquote><p>tip: To understand the core concepts and terminology of Gone, please read: <a href="https://goner.fun/en/guide/core-concept.html" target="_blank" rel="noopener noreferrer">Core Concepts of Gone<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>Here, we use the <strong><code>BasePriest</code></strong> from the package <strong><code>github.com/gone-io/gone/tree/main/goner</code></strong> to bury related Goners. In the <code>BasePriest</code>, Goners related to <code>tracer</code>, <code>config</code>, and <code>logrus</code> are all buried into the Cemetery, as these three packages are commonly used together.</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">MasterPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">BasePriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token comment">// Bury other Goners</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="simple-usage"><a href="#simple-usage" class="header-anchor">#</a> Simple Usage</h2> <p>When the tracer is buried, when we print logs using the injected <code>logrus.Logger</code> interface, a traceId will automatically be added to the logs.</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">//...</span>
+<span class="token keyword">type</span> service <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    log logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">// Named injection into nested log attributes</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>svc <span class="token operator">*</span>service<span class="token punctuation">)</span> <span class="token function">Business</span><span class="token punctuation">(</span>input <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Print log</span>
+	svc<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;input content is %s&quot;</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> input<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//...</span>
+</code></pre></div><p>For example, the <code>061ad00f-8c0d-479c-bc4c-393e0cf2cca2</code> is the traceId:</p> <div class="language- extra-class"><pre class="language-text"><code>2024-05-11 09:09:57.784|INFO|**/Users/jim/go/pkg/mod/github.com/gone-io/gone@v0.1.4/goner/gin/server.go:46**|061ad00f-8c0d-479c-bc4c-393e0cf2cca2|Server Listen At :8080
+</code></pre></div><h2 id="passing-traceid-across-goroutines"><a href="#passing-traceid-across-goroutines" class="header-anchor">#</a> Passing TraceId Across Goroutines</h2> <p>In the previous example, it's normal if no new goroutines are used. If a new goroutine is started using the <code>go</code> keyword, it will be noticed that the logs printed by the goroutine do not have a traceId. To solve this, inject the <code>tracer.Tracer</code> interface and use the <code>Go</code> method instead of the <code>go</code> keyword to start a new goroutine.</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">//...</span>
+<span class="token keyword">type</span> service <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    log logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">// Named injection into nested log attributes</span>
+    tracer<span class="token punctuation">.</span>Tracer <span class="token string">`gone:&quot;gone-tracer&quot;`</span> <span class="token comment">// Inject tracer</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>svc <span class="token operator">*</span>service<span class="token punctuation">)</span> <span class="token function">Business</span><span class="token punctuation">(</span>input <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	svc<span class="token punctuation">.</span><span class="token function">Go</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Print log in a new goroutine</span>
+		svc<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;log in new goroutine&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> input<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//...</span>
+</code></pre></div><h2 id="passing-traceid-across-processes-services"><a href="#passing-traceid-across-processes-services" class="header-anchor">#</a> Passing TraceId Across Processes/Services</h2> <p>In microservices, a web request typically spans multiple microservices. Cross-service communication is generally done through:</p> <ol><li>Message middleware
+To facilitate the passing of traceId in the message middleware and to facilitate the use of the message middleware to pass business events, we have open-sourced the <a href="https://github.com/gone-io/emitter" target="_blank" rel="noopener noreferrer">https://github.com/gone-io/emitter<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> repository. In this repository, we have implemented an adapter for <strong>Rocket MQ</strong>, and plan to adapt to other mainstream message middleware such as <strong>Kafka</strong> and <strong>RabbitMQ</strong> in the future.</li> <li>RPC calls/internal http calls
+Use the built-in Goner <a href="https://github.com/gone-io/gone/tree/main/goner/urllib" target="_blank" rel="noopener noreferrer">urllib<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to send http requests to Gone Web programs, and the traceId will be automatically passed between services. Additionally, using the built-in <a href="https://github.com/gone-io/gone/tree/main/goner/grpc" target="_blank" rel="noopener noreferrer">grpc<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to implement gRPC calls will also automatically pass the traceId. More RPC call support will be provided in the future.</li></ol> <h2 id="multi-language-support"><a href="#multi-language-support" class="header-anchor">#</a> Multi-language Support</h2> <p>To pass the traceId in an HTTP request, a special header <code>X-Trace-ID</code> is added to carry the traceId. Therefore, if multiple programming languages are used, as long as the different services follow the rule of &quot;attaching <code>X-Trace-ID</code> when making requests on the client side and parsing <code>X-Trace-ID</code> when processing requests on the server side,&quot; traceId can be seamlessly passed across services developed in different languages.<br>
+We plan to develop packages in other languages to seamlessly integrate with other languages in the future.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/logrus.html" class="prev">
+        Logging Output
+      </a></span> <span class="next"><a href="/guide/auto-gen-priest.html">
+        Auto-generate Priest
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1bdf1963.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/38.1b8b11cd.js" defer></script>
+  </body>
+</html>

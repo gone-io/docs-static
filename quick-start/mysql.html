@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Web + MySQL | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.1bdf1963.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/24.41c07631.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d119e561.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.4e688c90.js"><link rel="prefetch" href="/assets/js/29.21472e9e.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.18eeb4fa.js"><link rel="prefetch" href="/assets/js/31.b7392ba6.js"><link rel="prefetch" href="/assets/js/32.27e6b4f4.js"><link rel="prefetch" href="/assets/js/33.b1d76de0.js"><link rel="prefetch" href="/assets/js/34.cf6f0a54.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/36.d8aad33f.js"><link rel="prefetch" href="/assets/js/37.f0b2eb4e.js"><link rel="prefetch" href="/assets/js/38.1b8b11cd.js"><link rel="prefetch" href="/assets/js/39.feafefe4.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/40.114f190b.js"><link rel="prefetch" href="/assets/js/41.7a580400.js"><link rel="prefetch" href="/assets/js/42.e79ab512.js"><link rel="prefetch" href="/assets/js/43.3c915f26.js"><link rel="prefetch" href="/assets/js/44.8d040b5c.js"><link rel="prefetch" href="/assets/js/45.444a0c74.js"><link rel="prefetch" href="/assets/js/46.3cfaf2f9.js"><link rel="prefetch" href="/assets/js/47.59cb61ac.js"><link rel="prefetch" href="/assets/js/48.a1f39fab.js"><link rel="prefetch" href="/assets/js/49.71203825.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.66e7ae43.js"><link rel="prefetch" href="/assets/js/51.dee43b05.js"><link rel="prefetch" href="/assets/js/52.c0fe54f8.js"><link rel="prefetch" href="/assets/js/53.1b873ca6.js"><link rel="prefetch" href="/assets/js/54.7822f8a2.js"><link rel="prefetch" href="/assets/js/55.bf0b9b30.js"><link rel="prefetch" href="/assets/js/56.f73388e7.js"><link rel="prefetch" href="/assets/js/57.f5cb1c45.js"><link rel="prefetch" href="/assets/js/58.2dbd560d.js"><link rel="prefetch" href="/assets/js/59.8732e23d.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.cdac8fdf.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Web + MySQL</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/quick-start/mysql.html#install-the-gone-tool" class="sidebar-link">Install the gone Tool</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/quick-start/mysql.html#create-a-project-using-the-gone-command" class="sidebar-link">Create a Project Using the gone Command</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/quick-start/mysql.html#compile-and-run" class="sidebar-link">Compile And Run</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/quick-start/mysql.html#api-testing" class="sidebar-link">API Testing</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/quick-start/mysql.html#project-brief-introduction" class="sidebar-link">Project Brief Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/quick-start/mysql.html#directory-structure" class="sidebar-link">Directory Structure</a></li><li class="sidebar-sub-header"><a href="/quick-start/mysql.html#project-features" class="sidebar-link">Project Features</a></li><li class="sidebar-sub-header"><a href="/quick-start/mysql.html#partial-code-explanation" class="sidebar-link">Partial Code Explanation</a></li><li class="sidebar-sub-header"><a href="/quick-start/mysql.html#http-injection" class="sidebar-link">HTTP Injection</a></li><li class="sidebar-sub-header"><a href="/quick-start/mysql.html#request-handling-function-parameters" class="sidebar-link">Request Handling Function Parameters</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="web-mysql"><a href="#web-mysql" class="header-anchor">#</a> Web + MySQL</h1> <p>In this document, I will demonstrate how to create a production-ready web project and provide a brief introduction to the project. The project uses MySQL as the database and Docker Compose to manage containers.</p> <h2 id="install-the-gone-tool"><a href="#install-the-gone-tool" class="header-anchor">#</a> Install the gone Tool</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>go <span class="token function">install</span> github.com/gone-io/gone/tools/gone@latest
+</code></pre></div><p>For more information about the gone command, refer to: <a href="https://goner.fun/references/gone-tool.html" target="_blank" rel="noopener noreferrer">Gone Tool<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="create-a-project-using-the-gone-command"><a href="#create-a-project-using-the-gone-command" class="header-anchor">#</a> Create a Project Using the gone Command</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>gone create <span class="token parameter variable">-t</span> web+mysql web-mysql-docker
+</code></pre></div><p>The above command will create a directory named web-mysql-docker in the current directory.</p> <h2 id="compile-and-run"><a href="#compile-and-run" class="header-anchor">#</a> Compile And Run</h2> <blockquote><p>Ensure you have make installed; if not, please install it first.
+Ensure you have docker and docker compose installed; if not, refer to: https://docs.docker.com/engine/install/.</p></blockquote> <p>Execute the following commands:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Enter the project directory</span>
+<span class="token builtin class-name">cd</span> web-mysql-docker
+<span class="token comment"># Generate the Priest functions: https://goner.fun/guide/auto-gen-priest.html</span>
+<span class="token function">make</span> gone
+<span class="token comment"># Start the MySQL service</span>
+<span class="token function">docker</span> compose up <span class="token parameter variable">-d</span> mysql
+<span class="token comment"># Compile and run</span>
+<span class="token function">make</span> run
+</code></pre></div><p>The logs should display as follows:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>➜  web-mysql-docker <span class="token function">make</span> run
+<span class="token function">make</span> gone
+<span class="token function">make</span> install-gone
+go <span class="token function">install</span> github.com/gone-io/gone/tools/gone@latest
+go mod tidy
+go generate ./<span class="token punctuation">..</span>.
+go run cmd/server/main.go
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/heaven
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/cemetery
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/tracer/tracer
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/logrus/logger
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/config/config
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/config/propertiesConfigure
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/logrus/logger
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">&gt;</span>Use Env: <span class="token builtin class-name">local</span>
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>WARNING<span class="token operator">|</span>Init<span class="token operator">|</span>properties: /var/folders/jv/rn9b7nhs2ls1n1j_lqj005r80000gn/T/go-build521033176/b001/exe/config/default.properties not found. skipping
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.574<span class="token operator">|</span>WARNING<span class="token operator">|</span>Init<span class="token operator">|</span>properties: /var/folders/jv/rn9b7nhs2ls1n1j_lqj005r80000gn/T/go-build521033176/b001/exe/config/local.properties not found. skipping
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/config/config
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/config/propertiesConfigure
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/xorm/engine
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/cmux/server
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/proxy
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/router
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/sysProcessor
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/responser
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/server
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive github.com/gone-io/gone/goner/gin/httpInjector
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/controller/demoController
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/middleware/AuthorizeMiddleware
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/middleware/PubMiddleware
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/module/demo/db
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/module/demo/demoService
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/router/authRouter
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.575<span class="token operator">|</span>INFO<span class="token operator">|</span>Init<span class="token operator">|</span>Revive web-mysql/internal/router/pubRouter
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> <span class="token punctuation">[</span>WARNING<span class="token punctuation">]</span> Running <span class="token keyword">in</span> <span class="token string">&quot;debug&quot;</span> mode. Switch to <span class="token string">&quot;release&quot;</span> mode <span class="token keyword">in</span> production.
+ - using env:   <span class="token builtin class-name">export</span> <span class="token assign-left variable">GIN_MODE</span><span class="token operator">=</span>release
+ - using code:  gin.SetMode<span class="token punctuation">(</span>gin.ReleaseMode<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/demo/show            --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func5 <span class="token punctuation">(</span><span class="token number">8</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/demo2/show           --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func5 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/demo2/error          --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func5 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/demo2/echo           --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func5 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/inject-query         --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/inject/:key          --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> POST   /api/inject-http-body     --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/inject-http-struct   --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> POST   /api/users                --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/users                --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/users/page           --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> GET    /api/users/:id            --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> PUT    /api/users/:id            --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>GIN-debug<span class="token punctuation">]</span> DELETE /api/users/:id            --<span class="token operator">&gt;</span> github.com/gone-io/gone/goner/gin.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.Proxy.<span class="token punctuation">(</span>*proxy<span class="token punctuation">)</span>.proxyOne.func8 <span class="token punctuation">(</span><span class="token number">7</span> handlers<span class="token punctuation">)</span>
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.576<span class="token operator">|</span>INFO<span class="token operator">|</span>/Users/jim/go/pkg/mod/github.com/gone-io/gone@v0.3.1/goner/gin/server.go:46<span class="token operator">||</span>Server Listen At :8080
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.576<span class="token operator">|</span>INFO<span class="token operator">|</span>/Users/jim/go/pkg/mod/xorm.io/xorm@v1.3.2/log/logger_context.go:90<span class="token operator">||</span>PING DATABASE mysql
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.585<span class="token operator">|</span>INFO<span class="token operator">|</span>/Users/jim/go/pkg/mod/github.com/gone-io/gone@v0.3.1/cemetery.go:329<span class="token operator">||</span>Revive <span class="token punctuation">[</span>Anonymous Goner<span class="token punctuation">]</span>
+<span class="token number">2024</span>-05-14 <span class="token number">12</span>:42:03.585<span class="token operator">|</span>INFO<span class="token operator">|</span>/Users/jim/works/gone-io/web-app/demo/web-mysql-docker/cmd/server/main.go:28<span class="token operator">||</span>before start
+</code></pre></div><h2 id="api-testing"><a href="#api-testing" class="header-anchor">#</a> API Testing</h2> <p>I'm going to test using the built-in HTTP Request plugin in Goland. Open the project in Goland, navigate to the file <code>tests/api/user.http</code>, and select the <code>dev</code> environment to run, as shown below:</p> <p><img src="/assets/img/image9.48d32078.png" alt="Run"></p> <p>Execution Result:
+<img src="/assets/img/image10.91a30027.png" alt="Result"></p> <h2 id="project-brief-introduction"><a href="#project-brief-introduction" class="header-anchor">#</a> Project Brief Introduction</h2> <h3 id="directory-structure"><a href="#directory-structure" class="header-anchor">#</a> Directory Structure</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>├── Dockerfile
+├── Makefile
+├── README.md
+├── cmd
+│   └── server
+│       └── main.go <span class="token comment"># File containing the main method of the project</span>
+├── config          <span class="token comment"># Project configuration directory</span>
+│   ├── default.properties <span class="token comment"># Default configuration</span>
+│   ├── dev.properties     <span class="token comment"># Development environment configuration</span>
+│   ├── local.properties   <span class="token comment"># Local environment configuration</span>
+│   └── prod.properties    <span class="token comment"># Production environment configuration</span>
+├── docker-compose.yaml    <span class="token comment"># docker-compose, defines mysql and web containers</span>
+├── go.mod
+├── internal
+│   ├── controller         <span class="token comment"># Controller</span>
+│   │   └── demo_ctr.go
+│   ├── interface          <span class="token comment"># Interface directory</span>
+│   │   ├── domain         <span class="token comment"># Domain models</span>
+│   │   │   ├── demo.go
+│   │   │   ├── page.go
+│   │   │   └── user.go
+│   │   ├── entity         <span class="token comment"># Entity models</span>
+│   │   │   └── User.go
+│   │   └── <span class="token function">service</span>        <span class="token comment"># Service interfaces</span>
+│   │       └── i_demo.go  <span class="token comment"># Typically one interface per file, file name starts with `i_`, interface name starts with `I`, e.g., `IDemo`</span>
+│   ├── master.go
+│   ├── middleware         <span class="token comment"># Middleware directory, can define unified processing logic such as authentication</span>
+│   │   ├── authorize.go
+│   │   └── pub.go
+│   ├── module             <span class="token comment"># Module directory</span>
+│   │   └── demo           <span class="token comment"># Demo module</span>
+│   │       ├── db.go      <span class="token comment"># Implementation of demo module's database interface</span>
+│   │       ├── demo_svc.go <span class="token comment"># Demo Service, implementing `service.IDemo` interface</span>
+│   │       ├── error.go    <span class="token comment"># Error code definition for the current directory</span>
+│   │       └── i_db.go    <span class="token comment"># Database interface of the demo module</span>
+│   ├── pkg                <span class="token comment"># Public utilities directory</span>
+│   │   └── utils
+│   │       └── error.go
+│   ├── priest.go         <span class="token comment"># Not present when created by gone create, generated by running `make gone`</span>
+│   └── router            <span class="token comment"># Router directory</span>
+│       ├── auth_router.go <span class="token comment"># Defines authenticated router groups</span>
+│       └── pub_router.go  <span class="token comment"># Defines unauthenticated router groups</span>
+├── scripts                <span class="token comment"># Script directory, used to store some scripts</span>
+│   └── mysql
+│       └── initdb.d       <span class="token comment"># mysql initdb.d directory, all sql files under this directory will be executed when mysql defined in docker-compose starts for the first time</span>
+│           └── user.sql
+└── tests                  <span class="token comment"># Integration test directory</span>
+    └── api                <span class="token comment"># API test directory</span>
+        ├── demo.http
+        ├── http-client.env.json
+        └── user.http
+</code></pre></div><h3 id="project-features"><a href="#project-features" class="header-anchor">#</a> Project Features</h3> <ul><li>Ready to use, no additional configuration needed to run</li> <li>Provides a <code>Dockerfile</code> for easy deployment to various container environments</li> <li>Integrated commands like gone, go, docker, and docker compose using Makefile</li> <li>Automatically generates Priest functions for smoother development</li> <li>Utilizes the gone framework, incorporating dependency injection</li> <li>Decoupling through interface usage</li> <li>Supports configuration writing for different environments</li> <li>Integrated MySQL database</li></ul> <h3 id="partial-code-explanation"><a href="#partial-code-explanation" class="header-anchor">#</a> Partial Code Explanation</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">//...</span>
+    <span class="token comment">// CRUD operations for user data under the demo module, mounted on authRouter for demonstration purposes</span>
+    ctr<span class="token punctuation">.</span>
+        pubRouter<span class="token punctuation">.</span>
+        <span class="token function">Group</span><span class="token punctuation">(</span><span class="token string">&quot;/users&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">POST</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Body injection, parses HTTP body into a struct based on contentType, supports json, xml, form-data, x-www-form-urlencoded, etc.</span>
+            req <span class="token operator">*</span>domain<span class="token punctuation">.</span>User <span class="token string">`gone:&quot;http,body&quot;`</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">CreateUser</span><span class="token punctuation">(</span>in<span class="token punctuation">.</span>req<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>any<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">ListUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/page&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            query domain<span class="token punctuation">.</span>PageQuery <span class="token string">`gone:&quot;http,query&quot;`</span> <span class="token comment">// Query injection</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>any<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">PageUsers</span><span class="token punctuation">(</span>in<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/:id&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            id <span class="token builtin">int64</span> <span class="token string">`gone:&quot;http,param&quot;`</span>              <span class="token comment">// Url parameter injection, injected from the route defined as `:id`</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>any<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">GetUserById</span><span class="token punctuation">(</span>in<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">PUT</span><span class="token punctuation">(</span><span class="token string">&quot;/:id&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            id  <span class="token builtin">int64</span>        <span class="token string">`gone:&quot;http,param&quot;`</span> <span class="token comment">// Url parameter injection, injected from the route defined as `:id`</span>
+            req <span class="token operator">*</span>domain<span class="token punctuation">.</span>User <span class="token string">`gone:&quot;http,body&quot;`</span>  <span class="token comment">// Body injection</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">UpdateUserById</span><span class="token punctuation">(</span>in<span class="token punctuation">.</span>id<span class="token punctuation">,</span> in<span class="token punctuation">.</span>req<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">DELETE</span><span class="token punctuation">(</span><span class="token string">&quot;/:id&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+            id <span class="token builtin">int64</span> <span class="token string">`gone:&quot;http,param&quot;`</span> <span class="token comment">// Url parameter injection, injected from the route defined as `:id`</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ctr<span class="token punctuation">.</span>demoSvc<span class="token punctuation">.</span><span class="token function">DeleteUser</span><span class="token punctuation">(</span>in<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">//...</span>
+</code></pre></div><p>The above code snippet is taken from the <code>internal/controller/demo_ctr.go</code> file.</p> <h3 id="http-injection"><a href="#http-injection" class="header-anchor">#</a> HTTP Injection</h3> <p>As observed, <strong>Gone</strong> supports dependency injection on route handling functions. This is achieved by using an anonymous struct as the input parameter of the handling function and marking the struct attributes with special tags.
+The injection tags used in the above code are:</p> <ul><li><code>gone:&quot;http,body&quot;</code>: Body injection, parses HTTP body into a struct based on contentType, supports json, xml, form-data, x-www-form-urlencoded, etc. The injected struct attribute should be of type <strong>struct</strong> or <strong>struct pointer</strong>.</li> <li><code>gone:&quot;http,query&quot;</code>: Query injection, the injected struct attribute can be of type <strong>struct</strong>, <strong>struct pointer</strong>, <strong>string</strong>, <strong>Number (int, uint, float64, etc.)</strong>, or <strong>Slice of string or Number</strong>.</li> <li><code>gone:&quot;http,param&quot;</code>: URL parameter injection, injected from the route defined as <code>:id</code>. The injected struct attribute should be of type <strong>string</strong> or <strong>Number</strong>.</li></ul> <p>Additionally, handling functions also support injection of some special structs or pointers (pointers are recommended):</p> <ul><li><code>gone.Content</code>: Request context</li> <li><code>http.Request</code>: HTTP request</li> <li><code>http.Header</code>: Request header</li> <li><code>url.Url</code>: URL</li></ul> <p>The framework supports more injection tags and types, please refer to the documentation <a href="https://goner.fun/en/references/http-inject.html" target="_blank" rel="noopener noreferrer">HTTP Injection<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <h3 id="request-handling-function-parameters"><a href="#request-handling-function-parameters" class="header-anchor">#</a> Request Handling Function Parameters</h3> <p>Request handling functions can have the following return formats:</p> <ol><li>No return parameters</li> <li>Return a non-<code>error</code> parameter</li> <li>Return data and <code>error</code></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/quick-start/simple.html" class="prev">
+        Creating a Simple Web Project
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1bdf1963.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/24.41c07631.js" defer></script>
+  </body>
+</html>
