@@ -15,9 +15,9 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 
-if(location.pathname == '/'){
-    location.pathname='/zh/'
-}
+// if(location.pathname == '/'){
+//     location.pathname='/zh/'
+// }
 `
         ],
     ],
@@ -26,14 +26,14 @@ if(location.pathname == '/'){
         '/zh/': {
             lang: 'zh-CN',
             title: 'Gone 文档',
-            description: '做一个对Spring程序员最友好的Golang框架',
+            description: 'Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。',
         },
 
-        // '/': {
-        //     lang: 'en-US',
-        //     title: 'Gone Document',
-        //     description: 'Build the Golang framework which is most friendly to Spring programmers'
-        // },
+        '/': {
+            lang: 'en-US',
+            title: 'Gone Document',
+            description: 'Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.'
+        },
     },
 
     themeConfig: {
@@ -48,31 +48,73 @@ if(location.pathname == '/'){
                 selectText: 'Languages',
                 editLinkText: 'Edit this page on GitHub',
 
+                nav: [
+                    {
+                        text: 'Introduction',
+                        link: '/'
+                    },
+                    {
+                        text: 'Quick Start',
+                        link: '/quick-start/',
+                        items: [{
+                            text: 'Creating a Simple Web Project',
+                            link: '/quick-start/simple.md',
+                        }, {
+                            text: 'Web + MySQL',
+                            link: '/quick-start/mysql.md',
+                        }]
+                    },
+                    {
+                        text: 'Development Guide',
+                        link: '/guide/',
+                        items: [{
+                            text: 'Core Concepts of Gone',
+                            link: '/guide/core-concept.md',
+                        }, {
+                            text: 'Goner and Dependency Injection',
+                            link: '/guide/gone-and-inject.md',
+                        }, {
+                            text: 'Injection Methods Supported by Gone',
+                            link: '/guide/goner-inject.md',
+                        }, {
+                            text: 'How to Gracefully Use Built-in Goners?',
+                            link: '/guide/inner-goner.md',
+                        }, {
+                            text: 'Configuring with Built-in Goners Support',
+                            link: '/guide/config.md',
+                        }, {
+                            text: 'Performing database operations',
+                            link: '/guide/xorm.md',
+                        }, {
+                            text: 'Gone\'s Hook Functions',
+                            link: '/guide/hooks.md',
+                        }, {
+                            text: 'Logging Output',
+                            link: '/guide/logrus.md',
+                        }, {
+                            text: 'Trace Log with traceId',
+                            link: '/guide/tracer.md',
+                        }, {
+                            text: 'Auto-generate Priest',
+                            link: '/guide/auto-gen-priest.md',
+                        }],
+                    },
+                    {
+                        text: 'References',
+                        link: '/references/'
+                    },
+                    {
+                        text: "Goners",
+                        link: '/goners/',
+                    },
+                ],
 
-                // nav: [
-                //     {
-                //         text: 'Guide',
-                //         link: '/guide/'
-                //     },
-                //     {
-                //         text: 'Quick Start',
-                //         link: '/quick-start/'
-                //     },
-                //     {
-                //         text: 'API Reference',
-                //         link: '/api/'
-                //     },
-                //     {
-                //         text: 'Gone Story',
-                //         link: '/story/'
-                //     },
-                // ],
-
-                // sidebar: [
-                //     ['/en/', 'Introduction'],
-                //     '/en/quick-start/',
-                //     '/en/guide/',
-                // ],
+                sidebar: [
+                    ['/', '介绍'],
+                    '/quick-start/',
+                    '/guide/',
+                    '/guide/core-concept',
+                ],
             },
             '/zh/': {
                 label: '简体中文',
@@ -138,20 +180,13 @@ if(location.pathname == '/'){
                         text: "Goners",
                         link: '/zh/goners/',
                     },
-
-                    //     {
-                    //         text: '故事',
-                    //         link: '/zh/story/'
-                    //     }, {
-                    //         text: 'Goner 组件库',
-                    //         link: '/zh/goners/'
-                    //     },
                 ],
 
                 sidebar: [
-                    ['/zh/', '介绍'],
+                    '/zh/',
                     '/zh/quick-start/',
                     '/zh/guide/',
+                    '/zh/guide/core-concept',
                 ],
             },
 

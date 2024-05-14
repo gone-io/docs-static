@@ -69,7 +69,7 @@ type Boss struct {
     seller  *Worker `gone:"*"`  //匿名注入
 }
 ```
-::: danger
+::: warning
 匿名注入时，如果存在 多个 兼容类型的**Goner**，被注入只会是其中一个，通常是最先被 复活（Revive）的那个，可能会导致未定义行为。举个例子：
 ```go
 package main
@@ -148,7 +148,7 @@ type Boss struct {
 ```
 
 
-::: danger
+::: warning
 “在go语言中，**值类型** 的赋值和传参都是传递的拷贝”，这意味着我们如果使用 **值类型** 注入时，实际上产生了一个新的“对象”，并且新旧对象只有在“传递那一刻”是相等，他们在内存中是独立的；这可能导致一些不符合“直觉”的结果，举个例子：
 
 ```go
@@ -263,7 +263,7 @@ type BGoner struct {
 - 4. Map key的值为被注入Goner的GonerId，埋葬时没有指定GonerId的匿名Goner，Gone会自动生成一个Id。
 
 
-::: danger
+::: warning
 不推荐使用值作为Slice和Map的类型。
 :::
 

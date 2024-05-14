@@ -383,7 +383,7 @@ type BGoner struct {
 - 4. Map key的值为被注入Goner的GonerId，埋葬时没有指定GonerId的匿名Goner，Gone会自动生成一个Id。
 
 
-::: danger
+::: warning
 不推荐使用值作为Slice和Map的类型。
 :::
 

@@ -1,3 +1,8 @@
+---
+sidebar: auto
+prev: false
+next: ./quick-start/
+---
 # 介绍
 
 ## Gone是什么
