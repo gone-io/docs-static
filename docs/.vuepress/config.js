@@ -102,6 +102,9 @@ if(location.pathname == '/'){
                             text: '核心概念',
                             link: '/zh/guide/core-concept.md',
                         }, {
+                            text: 'Goner和依赖注入',
+                            link: '/zh/guide/gone-and-inject.md',
+                        }, {
                             text: '支持哪些方式注入？',
                             link: '/zh/guide/goner-inject.md',
                         }, {

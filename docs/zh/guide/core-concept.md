@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: false
-next: ./goner-inject
+next: ./gone-and-inject
 ---
 
 # Gone的核心概念
