@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./logrus
+next: ./auto-gen-priest
 ---
 
 # 使用traceId追踪日志

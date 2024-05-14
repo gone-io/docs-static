@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./hooks
+next: ./tracer
 ---
 
 # 日志输出

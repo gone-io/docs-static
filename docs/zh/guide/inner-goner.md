@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./goner-inject
+next: ./config
 ---
 
 # 如何优雅使用内置Goners?

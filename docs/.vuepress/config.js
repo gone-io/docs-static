@@ -86,7 +86,14 @@ if(location.pathname == '/'){
                     },
                     {
                         text: '快速开始',
-                        link: '/zh/quick-start/'
+                        link: '/zh/quick-start/',
+                        items: [{
+                            text: '一个简单的web项目',
+                            link: '/zh/quick-start/simple.md',
+                        }, {
+                            text: 'Web+MySQL',
+                            link: '/zh/quick-start/mysql.md',
+                        }]
                     },
                     {
                         text: '开发指南',
@@ -99,7 +106,7 @@ if(location.pathname == '/'){
                             link: '/zh/guide/goner-inject.md',
                         }, {
                             text: '优雅使用内置Goners',
-                            link: '/zh/guide/innner-goner.md',
+                            link: '/zh/guide/inner-goner.md',
                         }, {
                             text: '支持配置文件',
                             link: '/zh/guide/config.md',
@@ -121,14 +128,14 @@ if(location.pathname == '/'){
                         }],
                     },
                     {
+                        text: 'References',
+                        link: '/zh/references/'
+                    },
+                    {
                         text: "Goners",
                         link: '/zh/goners/',
-                    }
+                    },
 
-                    //     {
-                    //         text: 'API 参考',
-                    //         link: '/zh/api/'
-                    //     },
                     //     {
                     //         text: '故事',
                     //         link: '/zh/story/'

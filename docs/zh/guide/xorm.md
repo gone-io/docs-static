@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./config
+next: ./hooks
 ---
 
 # 通过内置Goners支持数据库操作

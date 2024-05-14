@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./xorm
+next: ./logrus
 ---
 
 # Gone的Hook函数

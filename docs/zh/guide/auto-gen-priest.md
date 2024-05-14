@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./tracer
+next: false
 ---
 
 # 自动生成Priest

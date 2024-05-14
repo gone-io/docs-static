@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./inner-goner
+next: ./xorm
 ---
 
 # 通过内置Goners支持配置文件

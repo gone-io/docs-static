@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ../references/
+next: ../
 ---
 
 # Goners

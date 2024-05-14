@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ../guide/
+next: ../goners/
 ---
 
 # 参考文档
