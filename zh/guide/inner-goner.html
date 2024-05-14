@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何优雅使用内置Goners? | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+if(location.pathname == '/'){
+    location.pathname='/zh/'
+}
+</script>
+    <meta name="description" content="做一个对Spring程序员最友好的Golang框架">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.437d83ec.js" as="script"><link rel="preload" href="/assets/js/2.ee202d8a.js" as="script"><link rel="preload" href="/assets/js/1.ea77711a.js" as="script"><link rel="preload" href="/assets/js/34.51db9e11.js" as="script"><link rel="prefetch" href="/assets/js/10.14705a48.js"><link rel="prefetch" href="/assets/js/11.d0c1cff5.js"><link rel="prefetch" href="/assets/js/12.e19b4cbc.js"><link rel="prefetch" href="/assets/js/13.097715df.js"><link rel="prefetch" href="/assets/js/14.740a64d5.js"><link rel="prefetch" href="/assets/js/15.382aeb06.js"><link rel="prefetch" href="/assets/js/16.c60576b4.js"><link rel="prefetch" href="/assets/js/17.502e827b.js"><link rel="prefetch" href="/assets/js/18.7a45a425.js"><link rel="prefetch" href="/assets/js/19.48c2a444.js"><link rel="prefetch" href="/assets/js/20.7d52b2e0.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.4c223697.js"><link rel="prefetch" href="/assets/js/23.3b5dd087.js"><link rel="prefetch" href="/assets/js/24.255fb18d.js"><link rel="prefetch" href="/assets/js/25.5e9837d1.js"><link rel="prefetch" href="/assets/js/26.e178e263.js"><link rel="prefetch" href="/assets/js/27.63b5cf11.js"><link rel="prefetch" href="/assets/js/28.91802d7f.js"><link rel="prefetch" href="/assets/js/29.c667d035.js"><link rel="prefetch" href="/assets/js/3.7923e9dc.js"><link rel="prefetch" href="/assets/js/30.b6ba495b.js"><link rel="prefetch" href="/assets/js/31.1e26d809.js"><link rel="prefetch" href="/assets/js/32.5d25e7d5.js"><link rel="prefetch" href="/assets/js/33.64cac605.js"><link rel="prefetch" href="/assets/js/35.66ef20ac.js"><link rel="prefetch" href="/assets/js/36.6a0e2680.js"><link rel="prefetch" href="/assets/js/37.0fe90fb0.js"><link rel="prefetch" href="/assets/js/38.0f3d380a.js"><link rel="prefetch" href="/assets/js/39.80607abb.js"><link rel="prefetch" href="/assets/js/4.80efa019.js"><link rel="prefetch" href="/assets/js/40.9c6ece28.js"><link rel="prefetch" href="/assets/js/41.47614213.js"><link rel="prefetch" href="/assets/js/42.1155733e.js"><link rel="prefetch" href="/assets/js/43.536ec2d4.js"><link rel="prefetch" href="/assets/js/44.5931afdd.js"><link rel="prefetch" href="/assets/js/5.c0d7f84d.js"><link rel="prefetch" href="/assets/js/6.55856494.js"><link rel="prefetch" href="/assets/js/7.c8087d7b.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5e758b7f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  一个简单的web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web+MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  一个简单的web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web+MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>如何优雅使用内置Goners?</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/guide/inner-goner.html#内置goners" class="sidebar-link">内置Goners</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/inner-goner.html#priest函数" class="sidebar-link">Priest函数</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/inner-goner.html#如何使用" class="sidebar-link">如何使用</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/inner-goner.html#内置goner的goneid" class="sidebar-link">内置Goner的GoneId</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何优雅使用内置goners"><a href="#如何优雅使用内置goners" class="header-anchor">#</a> 如何优雅使用内置Goners?</h1> <p></p><div class="table-of-contents"><ul><li><a href="#内置goners">内置Goners</a></li><li><a href="#priest-函数">Priest函数</a></li><li><a href="#如何使用">如何使用</a></li><li><a href="#内置goner的goneid">内置Goner的GoneId</a></li></ul></div><p></p> <h2 id="内置goners"><a href="#内置goners" class="header-anchor">#</a> 内置Goners</h2> <p>为了降低Gone的使用门槛，我们开发了一些<a href="/zh/goners/#框架内置goners">内置Goners</a>，用于提供一些基础的功能。</p> <h2 id="priest函数"><a href="#priest函数" class="header-anchor">#</a> <code>Priest</code>函数</h2> <p>在gone框架内定义了<code>Priest</code>函数，在该函数里可以批量的埋葬用到的Goner；另外<code>Priest</code>函数可以嵌套，即A可以调用B，B可以调用C。那么，在我们开完一组功能后，可以提供一个<code>Priest</code>函数，将用到所有Goner批量埋葬。</p> <p>实际上，在开发框架内置Goners，我们就采用这样的方式；另外为了方便调用，还在<code>goner/priest.go</code>中定义了一些快捷方式，代码如下：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> goner
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/config&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/gin&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/logrus&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/redis&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/schedule&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/tracer&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/urllib&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/xorm&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">BasePriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> tracer<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> logrus<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> config<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">GinPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> gin<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">XormPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> xorm<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">RedisPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">SchedulePriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> schedule<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">UrllibPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> urllib<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="如何使用"><a href="#如何使用" class="header-anchor">#</a> 如何使用</h2> <p>这样，我们如果要使用基本的日志、trace、配置功能，我们只需要：</p> <ol><li><p>在主<code>Priest</code>函数中增加<code>gone.BasePriest(cemetery)</code>:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">MasterPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 埋葬与日志、trace和配置相关的Goners</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">BasePriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token comment">//调用其他 Priest</span>
+    <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>如果需要打印日志，在需要的Goner上注入</p></li></ol> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> demo
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/gin&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/logrus&quot;</span>
+	<span class="token string">&quot;web-app/internal/interface/domain&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">//go:gone</span>
+<span class="token keyword">func</span> <span class="token function">NewDemoService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>demoService<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> demoService <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">//具名注入到 嵌套的匿名属性上</span>
+	log logrus<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;gone-logger&quot;`</span> <span class="token comment">//具名注入到 嵌套的log属性上</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>svc <span class="token operator">*</span>demoService<span class="token punctuation">)</span> <span class="token function">Echo</span><span class="token punctuation">(</span>input <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//使用继承的方法</span>
+	svc<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;input content is %s&quot;</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+    <span class="token comment">//使用属性上的方法</span>
+	svc<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;input content is %s&quot;</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> input<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">提示</p> <p>注入内置组件，应该使用具名注入</p></div> <h2 id="内置goner的goneid"><a href="#内置goner的goneid" class="header-anchor">#</a> 内置Goner的GoneId</h2> <p>内置Goner的GonerId，集中定义在<code>https://github.com/gone-io/gone/blob/main/ids.go</code>:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> gone
+<span class="token comment">// Gone框架中的内置组件ID</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+	<span class="token comment">// IdGoneHeaven 天堂组件的ID，代码了程序本身，Gone程序启动时默认注入</span>
+	IdGoneHeaven <span class="token operator">=</span> <span class="token string">&quot;gone-heaven&quot;</span>
+	<span class="token comment">// IdGoneCemetery 坟墓组件的ID，是完成依赖注入的关键组件，Gone程序启动时默认注入</span>
+	IdGoneCemetery <span class="token operator">=</span> <span class="token string">&quot;gone-cemetery&quot;</span>
+	<span class="token comment">//IdGoneTestKit 测试箱，调用 gone.Test 或者 gone.TestAt 时，会将测试箱注入到程序；非测试代码中不应该注入该组件</span>
+	IdGoneTestKit <span class="token operator">=</span> <span class="token string">&quot;gone-test-kit&quot;</span>
+	<span class="token comment">// 配置、日志、Tracer 一起构成Gone框架的基础Goner，可以使用 [goner.BasePriest](goner#BasePriest) 牧师函数批量安葬</span>
+	<span class="token comment">//IdConfig 配置 Goner 的ID，提过能配置能力</span>
+	IdConfig <span class="token operator">=</span> <span class="token string">&quot;config&quot;</span>
+	<span class="token comment">//IdGoneConfigure 配置器 Goner 的ID</span>
+	IdGoneConfigure <span class="token operator">=</span> <span class="token string">&quot;gone-configure&quot;</span>
+	<span class="token comment">// IdGoneTracer Tracer Goner 的ID，提供日志追踪能力</span>
+	IdGoneTracer <span class="token operator">=</span> <span class="token string">&quot;gone-tracer&quot;</span>
+	<span class="token comment">// IdGoneLogger 日志 Goner 的ID，用于日志打印</span>
+	IdGoneLogger <span class="token operator">=</span> <span class="token string">&quot;gone-logger&quot;</span>
+	<span class="token comment">//IdGoneCumx [cmux Goner](/goner/cmux#Server) ID</span>
+	IdGoneCumx <span class="token operator">=</span> <span class="token string">&quot;gone-cumx&quot;</span>
+	<span class="token comment">//IdGoneGin Gin相关的组件ID，可以使用 [goner.GinPriest](goner#GinPriest) 牧师函数批量安葬</span>
+	IdGoneGin          <span class="token operator">=</span> <span class="token string">&quot;gone-gin&quot;</span>
+	IdGoneGinRouter    <span class="token operator">=</span> <span class="token string">&quot;gone-gin-router&quot;</span>
+	IdGoneGinProcessor <span class="token operator">=</span> <span class="token string">&quot;gone-gin-processor&quot;</span>
+	IdGoneGinProxy     <span class="token operator">=</span> <span class="token string">&quot;gone-gin-proxy&quot;</span>
+	IdGoneGinResponser <span class="token operator">=</span> <span class="token string">&quot;gone-gin-responser&quot;</span>
+	<span class="token comment">//IdGoneXorm Xorm Goner 的ID，封装了xorm，用于操作数据库；使用 [goner.XormPriest](goner#XormPriest) 牧师函数安葬</span>
+	IdGoneXorm <span class="token operator">=</span> <span class="token string">&quot;gone-xorm&quot;</span>
+	<span class="token comment">//IdGoneRedisPool redis pool goner; redis 相关 Goner，使用 [goner.RedisPriest](goner#RedisPriest) 牧师函数安葬</span>
+	IdGoneRedisPool     <span class="token operator">=</span> <span class="token string">&quot;gone-redis-pool&quot;</span>
+	IdGoneRedisCache    <span class="token operator">=</span> <span class="token string">&quot;gone-redis-cache&quot;</span>
+	IdGoneRedisKey      <span class="token operator">=</span> <span class="token string">&quot;gone-redis-key&quot;</span>
+	IdGoneRedisLocker   <span class="token operator">=</span> <span class="token string">&quot;gone-redis-locker&quot;</span>
+	IdGoneRedisProvider <span class="token operator">=</span> <span class="token string">&quot;gone-redis-provider&quot;</span>
+	<span class="token comment">// IdGoneSchedule 定时器Goner；使用 [goner.SchedulePriest](goner#SchedulePriest) 牧师函数安葬</span>
+	IdGoneSchedule <span class="token operator">=</span> <span class="token string">&quot;gone-schedule&quot;</span>
+	IdGoneReq <span class="token operator">=</span> <span class="token string">&quot;gone-urllib&quot;</span>
+<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/guide/goner-inject.html" class="prev">
+        Gone支持哪些方式注入？
+      </a></span> <span class="next"><a href="/zh/guide/config.html">
+        通过内置Goners支持配置文件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.437d83ec.js" defer></script><script src="/assets/js/2.ee202d8a.js" defer></script><script src="/assets/js/1.ea77711a.js" defer></script><script src="/assets/js/34.51db9e11.js" defer></script>
+  </body>
+</html>
