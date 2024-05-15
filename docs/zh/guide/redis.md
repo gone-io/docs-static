@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./auto-gen-priest
-next: false
+next: ./unit-test
 ---
 
 # 利用redis提供分布式锁和分布式缓存

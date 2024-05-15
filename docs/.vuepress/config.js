@@ -98,6 +98,12 @@ if(location.pathname == '/my-github'){
                         }, {
                             text: 'Auto-generate Priest',
                             link: '/guide/auto-gen-priest.md',
+                        }, {
+                            text: 'Using Redis for Distributed Locking and Caching',
+                            link: '/guide/redis',
+                        }, {
+                            text: 'Unit Testing',
+                            link: '/guide/unit-test.md',
                         }],
                     },
                     {
@@ -174,6 +180,9 @@ if(location.pathname == '/my-github'){
                         }, {
                             text: '分布式锁和分布式缓存',
                             link: '/zh/guide/redis',
+                        }, {
+                            text: '单元测试',
+                            link: '/zh/guide/unit-test.md',
                         }],
                     },
                     {
