@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Unit Testing | Gone Document</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+if(location.pathname == '/my-github'){
+    location.href='https://github.com/gone-io/gone'
+}
+</script>
+    <meta name="description" content="Gone is a lightweight dependency injection framework based on Golang, integrating many open-source tools such as Gin, XOrm, Logrus, etc., to provide convenient web development.">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.2acd4eb9.js" as="script"><link rel="preload" href="/assets/js/2.f18e2b4c.js" as="script"><link rel="preload" href="/assets/js/1.83b28654.js" as="script"><link rel="preload" href="/assets/js/40.527e265e.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.ba2e5946.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.99982a9d.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.7c3c0d31.js"><link rel="prefetch" href="/assets/js/25.24cbbbcb.js"><link rel="prefetch" href="/assets/js/26.fb8359d0.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.147c889a.js"><link rel="prefetch" href="/assets/js/29.dbd850a7.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.baecc1e9.js"><link rel="prefetch" href="/assets/js/31.341ed0ef.js"><link rel="prefetch" href="/assets/js/32.c6d9753d.js"><link rel="prefetch" href="/assets/js/33.9e0e9f72.js"><link rel="prefetch" href="/assets/js/34.fada39fd.js"><link rel="prefetch" href="/assets/js/35.70505c96.js"><link rel="prefetch" href="/assets/js/36.64af0042.js"><link rel="prefetch" href="/assets/js/37.fd2080ec.js"><link rel="prefetch" href="/assets/js/38.b0974a03.js"><link rel="prefetch" href="/assets/js/39.1dcdeef9.js"><link rel="prefetch" href="/assets/js/4.29a103ea.js"><link rel="prefetch" href="/assets/js/41.68ef0249.js"><link rel="prefetch" href="/assets/js/42.25ff645c.js"><link rel="prefetch" href="/assets/js/43.3ee054e7.js"><link rel="prefetch" href="/assets/js/44.8524cfde.js"><link rel="prefetch" href="/assets/js/45.97b2f9d2.js"><link rel="prefetch" href="/assets/js/46.76b7283f.js"><link rel="prefetch" href="/assets/js/47.60a63559.js"><link rel="prefetch" href="/assets/js/48.8fbbe616.js"><link rel="prefetch" href="/assets/js/49.cf3d7ecf.js"><link rel="prefetch" href="/assets/js/5.4fad613e.js"><link rel="prefetch" href="/assets/js/50.f965afa5.js"><link rel="prefetch" href="/assets/js/51.09a1be72.js"><link rel="prefetch" href="/assets/js/52.4bef3c38.js"><link rel="prefetch" href="/assets/js/53.855e2d0c.js"><link rel="prefetch" href="/assets/js/54.34561898.js"><link rel="prefetch" href="/assets/js/55.6b9900ca.js"><link rel="prefetch" href="/assets/js/56.301462a9.js"><link rel="prefetch" href="/assets/js/57.2e3de2ee.js"><link rel="prefetch" href="/assets/js/58.657a3431.js"><link rel="prefetch" href="/assets/js/59.9de64b25.js"><link rel="prefetch" href="/assets/js/6.43db7c1f.js"><link rel="prefetch" href="/assets/js/60.410bdef9.js"><link rel="prefetch" href="/assets/js/61.cca9baa4.js"><link rel="prefetch" href="/assets/js/62.42af55f9.js"><link rel="prefetch" href="/assets/js/63.ed133e63.js"><link rel="prefetch" href="/assets/js/64.50980d0c.js"><link rel="prefetch" href="/assets/js/7.94af19b6.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.cf079a49.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone Document" class="logo"> <span class="site-name can-hide">Gone Document</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li><li class="dropdown-item"><!----> <a href="/guide/redis.html" class="nav-link">
+  Using Redis for Distributed Locking and Caching
+</a></li><li class="dropdown-item"><!----> <a href="/guide/unit-test.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Unit Testing
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/unit-test.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Introduction
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Quick Start" class="dropdown-title"><span class="title">Quick Start</span> <span class="arrow down"></span></button> <button type="button" aria-label="Quick Start" class="mobile-dropdown-title"><span class="title">Quick Start</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/quick-start/simple.html" class="nav-link">
+  Creating a Simple Web Project
+</a></li><li class="dropdown-item"><!----> <a href="/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Development Guide" class="dropdown-title"><span class="title">Development Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="Development Guide" class="mobile-dropdown-title"><span class="title">Development Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/core-concept.html" class="nav-link">
+  Core Concepts of Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/gone-and-inject.html" class="nav-link">
+  Goner and Dependency Injection
+</a></li><li class="dropdown-item"><!----> <a href="/guide/goner-inject.html" class="nav-link">
+  Injection Methods Supported by Gone
+</a></li><li class="dropdown-item"><!----> <a href="/guide/inner-goner.html" class="nav-link">
+  How to Gracefully Use Built-in Goners?
+</a></li><li class="dropdown-item"><!----> <a href="/guide/config.html" class="nav-link">
+  Configuring with Built-in Goners Support
+</a></li><li class="dropdown-item"><!----> <a href="/guide/xorm.html" class="nav-link">
+  Performing database operations
+</a></li><li class="dropdown-item"><!----> <a href="/guide/hooks.html" class="nav-link">
+  Gone's Hook Functions
+</a></li><li class="dropdown-item"><!----> <a href="/guide/logrus.html" class="nav-link">
+  Logging Output
+</a></li><li class="dropdown-item"><!----> <a href="/guide/tracer.html" class="nav-link">
+  Trace Log with traceId
+</a></li><li class="dropdown-item"><!----> <a href="/guide/auto-gen-priest.html" class="nav-link">
+  Auto-generate Priest
+</a></li><li class="dropdown-item"><!----> <a href="/guide/redis.html" class="nav-link">
+  Using Redis for Distributed Locking and Caching
+</a></li><li class="dropdown-item"><!----> <a href="/guide/unit-test.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Unit Testing
+</a></li></ul></div></div><div class="nav-item"><a href="/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/guide/unit-test.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Unit Testing</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/unit-test.html#assume-our-written-goner-is-as-follows" class="sidebar-link">Assume Our Written Goner is as Follows</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/unit-test.html#we-can-write-a-test-file-as-follows" class="sidebar-link">We Can Write a Test File as Follows:</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/guide/unit-test.html#using-gomock-for-mock-testing" class="sidebar-link">Using gomock for Mock Testing</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="unit-testing"><a href="#unit-testing" class="header-anchor">#</a> Unit Testing</h1> <p>In a dependency injection framework, how to conduct unit tests involves injecting dependencies before testing. If the test content is closely related to the injected content, consider mocking the related content. One way is to manually bury the mocked Goner into the system, and another way is to replace an already buried Goner using <code>cemetery.ReplaceBury</code>.</p> <h2 id="assume-our-written-goner-is-as-follows"><a href="#assume-our-written-goner-is-as-follows" class="header-anchor">#</a> Assume Our Written Goner is as Follows</h2> <p>Filename: goner.go</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/config&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">const</span> pointNameA <span class="token operator">=</span> <span class="token string">&quot;example-test-point-a&quot;</span>
+<span class="token keyword">const</span> pointNameB <span class="token operator">=</span> <span class="token string">&quot;example-test-point-b&quot;</span>
+<span class="token keyword">func</span> <span class="token function">NewPointA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>gone<span class="token punctuation">.</span>Goner<span class="token punctuation">,</span> gone<span class="token punctuation">.</span>GonerId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>Point<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pointNameA
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">NewPointB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>gone<span class="token punctuation">.</span>Goner<span class="token punctuation">,</span> gone<span class="token punctuation">.</span>GonerId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>Point<span class="token punctuation">{</span>X<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> Y<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pointNameB
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Point <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	X <span class="token builtin">int</span> <span class="token string">`gone:&quot;config,example.test.point.a-x&quot;`</span>
+	Y <span class="token builtin">int</span> <span class="token string">`gone:&quot;config,example.test.point.a-y,default=200&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> Line <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	A <span class="token operator">*</span>Point <span class="token string">`gone:&quot;example-test-point-a&quot;`</span>
+	B <span class="token operator">*</span>Point <span class="token string">`gone:&quot;example-test-point-b&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token operator">*</span>Line<span class="token punctuation">)</span> <span class="token function">Say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">NewLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>Line <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>Line<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewPointA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewPointB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> config<span class="token punctuation">.</span><span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="we-can-write-a-test-file-as-follows"><a href="#we-can-write-a-test-file-as-follows" class="header-anchor">#</a> We Can Write a Test File as Follows:</h2> <p>Filename: goner_test.go</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner/config&quot;</span>
+	<span class="token string">&quot;github.com/stretchr/testify/assert&quot;</span>
+	<span class="token string">&quot;testing&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">Test_Line</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;config default&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		gone<span class="token punctuation">.</span><span class="token function">TestAt</span><span class="token punctuation">(</span>pointNameA<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>point <span class="token operator">*</span>Point<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			assert<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> point<span class="token punctuation">.</span>X<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+			assert<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> point<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span> config<span class="token punctuation">.</span>Priest<span class="token punctuation">,</span> Priest<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;config default&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		gone<span class="token punctuation">.</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>line <span class="token operator">*</span>Line<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			assert<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> line<span class="token punctuation">.</span>A<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span> Priest<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;ReplaceBury&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		gone<span class="token punctuation">.</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>line <span class="token operator">*</span>Line<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			assert<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> line<span class="token punctuation">.</span>A<span class="token punctuation">.</span>X<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span> Priest<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+			Mock <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token operator">&amp;</span>Point<span class="token punctuation">{</span>X<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">return</span> cemetery<span class="token punctuation">.</span><span class="token function">ReplaceBury</span><span class="token punctuation">(</span><span class="token function">Mock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> pointNameA<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="using-gomock-for-mock-testing"><a href="#using-gomock-for-mock-testing" class="header-anchor">#</a> Using gomock for Mock Testing</h2> <p>To decouple, we recommend using interfaces for injection; another reason for recommending interface injection is that Go provides an interface-based mock solution, allowing all dependencies to be mocked. However, mock implementations generated by <code>mockgen</code> are not <code>Goner</code> and thus cannot be buried or injected; for this, we provide a solution in our utility tools.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>gone mock  <span class="token parameter variable">-f</span> <span class="token variable">${fromGoFile}</span> <span class="token parameter variable">-o</span> <span class="token variable">${outGoFile}</span>
+</code></pre></div><p>The <code>gone mock</code> command adds the <code>gone.Flag</code> to a mock object generated by <code>mockgen</code>, making it a Goner that can enter the Cemetery.</p> <p>Typically, add a <code>//go:generate</code> comment on the interface that needs mocking, and let the generation process complete automatically with the <code>go generate ./...</code> command. Here's an example:</p> <p>Filename: i_point.go</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token comment">//go:generate sh -c &quot;mockgen -package=mock -source=$GOFILE | gone mock -o mock/$GOFILE&quot;</span>
+<span class="token keyword">type</span> IPoint <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span>
+	<span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The above <code>//go:generate sh -c &quot;mockgen -package=mock -source=$GOFILE | gone mock -o mock/$GOFILE&quot;</code> command first generates a mock object for the interface using mockgen, then pipes it to <code>gone mock</code> to add the <code>gone.Flag</code> tag.</p> <blockquote><p>Note: Keep the versions of the mockgen tool and gomock package consistent;
+Run the following code to install the latest versions:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>go get github.com/golang/mock/gomock
+go get github.com/golang/mock/mockgen
+</code></pre></div><p>The gone utility tool needs to be installed; installation reference <a href="https://goner.fun/zh/references/gone-tool.html" target="_blank" rel="noopener noreferrer">gone Utility Tools<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p></blockquote> <p>Now, let's give it a try. Create an empty directory, enter it, create the <code>i_test.go</code> file as mentioned, and run the command in the current</p> <p>directory:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>go generate ./<span class="token punctuation">..</span>.
+</code></pre></div><p>You will see that after running the command, the file <code>mock/i_point.go</code> is generated.</p> <p>Next, create a file named <code>origin_point.go</code> with the following content:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token keyword">import</span> <span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+<span class="token keyword">type</span> originPoint <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+<span class="token punctuation">}</span>
+<span class="token comment">//go:gone</span>
+<span class="token keyword">func</span> <span class="token function">NewOriginPoint</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>originPoint<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>o <span class="token operator">*</span>originPoint<span class="token punctuation">)</span> <span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>o <span class="token operator">*</span>originPoint<span class="token punctuation">)</span> <span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token number">200</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Create another file named <code>distance_calculator.go</code> with the following content:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;math&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">//go:gone</span>
+<span class="token keyword">func</span> <span class="token function">NewDistanceCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>distanceCalculator<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> distanceCalculator <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	originPoint IPoint <span class="token string">`gone:&quot;*&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>distanceCalculator<span class="token punctuation">)</span> CalculateDistance <span class="token function">FromOrigin</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">float64</span> <span class="token punctuation">{</span>
+	originX<span class="token punctuation">,</span> originY <span class="token operator">:=</span> d<span class="token punctuation">.</span>originPoint<span class="token punctuation">.</span><span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d<span class="token punctuation">.</span>originPoint<span class="token punctuation">.</span><span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span><span class="token function">float64</span><span class="token punctuation">(</span>x<span class="token operator">-</span>originX<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span><span class="token function">float64</span><span class="token punctuation">(</span>y<span class="token operator">-</span>originY<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The <code>distanceCalculator</code>'s business is to calculate the distance from the point <code>(x,y int)</code> to <code>originPoint</code>, where <code>originPoint</code> is injected. Now let's write the test function for <code>CalculateDistanceFromOrigin</code> as follows:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> test
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;example/test/mock&quot;</span>
+	<span class="token string">&quot;github.com/golang/mock/gomock&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/stretchr/testify/assert&quot;</span>
+	<span class="token string">&quot;testing&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">Test_distanceCalculator_CalculateDistanceFromOrigin</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// Create a mock controller</span>
+	controller <span class="token operator">:=</span> gomock<span class="token punctuation">.</span><span class="token function">NewController</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+	<span class="token keyword">defer</span> controller<span class="token punctuation">.</span><span class="token function">Finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	gone<span class="token punctuation">.</span><span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>d <span class="token operator">*</span>distanceCalculator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		distance <span class="token operator">:=</span> d<span class="token punctuation">.</span><span class="token function">CalculateDistanceFromOrigin</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+		assert<span class="token punctuation">.</span><span class="token function">Equal</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token function">float64</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> distance<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+		<span class="token comment">// Create a mock object</span>
+		point <span class="token operator">:=</span> mock<span class="token punctuation">.</span><span class="token function">NewMockIPoint</span><span class="token punctuation">(</span>controller<span class="token punctuation">)</span>
+		point<span class="token punctuation">.</span><span class="token function">EXPECT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+		point<span class="token punctuation">.</span><span class="token function">EXPECT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token comment">// Bury the mock object in the Cemetery</span>
+		cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span>
+		<span class="token comment">// The object under test also needs to be buried in the Cemetery</span>
+		cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewDistanceCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/redis.html" class="prev">
+        Using Redis for Distributed Locking and Caching
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2acd4eb9.js" defer></script><script src="/assets/js/2.f18e2b4c.js" defer></script><script src="/assets/js/1.83b28654.js" defer></script><script src="/assets/js/40.527e265e.js" defer></script>
+  </body>
+</html>
