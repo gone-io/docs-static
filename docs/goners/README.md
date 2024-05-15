@@ -25,7 +25,7 @@ For ease of use, we have defined the `Priest` function in [goner/priest.go](http
 | tracer | Log tracing, providing traceId; when handling the same request, logs can have the same traceId | [Tracking logs with traceId](../guide/tracer.md) |
 | gin | Wraps `github.com/gin-gonic/gin` to support web development with Gone |-|
 | xorm | Wraps `xorm.io/xorm` for database operations | [Supporting database connections with built-in Goners](../guide/xorm.md) |
-| redis | Wraps `github.com/gomodule/redigo/redis` for Redis operations, providing Redis caching and distributed locking functionality |-|
+| redis | Wraps `github.com/gomodule/redigo/redis` for Redis operations, providing Redis caching and distributed locking functionality |[Using Redis for Distributed Locking and Caching](../guide/redis.md)|
 | schedule | Wraps `github.com/robfig/cron/v3` to provide scheduling capabilities |-|
 | urllib | Wraps `github.com/imroc/req/v3` to provide HTTP call capabilities |-|
 | grpc | Provides capabilities for developing gRPC servers and clients |-|
