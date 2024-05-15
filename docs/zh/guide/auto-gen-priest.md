@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./tracer
-next: false
+next: ./redis
 ---
 
 # 自动生成Priest

@@ -15,9 +15,10 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 
-// if(location.pathname == '/'){
-//     location.pathname='/zh/'
-// }
+
+if(location.pathname == '/my-github'){
+    location.href='https://github.com/gone-io/gone'
+}
 `
         ],
     ],
@@ -170,6 +171,9 @@ var _hmt = _hmt || [];
                         }, {
                             text: '自动生成Priest',
                             link: '/zh/guide/auto-gen-priest.md',
+                        }, {
+                            text: '分布式锁和分布式缓存',
+                            link: '/zh/guide/redis',
                         }],
                     },
                     {
