@@ -30,7 +30,7 @@ next: ../
 |gin|封装`github.com/gin-gonic/gin`，使gone支持web开发|-|
 |xorm|封装`xorm.io/xorm`，用于操作数据|[通过内置Goners支持数据库连接](../guide/xorm.md)|
 |redis|封装`github.com/gomodule/redigo/redis`，用于操作redis，提供redis缓存和redis分布式锁的功能|[利用redis提供分布式锁和分布式缓存](../guide/redis.md)|
-|schedule|封装`github.com/robfig/cron/v3`，提供定时任务的能力|-|
+|schedule|封装`github.com/robfig/cron/v3`，提供定时任务的能力|[用cron表达式配置定时任务](https://goner.fun/zh/guide/schedule.html)|
 |urllib|封装`github.com/imroc/req/v3`，提供http调用能力|-|
 |grpc|提供开发grpc服务端和客户端的能力|-|
 |cmux|封装`github.com/soheilhy/cmux`，是统一端口可以提供混合服务的能力|-|

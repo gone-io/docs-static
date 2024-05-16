@@ -43,6 +43,12 @@ module.exports = {
         docsDir: 'docs',
 
         logo: '/assets/img/logo.png',
+        // nav: [{
+        //     text: "xxxx",
+        //     items: [
+        //         { text: "group1", items: [] }
+        //     ]
+        // }],
 
         locales: {
             '/': {
@@ -138,11 +144,17 @@ module.exports = {
                         text: '快速开始',
                         link: '/zh/quick-start/',
                         items: [{
-                            text: '一个简单的web项目',
+                            text: '极简例子',
                             link: '/zh/quick-start/simple.md',
                         }, {
-                            text: 'Web+MySQL',
+                            text: 'Web项目',
+                            link: '/zh/quick-start/web.md',
+                        }, {
+                            text: 'Web + MySQL',
                             link: '/zh/quick-start/mysql.md',
+                        // }, {
+                        //     text: 'JWT + MySQL + Redis + Schedule',
+                        //     link: '/zh/quick-start/jwt+mysql+redis+schedule.md',
                         }]
                     },
                     {
@@ -167,10 +179,10 @@ module.exports = {
                             text: '操作数据库',
                             link: '/zh/guide/xorm.md',
                         }, {
-                            text: 'Hook函数',
+                            text: '启停中的Hook函数',
                             link: '/zh/guide/hooks.md',
                         }, {
-                            text: '日志输出',
+                            text: '使用日志输出',
                             link: '/zh/guide/logrus.md',
                         }, {
                             text: '使用traceId追踪日志',

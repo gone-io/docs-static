@@ -1,10 +1,10 @@
 ---
 sidebar: auto
-prev: ./simple
-next: false
+prev: ./web
+# next: ./jwt+mysql+redis+schedule
 ---
 
-# Web+MySQL
+# Web + MySQL
 在本文中，我将演示如何创建一个可运行在生产环境的Web项目，并对项目做简单的介绍。项目的使用MySql作为数据库，使用docker-compose管理容器。
 
 ## 安装gone辅助工具
