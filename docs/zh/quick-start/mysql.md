@@ -1,6 +1,7 @@
 ---
 sidebar: auto
 prev: ./web
+next: ./gpt
 # next: ./jwt+mysql+redis+schedule
 ---
 

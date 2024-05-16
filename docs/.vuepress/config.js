@@ -43,12 +43,6 @@ module.exports = {
         docsDir: 'docs',
 
         logo: '/assets/img/logo.png',
-        // nav: [{
-        //     text: "xxxx",
-        //     items: [
-        //         { text: "group1", items: [] }
-        //     ]
-        // }],
 
         locales: {
             '/': {
@@ -152,6 +146,9 @@ module.exports = {
                         }, {
                             text: 'Web + MySQL',
                             link: '/zh/quick-start/mysql.md',
+                        },{
+                            text: '封装一个Goner调用GPT',
+                            link: '/zh/quick-start/gpt.md',
                         // }, {
                         //     text: 'JWT + MySQL + Redis + Schedule',
                         //     link: '/zh/quick-start/jwt+mysql+redis+schedule.md',
