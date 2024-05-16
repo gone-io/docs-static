@@ -7,19 +7,20 @@ module.exports = {
                 type: 'text/javascript',
             },
             `
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
 
-
-if(location.pathname == '/my-github'){
-    location.href='https://github.com/gone-io/gone'
-}
-`
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            `
         ],
     ],
 
