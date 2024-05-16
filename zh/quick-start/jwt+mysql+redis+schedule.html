@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JWT + MySQL + Redis + Schedule | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            </script>
+    <meta name="description" content="Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.3a314020.js" as="script"><link rel="preload" href="/assets/js/2.a20f85ea.js" as="script"><link rel="preload" href="/assets/js/1.4e3ac70f.js" as="script"><link rel="preload" href="/assets/js/61.33bf0752.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.3967f61c.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.70a7fcd1.js"><link rel="prefetch" href="/assets/js/20.5ab68959.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.f7691d82.js"><link rel="prefetch" href="/assets/js/24.41c07631.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.0f81f128.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.2a0ceecf.js"><link rel="prefetch" href="/assets/js/29.29ff88db.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.53f48173.js"><link rel="prefetch" href="/assets/js/31.0cfbb577.js"><link rel="prefetch" href="/assets/js/32.29926225.js"><link rel="prefetch" href="/assets/js/33.59d0548b.js"><link rel="prefetch" href="/assets/js/34.783150ce.js"><link rel="prefetch" href="/assets/js/35.c9e47661.js"><link rel="prefetch" href="/assets/js/36.45687656.js"><link rel="prefetch" href="/assets/js/37.6a895754.js"><link rel="prefetch" href="/assets/js/38.b0c6b2b7.js"><link rel="prefetch" href="/assets/js/39.6bf1044b.js"><link rel="prefetch" href="/assets/js/4.e9ddab3c.js"><link rel="prefetch" href="/assets/js/40.cbfe057b.js"><link rel="prefetch" href="/assets/js/41.c46402f6.js"><link rel="prefetch" href="/assets/js/42.1aed1e2b.js"><link rel="prefetch" href="/assets/js/43.b1a92a21.js"><link rel="prefetch" href="/assets/js/44.bc6a6ca6.js"><link rel="prefetch" href="/assets/js/45.beb54419.js"><link rel="prefetch" href="/assets/js/46.854b50d9.js"><link rel="prefetch" href="/assets/js/47.1154a3e9.js"><link rel="prefetch" href="/assets/js/48.ef123cb4.js"><link rel="prefetch" href="/assets/js/49.8b4d3c1d.js"><link rel="prefetch" href="/assets/js/5.f211959b.js"><link rel="prefetch" href="/assets/js/50.a970a015.js"><link rel="prefetch" href="/assets/js/51.d3cfe23a.js"><link rel="prefetch" href="/assets/js/52.ef4e02a6.js"><link rel="prefetch" href="/assets/js/53.e5a4d0a5.js"><link rel="prefetch" href="/assets/js/54.c98cd893.js"><link rel="prefetch" href="/assets/js/55.3500f1ea.js"><link rel="prefetch" href="/assets/js/56.6625755d.js"><link rel="prefetch" href="/assets/js/57.b0f33405.js"><link rel="prefetch" href="/assets/js/58.ee4ff1db.js"><link rel="prefetch" href="/assets/js/59.24b0be9b.js"><link rel="prefetch" href="/assets/js/6.337bd53c.js"><link rel="prefetch" href="/assets/js/60.b2299f78.js"><link rel="prefetch" href="/assets/js/62.4643b7af.js"><link rel="prefetch" href="/assets/js/63.b5e58410.js"><link rel="prefetch" href="/assets/js/64.14ea12bb.js"><link rel="prefetch" href="/assets/js/65.8844f655.js"><link rel="prefetch" href="/assets/js/66.47b08fb9.js"><link rel="prefetch" href="/assets/js/67.6d7875af.js"><link rel="prefetch" href="/assets/js/7.f4f87879.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.aae61d50.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  启停中的Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  使用日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁和分布式缓存
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/schedule.html" class="nav-link">
+  用cron表达式配置任务
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/jwt+mysql+redis+schedule.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  启停中的Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  使用日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁和分布式缓存
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/schedule.html" class="nav-link">
+  用cron表达式配置任务
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/jwt+mysql+redis+schedule.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JWT + MySQL + Redis + Schedule</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/quick-start/jwt+mysql+redis+schedule.html#业务和接口说明" class="sidebar-link">业务和接口说明</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="jwt-mysql-redis-schedule"><a href="#jwt-mysql-redis-schedule" class="header-anchor">#</a> JWT + MySQL + Redis + Schedule</h1> <p>在本章节中，我们将在<a href="https://goner.fun/zh/quick-start/mysql.html" target="_blank" rel="noopener noreferrer">上一个例子<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的基础上增加：使用JWT鉴权，Redis做缓存，集成定时任务的Web项目。</p> <h2 id="业务和接口说明"><a href="#业务和接口说明" class="header-anchor">#</a> 业务和接口说明</h2> <p>在这个例子中，我们将实现如下功能和接口：</p> <ol><li>我们将用户分为管理员和普通用户两种角色，管理员可以管理用户，普通用户只能查看自己的信息。</li></ol> <p>下面是普通用户的接口：</p> <ul><li><p>用户注册接口</p> <ul><li>请求</li></ul> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/api/users/register</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/json</span></span>
+<span class="token application-json">
+<span class="token punctuation">{</span>
+    <span class="token string-property property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin@goner.fun&quot;</span>
+    <span class="token string-property property">&quot;verifyCode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span>
+<span class="token punctuation">}</span>
+</span></code></pre></div><ul><li>应答
+<ul><li>状态码：200</li> <li>返回内容<div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul></li></ul></li> <li><p>用户登录接口</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/api/users/login</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/json</span></span>
+<span class="token application-json">
+<span class="token punctuation">{</span>
+    <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span>
+<span class="token punctuation">}</span>
+</span></code></pre></div></li> <li><p>获取当前用户信息接口</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/api/users/info</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Authorization</span><span class="token punctuation">:</span> <span class="token header-value">Bearer &lt;token&gt;</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/json</span></span>
+</code></pre></div></li> <li><p>修改当前用户信息接口</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token method property">PUT</span> <span class="token request-target url">/api/users/info</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Authorization</span><span class="token punctuation">:</span> <span class="token header-value">Bearer &lt;token&gt;</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/json</span></span>
+<span class="token application-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin@goner.fun&quot;</span>
+<span class="token punctuation">}</span></span></code></pre></div></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/quick-start/mysql.html" class="prev">
+        Web + MySQL
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.3a314020.js" defer></script><script src="/assets/js/2.a20f85ea.js" defer></script><script src="/assets/js/1.4e3ac70f.js" defer></script><script src="/assets/js/61.33bf0752.js" defer></script>
+  </body>
+</html>
