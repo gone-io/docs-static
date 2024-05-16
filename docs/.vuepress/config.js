@@ -184,6 +184,9 @@ module.exports = {
                         }, {
                             text: '单元测试',
                             link: '/zh/guide/unit-test.md',
+                        }, {
+                            text: '用cron表达式配置任务',
+                            link: '/zh/guide/schedule.md',
                         }],
                     },
                     {
