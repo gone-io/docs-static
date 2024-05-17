@@ -146,12 +146,12 @@ module.exports = {
                         }, {
                             text: 'Web + MySQL',
                             link: '/zh/quick-start/mysql.md',
-                        },{
+                        }, {
                             text: '封装一个Goner调用GPT',
                             link: '/zh/quick-start/gpt.md',
-                        // }, {
-                        //     text: 'JWT + MySQL + Redis + Schedule',
-                        //     link: '/zh/quick-start/jwt+mysql+redis+schedule.md',
+                            // }, {
+                            //     text: 'JWT + MySQL + Redis + Schedule',
+                            //     link: '/zh/quick-start/jwt+mysql+redis+schedule.md',
                         }]
                     },
                     {
@@ -196,6 +196,9 @@ module.exports = {
                         }, {
                             text: '用cron表达式配置任务',
                             link: '/zh/guide/schedule.md',
+                        }, {
+                            text: '错误处理',
+                            link: '/zh/guide/error.md',
                         }],
                     },
                     {
