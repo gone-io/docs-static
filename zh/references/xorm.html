@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gone对Xorm的增强 | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            </script>
+    <meta name="description" content="Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.9cccc5a5.js" as="script"><link rel="preload" href="/assets/js/2.a20f85ea.js" as="script"><link rel="preload" href="/assets/js/1.4e3ac70f.js" as="script"><link rel="preload" href="/assets/js/69.a22e2de2.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.3967f61c.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.70a7fcd1.js"><link rel="prefetch" href="/assets/js/20.47570d87.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.06f1e408.js"><link rel="prefetch" href="/assets/js/24.86b21c76.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.0f81f128.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.2a0ceecf.js"><link rel="prefetch" href="/assets/js/29.29ff88db.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.6c8b9751.js"><link rel="prefetch" href="/assets/js/31.0cfbb577.js"><link rel="prefetch" href="/assets/js/32.33250e7a.js"><link rel="prefetch" href="/assets/js/33.31f40be6.js"><link rel="prefetch" href="/assets/js/34.346cf91f.js"><link rel="prefetch" href="/assets/js/35.29971508.js"><link rel="prefetch" href="/assets/js/36.ff017cbc.js"><link rel="prefetch" href="/assets/js/37.f6f2df18.js"><link rel="prefetch" href="/assets/js/38.7878a347.js"><link rel="prefetch" href="/assets/js/39.b67e7c16.js"><link rel="prefetch" href="/assets/js/4.e9ddab3c.js"><link rel="prefetch" href="/assets/js/40.cbfe057b.js"><link rel="prefetch" href="/assets/js/41.4db7dbf6.js"><link rel="prefetch" href="/assets/js/42.1ad17145.js"><link rel="prefetch" href="/assets/js/43.fdf07638.js"><link rel="prefetch" href="/assets/js/44.bfbe5fcc.js"><link rel="prefetch" href="/assets/js/45.a00b4f28.js"><link rel="prefetch" href="/assets/js/46.16f10eea.js"><link rel="prefetch" href="/assets/js/47.3f89e40b.js"><link rel="prefetch" href="/assets/js/48.ef123cb4.js"><link rel="prefetch" href="/assets/js/49.90396e69.js"><link rel="prefetch" href="/assets/js/5.f211959b.js"><link rel="prefetch" href="/assets/js/50.949cb554.js"><link rel="prefetch" href="/assets/js/51.c14af6fc.js"><link rel="prefetch" href="/assets/js/52.0e00ec4f.js"><link rel="prefetch" href="/assets/js/53.679654a9.js"><link rel="prefetch" href="/assets/js/54.07605bb1.js"><link rel="prefetch" href="/assets/js/55.cb2cb873.js"><link rel="prefetch" href="/assets/js/56.478379bd.js"><link rel="prefetch" href="/assets/js/57.bb0ae1cf.js"><link rel="prefetch" href="/assets/js/58.7ce10fc0.js"><link rel="prefetch" href="/assets/js/59.2c35aaf1.js"><link rel="prefetch" href="/assets/js/6.337bd53c.js"><link rel="prefetch" href="/assets/js/60.9f5d77c8.js"><link rel="prefetch" href="/assets/js/61.b18de67d.js"><link rel="prefetch" href="/assets/js/62.5fd9fb9c.js"><link rel="prefetch" href="/assets/js/63.a3e15421.js"><link rel="prefetch" href="/assets/js/64.433e6dce.js"><link rel="prefetch" href="/assets/js/65.2dd80bdb.js"><link rel="prefetch" href="/assets/js/66.acf8d8fb.js"><link rel="prefetch" href="/assets/js/67.e7eff01b.js"><link rel="prefetch" href="/assets/js/68.ddbb9c70.js"><link rel="prefetch" href="/assets/js/7.f4f87879.js"><link rel="prefetch" href="/assets/js/70.897161de.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.aae61d50.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  启停中的Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  使用日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁和分布式缓存
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/schedule.html" class="nav-link">
+  用cron表达式配置任务
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link router-link-active">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/references/xorm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/inner-goner.html" class="nav-link">
+  优雅使用内置Goners
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/config.html" class="nav-link">
+  支持配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/hooks.html" class="nav-link">
+  启停中的Hook函数
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/logrus.html" class="nav-link">
+  使用日志输出
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/tracer.html" class="nav-link">
+  使用traceId追踪日志
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成Priest
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁和分布式缓存
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/schedule.html" class="nav-link">
+  用cron表达式配置任务
+</a></li><li class="dropdown-item"><!----> <a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link router-link-active">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/references/xorm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Gone对Xorm的增强</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/references/xorm.html#_1-自动事务" class="sidebar-link">1. 自动事务</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/references/xorm.html#_2-事务自动传递" class="sidebar-link">2. 事务自动传递</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/references/xorm.html#_3-sql支持名字参数" class="sidebar-link">3. SQL支持名字参数</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="gone对xorm的增强"><a href="#gone对xorm的增强" class="header-anchor">#</a> Gone对Xorm的增强</h1> <h2 id="_1-自动事务"><a href="#_1-自动事务" class="header-anchor">#</a> 1. 自动事务</h2> <p>使用<code>Transaction</code>函数包裹的函数，执行前会自动开启事务，返回<code>error</code>或者发生<code>panic</code>自动完成事务回滚，不返回<code>error</code>则自动提交事务。</p> <blockquote><p>注意：在<code>Transaction</code>函数包裹的数据库操作函数需要使用<code>session xorm.Interface</code>执行数据库操作</p></blockquote> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> db <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	gone<span class="token punctuation">.</span>XormEngine <span class="token string">`gone:&quot;gone-xorm&quot;`</span> <span class="token comment">//注入数据库引擎</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>db<span class="token punctuation">)</span> <span class="token function">updateUser</span><span class="token punctuation">(</span>user <span class="token operator">*</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 使用Transaction包裹的函数，执行前会自动开启事务</span>
+	<span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">Transaction</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>session xorm<span class="token punctuation">.</span>Interface<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+        <span class="token comment">//注意：使用的session进行数据库操作</span>
+		<span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> session<span class="token punctuation">.</span><span class="token function">ID</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>Id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> gone<span class="token punctuation">.</span><span class="token function">ToError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_2-事务自动传递"><a href="#_2-事务自动传递" class="header-anchor">#</a> 2. 事务自动传递</h2> <p>嵌套使用<code>Transaction</code>函数包裹的函数，只会开启一个事务，嵌套事务会自动传递，嵌套事务的<code>error</code>或者发生<code>panic</code>自动完成事务回滚，不返回<code>error</code>则自动提交事务。</p> <p>这样带来一个好处，让我们编写的函数在组合时能够自动合并到一个事务中。</p> <p>请看下面代码，如果<code>updateUser</code>、<code>updateFriends</code>函数单独使用，会分别开启事务；将他们嵌套在<code>DoUpdate</code>的<code>Transaction</code>的函数中，则会合并到一个事务中。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> db <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	gone<span class="token punctuation">.</span>XormEngine <span class="token string">`gone:&quot;gone-xorm&quot;`</span> <span class="token comment">//注入数据库引擎</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>db<span class="token punctuation">)</span> <span class="token function">updateUser</span><span class="token punctuation">(</span>user <span class="token operator">*</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 使用Transaction包裹的函数，执行前会自动开启事务</span>
+	<span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">Transaction</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>session xorm<span class="token punctuation">.</span>Interface<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+        <span class="token comment">//注意：使用的session进行数据库操作</span>
+		<span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> session<span class="token punctuation">.</span><span class="token function">ID</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>Id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> gone<span class="token punctuation">.</span><span class="token function">ToError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>db<span class="token punctuation">)</span> <span class="token function">updateFriends</span><span class="token punctuation">(</span>userId <span class="token builtin">int64</span><span class="token punctuation">,</span> friedns <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>entity<span class="token punctuation">.</span>Friend<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">Transaction</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>session xorm<span class="token punctuation">.</span>Interface<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+		<span class="token comment">//todo: 更新朋友的相关操作</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>db<span class="token punctuation">)</span> <span class="token function">DoUpdate</span><span class="token punctuation">(</span>user <span class="token operator">*</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">,</span> friedns <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>entity<span class="token punctuation">.</span>Friend<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">Transaction</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>session xorm<span class="token punctuation">.</span>Interface<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+		err <span class="token operator">:=</span> d<span class="token punctuation">.</span><span class="token function">updateUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> err
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">updateFriends</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> friedns<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_3-sql支持名字参数"><a href="#_3-sql支持名字参数" class="header-anchor">#</a> 3. SQL支持名字参数</h2> <div class="language-go extra-class"><pre class="language-go"><code>	sql<span class="token punctuation">,</span> args <span class="token operator">:=</span> xorm<span class="token punctuation">.</span><span class="token function">MustNamed</span><span class="token punctuation">(</span><span class="token string">`
+		update user
+		set
+		    status = :status,
+			avatar = :avatar
+		where
+		    id = :id`</span><span class="token punctuation">,</span>
+		<span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>any<span class="token punctuation">{</span>
+			<span class="token string">&quot;id&quot;</span><span class="token punctuation">:</span>     <span class="token number">1</span><span class="token punctuation">,</span>
+			<span class="token string">&quot;status&quot;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+			<span class="token string">&quot;avatar&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;https://wwww....&quot;</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+</code></pre></div><p>通过<code>xorm.MustNamed</code>处理后的sql为：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">update</span> <span class="token keyword">user</span>
+<span class="token keyword">set</span>
+    <span class="token keyword">status</span> <span class="token operator">=</span> ?<span class="token punctuation">,</span>
+    avatar <span class="token operator">=</span> ?
+<span class="token keyword">where</span>
+    id <span class="token operator">=</span> ?
+</code></pre></div><p><code>args</code>为<code>[]any</code>类型，值为：<code>1,1,&quot;https://wwww....&quot;</code>。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/references/http-inject.html" class="prev">
+        http 注入说明
+      </a></span> <span class="next"><a href="/zh/references/" class="router-link-active">
+        参考文档
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9cccc5a5.js" defer></script><script src="/assets/js/2.a20f85ea.js" defer></script><script src="/assets/js/1.4e3ac70f.js" defer></script><script src="/assets/js/69.a22e2de2.js" defer></script>
+  </body>
+</html>
