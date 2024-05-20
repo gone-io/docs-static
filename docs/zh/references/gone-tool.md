@@ -1,5 +1,7 @@
 ---
 sidebar: auto
+prev: ./
+next: ./http-inject
 ---
 
 # gone辅助工具

@@ -61,10 +61,10 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/go-sql-driver/mysql" #📢⚠️需要特别注意，需要引入mysql的驱动
+	_ "github.com/go-sql-driver/mysql" #⭐️需要特别注意，需要引入mysql的驱动
 	"github.com/gone-io/gone"
 	"github.com/gone-io/gone/goner"
-	"github.com/gone-io/gone/goner/xorm" #📢⚠️需要特别注意，导入的是gone封装的xorm包
+	"github.com/gone-io/gone/goner/xorm" #⭐️需要特别注意，导入的是gone封装的xorm包
 )
 
 type Demo struct {
@@ -203,6 +203,6 @@ import (
 - 导入的xorm包是：`github.com/gone-io/gone/goner/xorm`，不是`xorm.io/xorm`:
 ```go
 import (
-	"github.com/gone-io/gone/goner/xorm" #📢⚠️需要特别注意，导入的是gone封装的xorm包
+	"github.com/gone-io/gone/goner/xorm" #⭐️需要特别注意，导入的是gone封装的xorm包
 )
 ```
