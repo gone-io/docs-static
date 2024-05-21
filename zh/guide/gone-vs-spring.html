@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>对比 Gone 和 Spring 的依赖注入 | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            </script>
+    <meta name="description" content="Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.b1256c84.js" as="script"><link rel="preload" href="/assets/js/2.a20f85ea.js" as="script"><link rel="preload" href="/assets/js/1.4e3ac70f.js" as="script"><link rel="preload" href="/assets/js/53.6130b5e4.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.3967f61c.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.70a7fcd1.js"><link rel="prefetch" href="/assets/js/20.a0fd51dd.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.06f1e408.js"><link rel="prefetch" href="/assets/js/24.86b21c76.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.d320f6eb.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.2a0ceecf.js"><link rel="prefetch" href="/assets/js/29.29ff88db.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.339618b0.js"><link rel="prefetch" href="/assets/js/31.fa794430.js"><link rel="prefetch" href="/assets/js/32.230d23c0.js"><link rel="prefetch" href="/assets/js/33.31f40be6.js"><link rel="prefetch" href="/assets/js/34.346cf91f.js"><link rel="prefetch" href="/assets/js/35.1cb0dce8.js"><link rel="prefetch" href="/assets/js/36.8a0a3897.js"><link rel="prefetch" href="/assets/js/37.f6f2df18.js"><link rel="prefetch" href="/assets/js/38.7878a347.js"><link rel="prefetch" href="/assets/js/39.b67e7c16.js"><link rel="prefetch" href="/assets/js/4.e9ddab3c.js"><link rel="prefetch" href="/assets/js/40.cbfe057b.js"><link rel="prefetch" href="/assets/js/41.4db7dbf6.js"><link rel="prefetch" href="/assets/js/42.dee8c702.js"><link rel="prefetch" href="/assets/js/43.c4dd240e.js"><link rel="prefetch" href="/assets/js/44.bfbe5fcc.js"><link rel="prefetch" href="/assets/js/45.5d30e29b.js"><link rel="prefetch" href="/assets/js/46.16f10eea.js"><link rel="prefetch" href="/assets/js/47.3f89e40b.js"><link rel="prefetch" href="/assets/js/48.0a05e136.js"><link rel="prefetch" href="/assets/js/49.ddbba786.js"><link rel="prefetch" href="/assets/js/5.f211959b.js"><link rel="prefetch" href="/assets/js/50.da8d065a.js"><link rel="prefetch" href="/assets/js/51.e978eabf.js"><link rel="prefetch" href="/assets/js/52.971b6def.js"><link rel="prefetch" href="/assets/js/54.dcb6e5d1.js"><link rel="prefetch" href="/assets/js/55.3a84daa1.js"><link rel="prefetch" href="/assets/js/56.0c8cef12.js"><link rel="prefetch" href="/assets/js/57.c8e7448f.js"><link rel="prefetch" href="/assets/js/58.106f33cc.js"><link rel="prefetch" href="/assets/js/59.cde7cc94.js"><link rel="prefetch" href="/assets/js/6.337bd53c.js"><link rel="prefetch" href="/assets/js/60.51c09bed.js"><link rel="prefetch" href="/assets/js/61.975cbb67.js"><link rel="prefetch" href="/assets/js/62.ca0f34cf.js"><link rel="prefetch" href="/assets/js/63.d520a013.js"><link rel="prefetch" href="/assets/js/64.50727b62.js"><link rel="prefetch" href="/assets/js/65.e8e70ae4.js"><link rel="prefetch" href="/assets/js/66.07936214.js"><link rel="prefetch" href="/assets/js/67.95ee1a75.js"><link rel="prefetch" href="/assets/js/68.ff3eb451.js"><link rel="prefetch" href="/assets/js/69.1f976251.js"><link rel="prefetch" href="/assets/js/7.f4f87879.js"><link rel="prefetch" href="/assets/js/70.543f7a87.js"><link rel="prefetch" href="/assets/js/71.dab79243.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.aae61d50.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/gone-vs-spring.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Gone vs Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inner-goner.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁 + 分布式缓存
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/schedule.html" class="nav-link">
+  cron 格式的任务
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/hooks.html" class="nav-link">
+  Hook 函数
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/gone-vs-spring.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/gone-vs-spring.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Gone vs Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inner-goner.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁 + 分布式缓存
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/schedule.html" class="nav-link">
+  cron 格式的任务
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/hooks.html" class="nav-link">
+  Hook 函数
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/gone-vs-spring.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>对比 Gone 和 Spring 的依赖注入</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/guide/gone-vs-spring.html#依赖模块导入" class="sidebar-link">依赖模块导入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#spring" class="sidebar-link">Spring</a></li><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#gone" class="sidebar-link">Gone</a></li></ul></li><li><a href="/zh/guide/gone-vs-spring.html#注入依赖" class="sidebar-link">注入依赖</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#spring-2" class="sidebar-link">Spring</a></li><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#goner" class="sidebar-link">Goner</a></li></ul></li><li><a href="/zh/guide/gone-vs-spring.html#配置注入" class="sidebar-link">配置注入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#spring-3" class="sidebar-link">Spring</a></li></ul></li><li><a href="/zh/guide/gone-vs-spring.html#http-参数注入" class="sidebar-link">HTTP 参数注入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#注入query参数" class="sidebar-link">注入Query参数</a></li><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#注入路径参数" class="sidebar-link">注入路径参数</a></li><li class="sidebar-sub-header"><a href="/zh/guide/gone-vs-spring.html#请求体注入" class="sidebar-link">请求体注入</a></li></ul></li><li><a href="/zh/guide/gone-vs-spring.html#总结" class="sidebar-link">总结</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="对比-gone-和-spring-的依赖注入"><a href="#对比-gone-和-spring-的依赖注入" class="header-anchor">#</a> 对比 Gone 和 Spring 的依赖注入</h1> <p>Gone是我们开发的 Golang 依赖注入框架，Spring是Java的依赖注入框架；为了便于Spring程序员转Golang快速上手Gone，我们在这里对他们的依赖注入做一下对比。</p> <h2 id="依赖模块导入"><a href="#依赖模块导入" class="header-anchor">#</a> 依赖模块导入</h2> <h3 id="spring"><a href="#spring" class="header-anchor">#</a> Spring</h3> <p>在项目管理工具中引入依赖；项目启动后自动扫描加载。
+在 Maven 中 引入依赖</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.github.example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>在 Gradle 中 引入依赖</p> <div class="language-groovy extra-class"><pre class="language-groovy"><code>implementation <span class="token string">'com.github.example:example:1.0.0'</span>
+</code></pre></div><h3 id="gone"><a href="#gone" class="header-anchor">#</a> Gone</h3> <p>在MasterPriest函数中加载依赖模块提供的Priest函数；在启动前执行<code>go mod tidy</code>将依赖的包写入go.mod文件。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">MasterPriest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">XormPriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span> <span class="token comment">//加载xorm的依赖</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">GinPriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>  <span class="token comment">//加载gin的依赖</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>MasterPriest<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="注入依赖"><a href="#注入依赖" class="header-anchor">#</a> 注入依赖</h2> <h3 id="spring-2"><a href="#spring-2" class="header-anchor">#</a> Spring</h3> <p>在结构体属性上添加<code>@Autowired</code>注解，表示该属性是需要依赖注入的。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">IDemo</span> demoSvc<span class="token punctuation">;</span> <span class="token comment">//该属性是需要依赖注入的</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="goner"><a href="#goner" class="header-anchor">#</a> Goner</h3> <p>在结构体属性上添加<code>gone</code>标签，表示该属性是需要依赖注入的，可以参考<a href="https://goner.fun/zh/guide/goner-inject.html" target="_blank" rel="noopener noreferrer">Gone支持哪些方式注入？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> demoController <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	demoSvc     service<span class="token punctuation">.</span>IDemo <span class="token string">`gone:&quot;*&quot;`</span> <span class="token comment">//该属性是需要依赖注入的</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="配置注入"><a href="#配置注入" class="header-anchor">#</a> 配置注入</h2> <h3 id="spring-3"><a href="#spring-3" class="header-anchor">#</a> Spring</h3> <p>在结构体属性上添加<code>@Value(&quot;${key}&quot;)</code>注解，表示该属性是需要依赖注入的。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UseConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">&quot;${my.conf.int}&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> <span class="token keyword">int</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+### <span class="token class-name">Gone</span>
+在结构体属性上添加`gone<span class="token operator">:</span><span class="token string">&quot;config,${key},default=${defaultValue}&quot;</span>`标签，表示该属性是需要依赖注入的，可以参考<span class="token punctuation">[</span>通过内置<span class="token class-name">Goners</span>支持配置文件<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>goner<span class="token punctuation">.</span>fun<span class="token operator">/</span>zh<span class="token operator">/</span>guide<span class="token operator">/</span>config<span class="token punctuation">.</span>html<span class="token punctuation">)</span>
+```go
+type <span class="token class-name">UseConfig</span> struct <span class="token punctuation">{</span>
+	<span class="token class-name"><span class="token namespace">gone<span class="token punctuation">.</span></span>Flag</span>
+	<span class="token keyword">int</span>      <span class="token keyword">int</span>           `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.int&quot;</span>`
+	int8     int8          `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.int8&quot;</span>`
+	printInt <span class="token operator">*</span><span class="token keyword">int</span>          `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.int8&quot;</span>` <span class="token comment">//指针 指向int</span>
+	float64  float64       `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.float64&quot;</span>`
+	string   string        `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.string&quot;</span>`
+	bool     bool          `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.bool&quot;</span>`
+	duration <span class="token class-name"><span class="token namespace">time<span class="token punctuation">.</span></span>Duration</span> `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.duration&quot;</span>`
+	defaultV string        `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.default,default=ok&quot;</span>`
+	sub <span class="token operator">*</span><span class="token class-name">SubConf</span> `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.sub&quot;</span>` <span class="token comment">//指针，指向结构体</span>
+	subs <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token class-name">SubConf</span> `gone<span class="token operator">:</span><span class="token string">&quot;config,my.conf.subs&quot;</span>` <span class="token comment">//数组</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="http-参数注入"><a href="#http-参数注入" class="header-anchor">#</a> HTTP 参数注入</h2> <p>HTTP参数注入，就是自动读取HTTP请求的Query参数，并注入到Controller的方法中。</p> <p><strong>Gone</strong>支持多种HTTP参数注入，可以取到URL、Header、Body、Cookie、Form、Path等参数，
+参考：<a href="http://localhost:8081/zh/references/http-inject.html" target="_blank" rel="noopener noreferrer">HTTP 注入说明<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="注入query参数"><a href="#注入query参数" class="header-anchor">#</a> 注入Query参数</h3> <h4 id="spring-4"><a href="#spring-4" class="header-anchor">#</a> Spring</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RestController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span>  <span class="token comment">//路由分组为/demo</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CallbackController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/hello&quot;</span><span class="token punctuation">)</span> <span class="token comment">//GET方法，当前路由是/demo/hello</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">hello</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@RequestParam</span> <span class="token class-name">String</span> name  <span class="token comment">//注入Query中的name参数</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="gone-2"><a href="#gone-2" class="header-anchor">#</a> Gone</h4> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> controller <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	rootRouter gone<span class="token punctuation">.</span>RouteGroup <span class="token string">`gone:&quot;*&quot;`</span> <span class="token comment">//注入根路由</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ctr <span class="token operator">*</span>controller<span class="token punctuation">)</span> <span class="token function">Mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>GinMountError <span class="token punctuation">{</span>
+	ctr<span class="token punctuation">.</span>rootRouter<span class="token punctuation">.</span>
+		<span class="token function">Group</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token comment">//路由分组为/demo</span>
+		<span class="token comment">//GET 方法</span>
+		<span class="token function">GET</span><span class="token punctuation">(</span>
+			<span class="token string">&quot;/hello&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 当前路由是/demo/hello</span>
+			<span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+				name <span class="token builtin">string</span> <span class="token string">`gone:&quot;http,query&quot;`</span> <span class="token comment">//注入Query中的name参数</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> in<span class="token punctuation">.</span>name
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="注入路径参数"><a href="#注入路径参数" class="header-anchor">#</a> 注入路径参数</h3> <h4 id="spring-5"><a href="#spring-5" class="header-anchor">#</a> Spring</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RestController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span>  <span class="token comment">//路由分组为/demo</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CallbackController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/hell/{name}&quot;</span><span class="token punctuation">)</span><span class="token comment">//设置路径模式</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">demo</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name <span class="token comment">//注入路径参数</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="gone-3"><a href="#gone-3" class="header-anchor">#</a> Gone</h4> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> controller <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	rootRouter gone<span class="token punctuation">.</span>RouteGroup <span class="token string">`gone:&quot;*&quot;`</span> <span class="token comment">//注入根路由</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ctr <span class="token operator">*</span>controller<span class="token punctuation">)</span> <span class="token function">Mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>GinMountError <span class="token punctuation">{</span>
+	ctr<span class="token punctuation">.</span>rootRouter<span class="token punctuation">.</span>
+		<span class="token function">Group</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token comment">//路由分组为/demo</span>
+		<span class="token comment">//GET 方法</span>
+		<span class="token function">GET</span><span class="token punctuation">(</span>
+			<span class="token string">&quot;/hello/:name&quot;</span><span class="token punctuation">,</span> <span class="token comment">//设置路径模式</span>
+			<span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+				name <span class="token builtin">string</span> <span class="token string">`gone:&quot;http,param&quot;`</span> <span class="token comment">//注入路径参数</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> in<span class="token punctuation">.</span>name
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="请求体注入"><a href="#请求体注入" class="header-anchor">#</a> 请求体注入</h3> <h4 id="spring-6"><a href="#spring-6" class="header-anchor">#</a> Spring</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RestController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span>  <span class="token comment">//路由分组为/demo</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CallbackController</span> <span class="token punctuation">{</span>
+    <span class="token comment">//订阅接收请求的POJO</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Req</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token class-name">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token class-name">SetName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/hello&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">demo</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Req</span> req <span class="token comment">//注入请求体</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="gone-4"><a href="#gone-4" class="header-anchor">#</a> Gone</h4> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> controller <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	rootRouter gone<span class="token punctuation">.</span>RouteGroup <span class="token string">`gone:&quot;*&quot;`</span> <span class="token comment">//注入根路由</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ctr <span class="token operator">*</span>controller<span class="token punctuation">)</span> <span class="token function">Mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>GinMountError <span class="token punctuation">{</span>
+	<span class="token keyword">type</span> Req <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+		Name <span class="token builtin">string</span> <span class="token string">`json:&quot;name&quot;`</span>
+	<span class="token punctuation">}</span>
+	ctr<span class="token punctuation">.</span>rootRouter<span class="token punctuation">.</span>
+		<span class="token function">Group</span><span class="token punctuation">(</span><span class="token string">&quot;/demo&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+		<span class="token function">POST</span><span class="token punctuation">(</span>
+			<span class="token string">&quot;/hello/:name&quot;</span><span class="token punctuation">,</span> <span class="token comment">//注入请求体</span>
+			<span class="token keyword">func</span><span class="token punctuation">(</span>in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+				req Req <span class="token string">`gone:&quot;http,body&quot;`</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> in<span class="token punctuation">.</span>req<span class="token punctuation">.</span>Name
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>Gone</strong>支持多种HTTP参数注入，可以取到URL、Header、Body、Cookie、Form、Path等参数，
+参考：<a href="http://localhost:8081/zh/references/http-inject.html" target="_blank" rel="noopener noreferrer">HTTP 注入说明<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p><strong>Spring</strong>和<strong>Gone</strong>在依赖模块导入、依赖注入、配置注入以及HTTP参数注入方面有不同的实现方式。</p> <p>Spring通过项目管理工具（如Maven或Gradle）引入依赖，并自动扫描加载依赖模块。依赖注入使用<code>@Autowired</code>注解，配置注入使用<code>@Value(&quot;${key}&quot;)</code>注解，HTTP参数注入则通过<code>@RequestParam</code>、<code>@PathVariable</code>和<code>@RequestBody</code>注解实现。</p> <p>相对而言，Gone在<code>MasterPriest</code>函数中手动加载依赖模块，通过<code>gone</code>标签进行依赖和配置注入，并支持多种HTTP参数注入方式（如URL、Header、Body、Cookie、Form、Path等），灵活处理HTTP请求参数。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/guide/goner-inject.html" class="prev">
+        Gone支持哪些方式注入？
+      </a></span> <span class="next"><a href="/zh/guide/inner-goner.html">
+        如何优雅使用内置Goners?
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b1256c84.js" defer></script><script src="/assets/js/2.a20f85ea.js" defer></script><script src="/assets/js/1.4e3ac70f.js" defer></script><script src="/assets/js/53.6130b5e4.js" defer></script>
+  </body>
+</html>
