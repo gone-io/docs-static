@@ -4,9 +4,9 @@ prev: ./gone-tool
 next: ./xorm
 ---
 
-# http 注入说明
+# HTTP 注入说明
 
-## http 依赖注入标签的格式
+## HTTP 依赖注入标签的格式
 
 ```
 ${attributeName} ${attributeType} gone:"http,${kind}=${key}"

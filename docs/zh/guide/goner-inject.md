@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./core-concept
-next: ./inner-goner
+next: ./gone-vs-spring
 ---
 
 # Gone支持哪些方式注入？

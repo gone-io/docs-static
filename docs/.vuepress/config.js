@@ -161,44 +161,56 @@ module.exports = {
                             text: '核心概念',
                             link: '/zh/guide/core-concept.md',
                         }, {
-                            text: 'Goner和依赖注入',
-                            link: '/zh/guide/gone-and-inject.md',
+                            text: "依赖注入",
+                            items: [{
+                                text: 'Goner和依赖注入',
+                                link: '/zh/guide/gone-and-inject.md',
+                            }, {
+                                text: '支持哪些方式注入？',
+                                link: '/zh/guide/goner-inject.md',
+                            }, {
+                                text: 'Gone vs Spring',
+                                link: '/zh/guide/gone-vs-spring.md',
+                            }],
                         }, {
-                            text: '支持哪些方式注入？',
-                            link: '/zh/guide/goner-inject.md',
+                            text: "内置模块使用",
+                            items: [{
+                                text: '内置Goners',
+                                link: '/zh/guide/inner-goner.md',
+                            }, {
+                                text: '配置读取',
+                                link: '/zh/guide/config.md',
+                            }, {
+                                text: '日志输出',
+                                link: '/zh/guide/logrus.md',
+                            }, {
+                                text: '链路追踪',
+                                link: '/zh/guide/tracer.md',
+                            }, {
+                                text: '操作数据库',
+                                link: '/zh/guide/xorm.md',
+                            }, {
+                                text: '分布式锁 + 分布式缓存',
+                                link: '/zh/guide/redis',
+                            }, {
+                                text: 'cron 格式的任务',
+                                link: '/zh/guide/schedule.md',
+                            }],
                         }, {
-                            text: '优雅使用内置Goners',
-                            link: '/zh/guide/inner-goner.md',
-                        }, {
-                            text: '支持配置文件',
-                            link: '/zh/guide/config.md',
-                        }, {
-                            text: '操作数据库',
-                            link: '/zh/guide/xorm.md',
-                        }, {
-                            text: '启停中的Hook函数',
-                            link: '/zh/guide/hooks.md',
-                        }, {
-                            text: '使用日志输出',
-                            link: '/zh/guide/logrus.md',
-                        }, {
-                            text: '使用traceId追踪日志',
-                            link: '/zh/guide/tracer.md',
-                        }, {
-                            text: '自动生成Priest',
-                            link: '/zh/guide/auto-gen-priest.md',
-                        }, {
-                            text: '分布式锁和分布式缓存',
-                            link: '/zh/guide/redis',
-                        }, {
-                            text: '单元测试',
-                            link: '/zh/guide/unit-test.md',
-                        }, {
-                            text: '用cron表达式配置任务',
-                            link: '/zh/guide/schedule.md',
-                        }, {
-                            text: '错误处理',
-                            link: '/zh/guide/error.md',
+                            text: "效率提升",
+                            items: [{
+                                text: '自动生成 Priest',
+                                link: '/zh/guide/auto-gen-priest.md',
+                            }, {
+                                text: 'Hook 函数',
+                                link: '/zh/guide/hooks.md',
+                            }, {
+                                text: '错误处理',
+                                link: '/zh/guide/error.md',
+                            }, {
+                                text: '单元测试',
+                                link: '/zh/guide/unit-test.md',
+                            }]
                         }],
                     },
                     {

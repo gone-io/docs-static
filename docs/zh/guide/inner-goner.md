@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-prev: ./goner-inject
+prev: ./gone-vs-spring
 next: ./config
 ---
 
