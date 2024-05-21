@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./auto-gen-priest
-next: ./unit-test
+prev: ./xorm
+next: ./schedule
 ---
 
 # 利用redis提供分布式锁和分布式缓存

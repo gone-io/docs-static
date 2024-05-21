@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./unit-test
-next: ./error
+prev: ./redis
+next: ./auto-gen-priest
 ---
 
 # 用cron表达式配置定时任务

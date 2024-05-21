@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-prev: ./core-concept
+prev: ./gone-and-inject
 next: ./gone-vs-spring
 ---
 

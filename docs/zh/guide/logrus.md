@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-prev: ./hooks
+prev: ./config
 next: ./tracer
 ---
 

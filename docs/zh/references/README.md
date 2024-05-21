@@ -8,6 +8,6 @@ next: ../goners/
 
 ## [gone辅助工具](./gone-tool.md)
 
-## [http 注入说明](./http-inject.md)
+## [HTTP 注入说明](./http-inject.md)
 
 ## [Gone对Xorm的增强](./xorm.md)

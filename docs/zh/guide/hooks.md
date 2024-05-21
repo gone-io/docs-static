@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./xorm
-next: ./logrus
+prev: ./auto-gen-priest
+next: ./error
 ---
 
 # Gone的Hook函数

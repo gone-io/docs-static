@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./logrus
-next: ./auto-gen-priest
+next: ./xorm
 ---
 
 # 使用traceId追踪日志
