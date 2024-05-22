@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redis 参考文档 | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            </script>
+    <meta name="description" content="Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.0ddee0dc.js" as="script"><link rel="preload" href="/assets/js/2.a20f85ea.js" as="script"><link rel="preload" href="/assets/js/1.4e3ac70f.js" as="script"><link rel="preload" href="/assets/js/70.ffa925b9.js" as="script"><link rel="prefetch" href="/assets/js/10.0ee1033c.js"><link rel="prefetch" href="/assets/js/11.1b93f309.js"><link rel="prefetch" href="/assets/js/12.dfb21252.js"><link rel="prefetch" href="/assets/js/13.3967f61c.js"><link rel="prefetch" href="/assets/js/14.dc48dc13.js"><link rel="prefetch" href="/assets/js/15.f5494b4f.js"><link rel="prefetch" href="/assets/js/16.0eb527a0.js"><link rel="prefetch" href="/assets/js/17.b17c6981.js"><link rel="prefetch" href="/assets/js/18.1208b728.js"><link rel="prefetch" href="/assets/js/19.06ac8f8c.js"><link rel="prefetch" href="/assets/js/20.04e62b60.js"><link rel="prefetch" href="/assets/js/21.fd8de9f3.js"><link rel="prefetch" href="/assets/js/22.5fdea428.js"><link rel="prefetch" href="/assets/js/23.06f1e408.js"><link rel="prefetch" href="/assets/js/24.86b21c76.js"><link rel="prefetch" href="/assets/js/25.6783b265.js"><link rel="prefetch" href="/assets/js/26.fead0374.js"><link rel="prefetch" href="/assets/js/27.f64ac172.js"><link rel="prefetch" href="/assets/js/28.af7db4f7.js"><link rel="prefetch" href="/assets/js/29.29ff88db.js"><link rel="prefetch" href="/assets/js/3.c0437673.js"><link rel="prefetch" href="/assets/js/30.739d65f5.js"><link rel="prefetch" href="/assets/js/31.fa794430.js"><link rel="prefetch" href="/assets/js/32.33250e7a.js"><link rel="prefetch" href="/assets/js/33.31f40be6.js"><link rel="prefetch" href="/assets/js/34.41f36afd.js"><link rel="prefetch" href="/assets/js/35.1cb0dce8.js"><link rel="prefetch" href="/assets/js/36.8a0a3897.js"><link rel="prefetch" href="/assets/js/37.f6f2df18.js"><link rel="prefetch" href="/assets/js/38.7878a347.js"><link rel="prefetch" href="/assets/js/39.b0d9a82b.js"><link rel="prefetch" href="/assets/js/4.e9ddab3c.js"><link rel="prefetch" href="/assets/js/40.20344b9e.js"><link rel="prefetch" href="/assets/js/41.0ef67c63.js"><link rel="prefetch" href="/assets/js/42.1ad17145.js"><link rel="prefetch" href="/assets/js/43.3c5cad35.js"><link rel="prefetch" href="/assets/js/44.f7b7ef1b.js"><link rel="prefetch" href="/assets/js/45.5d30e29b.js"><link rel="prefetch" href="/assets/js/46.16f10eea.js"><link rel="prefetch" href="/assets/js/47.138cd0f3.js"><link rel="prefetch" href="/assets/js/48.7741ad6e.js"><link rel="prefetch" href="/assets/js/49.ddbba786.js"><link rel="prefetch" href="/assets/js/5.f211959b.js"><link rel="prefetch" href="/assets/js/50.a970a015.js"><link rel="prefetch" href="/assets/js/51.22673662.js"><link rel="prefetch" href="/assets/js/52.900b0b49.js"><link rel="prefetch" href="/assets/js/53.29217f49.js"><link rel="prefetch" href="/assets/js/54.dcb6e5d1.js"><link rel="prefetch" href="/assets/js/55.27cae354.js"><link rel="prefetch" href="/assets/js/56.0c8cef12.js"><link rel="prefetch" href="/assets/js/57.4ffc8abd.js"><link rel="prefetch" href="/assets/js/58.ac0fcabf.js"><link rel="prefetch" href="/assets/js/59.cde7cc94.js"><link rel="prefetch" href="/assets/js/6.337bd53c.js"><link rel="prefetch" href="/assets/js/60.51c09bed.js"><link rel="prefetch" href="/assets/js/61.a4661814.js"><link rel="prefetch" href="/assets/js/62.16ef1d98.js"><link rel="prefetch" href="/assets/js/63.cd4656ce.js"><link rel="prefetch" href="/assets/js/64.1fcbb8e9.js"><link rel="prefetch" href="/assets/js/65.6ceb234a.js"><link rel="prefetch" href="/assets/js/66.218dff0a.js"><link rel="prefetch" href="/assets/js/67.b4370858.js"><link rel="prefetch" href="/assets/js/68.0a8deb35.js"><link rel="prefetch" href="/assets/js/69.36739994.js"><link rel="prefetch" href="/assets/js/7.f4f87879.js"><link rel="prefetch" href="/assets/js/71.0a7b3076.js"><link rel="prefetch" href="/assets/js/72.8ed61d85.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.aae61d50.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/gone-vs-spring.html" class="nav-link">
+  Gone vs Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inner-goner.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁 + 分布式缓存
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/schedule.html" class="nav-link">
+  cron 格式的任务
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/hooks.html" class="nav-link">
+  Hook 函数
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link router-link-active">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/references/redis.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/gone-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-inject.html" class="nav-link">
+  支持哪些方式注入？
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/gone-vs-spring.html" class="nav-link">
+  Gone vs Spring
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inner-goner.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/logrus.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/xorm.html" class="nav-link">
+  操作数据库
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/redis.html" class="nav-link">
+  分布式锁 + 分布式缓存
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/schedule.html" class="nav-link">
+  cron 格式的任务
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/auto-gen-priest.html" class="nav-link">
+  自动生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/hooks.html" class="nav-link">
+  Hook 函数
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/unit-test.html" class="nav-link">
+  单元测试
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link router-link-active">
+  References
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  Goners
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/references/redis.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Redis 参考文档</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/references/redis.html#配置项" class="sidebar-link">配置项</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/references/redis.html#import-和-bury" class="sidebar-link">import 和 bury</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/references/redis.html#使用分布是缓存-redis-cache" class="sidebar-link">使用分布是缓存 redis.Cache</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/references/redis.html#接口定义" class="sidebar-link">接口定义</a></li><li class="sidebar-sub-header"><a href="/zh/references/redis.html#使用示例" class="sidebar-link">使用示例</a></li></ul></li><li><a href="/zh/references/redis.html#使用分布式锁-redis-locker" class="sidebar-link">使用分布式锁 redis.Locker</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/references/redis.html#接口定义-2" class="sidebar-link">接口定义</a></li><li class="sidebar-sub-header"><a href="/zh/references/redis.html#使用示例-2" class="sidebar-link">使用示例</a></li></ul></li><li><a href="/zh/references/redis.html#操作key-使用-redis-key" class="sidebar-link">操作Key，使用 redis.Key</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/references/redis.html#接口定义-3" class="sidebar-link">接口定义</a></li></ul></li><li><a href="/zh/references/redis.html#使用-provider-注入-redis-接口" class="sidebar-link">使用 Provider 注入 redis 接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/references/redis.html#使用示例-3" class="sidebar-link">使用示例</a></li></ul></li><li><a href="/zh/references/redis.html#直接使用redis连接池" class="sidebar-link">直接使用redis连接池</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/references/redis.html#接口定义-4" class="sidebar-link">接口定义</a></li><li class="sidebar-sub-header"><a href="/zh/references/redis.html#使用示例-4" class="sidebar-link">使用示例</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redis-参考文档"><a href="#redis-参考文档" class="header-anchor">#</a> Redis 参考文档</h1> <h2 id="配置项"><a href="#配置项" class="header-anchor">#</a> 配置项</h2> <ul><li>redis.max-idle：最大空闲链接数，不配置默认为2</li> <li>redis.max-active：最大活跃链接数，不配置默认为10</li> <li>redis.db：使用的db，不配置默认为0</li> <li>redis.cache.prefix：key前缀，如果设置了，对redis的增删改查都会拼接该前缀，拼接方式${prefix}#${key}；默认为空</li></ul> <h2 id="import-和-bury"><a href="#import-和-bury" class="header-anchor">#</a> import 和 bury</h2> <ul><li>import</li></ul> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token string">&quot;github.com/gone-io/gone/goner/redis&quot;</span>
+</code></pre></div><ul><li>bury</li></ul> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">//使用 goner.RedisPriest 函数，将 redis 相关的Goner 埋葬到 Cemetery 中</span>
+<span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">RedisPriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+</code></pre></div><h2 id="使用分布是缓存-redis-cache"><a href="#使用分布是缓存-redis-cache" class="header-anchor">#</a> 使用分布是缓存 redis.Cache</h2> <h3 id="接口定义"><a href="#接口定义" class="header-anchor">#</a> 接口定义</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Cache <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token comment">//设置缓存，Set的别名</span>
+	<span class="token function">Put</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> value any<span class="token punctuation">,</span> ttl <span class="token operator">...</span>time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//设置缓存</span>
+	<span class="token function">Set</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> value any<span class="token punctuation">,</span> ttl <span class="token operator">...</span>time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//获取缓存</span>
+	<span class="token function">Get</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> value any<span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//删除缓存</span>
+	<span class="token function">Remove</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span>
+    <span class="token comment">//根据模式获取缓存的key</span>
+	<span class="token function">Keys</span><span class="token punctuation">(</span>pattern <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//获取当前Cache使用的前缀</span>
+	<span class="token function">Prefix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="使用示例"><a href="#使用示例" class="header-anchor">#</a> 使用示例</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	cache  redis<span class="token punctuation">.</span>Cache  <span class="token string">`gone:&quot;gone-redis-cache&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UseCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	key <span class="token operator">:=</span> <span class="token string">&quot;gone-address&quot;</span>
+	value <span class="token operator">:=</span> <span class="token string">&quot;https://github.com/gone-io/gone&quot;</span>
+	<span class="token comment">//设置缓存</span>
+	err <span class="token operator">:=</span> r<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>
+		key<span class="token punctuation">,</span>            <span class="token comment">//第一个参数为 缓存的key，类型为 `string`</span>
+		value<span class="token punctuation">,</span>          <span class="token comment">// 第二参数为 需要缓存的值，类型为any，可以是任意类型；传入的值会被编码为 `[]byte` 发往redis</span>
+		<span class="token number">10</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">,</span> <span class="token comment">// 第三个参数为 过期时间，类型为 `time.Duration`;省略，表示不设置过期时间</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;err:%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//获取缓存</span>
+	<span class="token keyword">var</span> getValue <span class="token builtin">string</span>
+	err <span class="token operator">=</span> r<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>
+		key<span class="token punctuation">,</span>       <span class="token comment">//第一个参数为 缓存的key，类型为 `string`</span>
+		<span class="token operator">&amp;</span>getValue<span class="token punctuation">,</span> <span class="token comment">//第二参数为指针，接收获取缓存的值，类型为any，可以是任意类型；从redis获取的值会被解码为传入的指针类型</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;err:%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;getValue:%v&quot;</span><span class="token punctuation">,</span> getValue<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="使用分布式锁-redis-locker"><a href="#使用分布式锁-redis-locker" class="header-anchor">#</a> 使用分布式锁 redis.Locker</h2> <h3 id="接口定义-2"><a href="#接口定义-2" class="header-anchor">#</a> 接口定义</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// Locker redis 分布式缓存</span>
+<span class="token keyword">type</span> Locker <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token comment">//TryLock 尝试将key锁定一段时间，成功返回一个解锁函数，失败返回错误</span>
+	<span class="token function">TryLock</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> ttl time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token punctuation">(</span>unlock Unlock<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//LockAndDo 尝试获取锁，并执行fn函数，函数未执行完自动续期，函数执行完后自动释放锁</span>
+	<span class="token function">LockAndDo</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> fn <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lockTime<span class="token punctuation">,</span> checkPeriod time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="使用示例-2"><a href="#使用示例-2" class="header-anchor">#</a> 使用示例</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	locker redis<span class="token punctuation">.</span>Locker <span class="token string">`gone:&quot;gone-redis-locker&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UseLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	lockKey <span class="token operator">:=</span> <span class="token string">&quot;gone-lock-key&quot;</span>
+	<span class="token comment">//尝试获取锁 并 锁定一段时间</span>
+	<span class="token comment">//返回的第一个参数为一个解锁的函数</span>
+	unlock<span class="token punctuation">,</span> err <span class="token operator">:=</span> r<span class="token punctuation">.</span>locker<span class="token punctuation">.</span><span class="token function">TryLock</span><span class="token punctuation">(</span>
+		lockKey<span class="token punctuation">,</span>        <span class="token comment">//第一个参数为 锁的key，类型为 `string`</span>
+		<span class="token number">10</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">,</span> <span class="token comment">//第二参数为 锁的过期时间，类型为 `time.Duration`</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;err:%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//操作完后，需要解锁</span>
+	<span class="token keyword">defer</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment">//获取锁成功后，可以进行业务操作</span>
+	<span class="token comment">//todo</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">LockFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	lockKey <span class="token operator">:=</span> <span class="token string">&quot;gone-lock-key&quot;</span>
+	err <span class="token operator">:=</span> r<span class="token punctuation">.</span>locker<span class="token punctuation">.</span><span class="token function">LockAndDo</span><span class="token punctuation">(</span>
+		lockKey<span class="token punctuation">,</span> <span class="token comment">//第一个参数为 锁的key，类型为 `string`</span>
+		<span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//第二个参数为 需要执行的函数，类型为 `func()`，代表一个操作</span>
+			<span class="token comment">//获取锁成功后，可以进行业务操作</span>
+			<span class="token comment">//todo</span>
+			<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;do some options&quot;</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token number">100</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">,</span> <span class="token comment">//第三个参数为 锁的过期时间，类型为 `time.Duration`;第一次加锁和后续锁续期都将使用该值</span>
+		<span class="token number">5</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">,</span>   <span class="token comment">//第四个参数为 锁续期的间隔时间，类型为 `time.Duration`;周期性检查所是否将过期，如果在下个周期内会过期则对锁续期</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;err:%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="操作key-使用-redis-key"><a href="#操作key-使用-redis-key" class="header-anchor">#</a> 操作Key，使用 redis.Key</h2> <h3 id="接口定义-3"><a href="#接口定义-3" class="header-anchor">#</a> 接口定义</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Key <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token comment">//Expire 给key设置一段时间后过期</span>
+	<span class="token function">Expire</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> ttl time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token builtin">error</span>
+	<span class="token comment">//ExpireAt 设置key在某个时间点过期</span>
+	<span class="token function">ExpireAt</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">,</span> time time<span class="token punctuation">.</span>Time<span class="token punctuation">)</span> <span class="token builtin">error</span>
+	<span class="token comment">//Ttl 获取key的过期时间</span>
+	<span class="token function">Ttl</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>time<span class="token punctuation">.</span>Duration<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//Del 删除一个key</span>
+	<span class="token function">Del</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//Incr 使key自增一个量</span>
+	<span class="token function">Incr</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">,</span> increment <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">int64</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//Keys 根据模式获取缓存的key</span>
+	<span class="token function">Keys</span><span class="token punctuation">(</span>pattern <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
+	<span class="token comment">//Prefix 获取redis配置的key前缀</span>
+	<span class="token function">Prefix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="使用-provider-注入-redis-接口"><a href="#使用-provider-注入-redis-接口" class="header-anchor">#</a> 使用 Provider 注入 redis 接口</h2> <p>通过标签 <code>gone:&quot;gone-redis-provider,${key}</code>使用redis Provider 创建一个接口给注入属性。支持注入的接口包括前面的<code>redis.Cache</code>、<code>redis.Locker</code>、<code>redis.Key</code>；另外还支持注入 <code>redis.Hash</code>接口，用于操作redis hash。</p> <p>Hash接口定义</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Hash <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token comment">//设置hash字段</span>
+	<span class="token function">Set</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span>
+    <span class="token comment">//获取hash字段</span>
+	<span class="token function">Get</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//删除hash字段</span>
+	<span class="token function">Del</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//扫描hash字段</span>
+	<span class="token function">Scan</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">,</span> v <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token comment">//hash字段自增</span>
+	<span class="token function">Incr</span><span class="token punctuation">(</span>field <span class="token builtin">string</span><span class="token punctuation">,</span> increment <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">int64</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="使用示例-3"><a href="#使用示例-3" class="header-anchor">#</a> 使用示例</h3> <ol><li>使用 Provider 创建一个redis.Cache接口，该缓存接口的前缀将使用配置中的前缀拼接${key}得到新的前缀，可以用于有按模块隔离的场景。
+如果配置了<code>redis.cache.prefix=member</code>，那么下面注入的<code>redis.Cache</code>接口将使用的前缀为：<code>member#points</code>；执行操作<code>r.redis.Set(&quot;use-110&quot;, &quot;value&quot;)</code>操作，保存到redis中的key为：<code>member#points#use-110</code>。</li></ol> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    redis redis<span class="token punctuation">.</span>Cache <span class="token string">`gone:&quot;gone-redis-provider,points&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UseProvidedCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    r<span class="token punctuation">.</span>redis<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">&quot;use-110&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>redis.Locker 和 redis.Key 接口的注入 与 redis.Cache 接口类似。</p> <ol start="2"><li>从配置文件中读取一个值作为前缀来拼接
+如果配置了<code>redis.cache.prefix=order</code> 和 <code>app.order.sell.redis-prefix=sell</code>，下面注入的接口将使用的前缀为：<code>order#sell</code>；执行操作<code>r.redis.Set(&quot;use-110&quot;, &quot;value&quot;)</code>操作，保存到redis中的key为：<code>order#sell#use-110</code>。</li></ol> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    redis redis<span class="token punctuation">.</span>Cache <span class="token string">`gone:&quot;gone-redis-provider,config=app.order.sell.redis-prefix&quot;`</span> <span class="token comment">//读取配置中的 app.order.sell.redis-prefix 的值用于创建 redis.Cache</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UseProvidedCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    r<span class="token punctuation">.</span>redis<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">&quot;use-110&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>redis.Locker 和 redis.Key 接口的注入 与 redis.Cache 接口类似。</p> <ol start="3"><li>使用 <code>redis.Hash</code> 接口
+在注入<code>redis.Hash</code>接口时，key不在为前缀，而就是当前redis要操作的key。</li></ol> <p>如果配置了<code>redis.cache.prefix=user</code>，下面代码中的<code>r.hash.Set(&quot;use-110&quot;, &quot;value&quot;)</code>将会被翻译为指令：<code>HSET user-set use-110 value</code>。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    hash redis<span class="token punctuation">.</span>Hash <span class="token string">`gone:&quot;gone-redis-provider,user-set&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UseHash</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    r<span class="token punctuation">.</span>hash<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">&quot;use-110&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="直接使用redis连接池"><a href="#直接使用redis连接池" class="header-anchor">#</a> 直接使用redis连接池</h2> <h3 id="接口定义-4"><a href="#接口定义-4" class="header-anchor">#</a> 接口定义</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> Pool <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token comment">//获取链接</span>
+    <span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Conn
+    <span class="token comment">//释放链接</span>
+	<span class="token function">Close</span><span class="token punctuation">(</span>conn redis<span class="token punctuation">.</span>Conn<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="使用示例-4"><a href="#使用示例-4" class="header-anchor">#</a> 使用示例</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> redisUser <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gone<span class="token punctuation">.</span>Flag
+    pool redis<span class="token punctuation">.</span>Pool <span class="token string">`gone:&quot;gone-redis-pool&quot;`</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>redisUser<span class="token punctuation">)</span> <span class="token function">UsePool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    conn <span class="token operator">:=</span> r<span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">defer</span> r<span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+    <span class="token comment">//执行redis命令</span>
+    <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span><span class="token string">&quot;SET&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;key&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;value&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/references/xorm.html" class="prev">
+        Gone对Xorm的增强
+      </a></span> <span class="next"><a href="/zh/references/" class="router-link-active">
+        参考文档
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.0ddee0dc.js" defer></script><script src="/assets/js/2.a20f85ea.js" defer></script><script src="/assets/js/1.4e3ac70f.js" defer></script><script src="/assets/js/70.ffa925b9.js" defer></script>
+  </body>
+</html>
