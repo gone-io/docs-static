@@ -4,7 +4,7 @@ prev: ./
 next: ./http-inject
 ---
 
-# gone辅助工具
+# gone 辅助工具
 
 ## 安装
 执行如下命令：

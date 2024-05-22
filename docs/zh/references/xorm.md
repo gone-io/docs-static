@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./http-inject
-next: ./
+next: ./redis
 ---
 
 # Gone对Xorm的增强
