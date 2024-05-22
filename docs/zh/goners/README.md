@@ -7,7 +7,7 @@ next: ../
 # Goners
 
 ## 核心级Goners
-> 核心组件也是Goner，可以被其他Goner注入，这部分Goners，是Gone运行的和兴，是Gone运行不可或缺的部分。
+> 核心组件也是Goner，可以被其他Goner注入，这部分Goners，是Gone运行的基础，是Gone运行不可或缺的部分。
 
 |接口名 | 实现| GoneId|功能介绍|
 |---|---|---|--|
