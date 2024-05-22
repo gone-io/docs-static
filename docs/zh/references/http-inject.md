@@ -145,8 +145,8 @@ Body注入，是指读取HTTP请求正文内容，解析成结构体，注入属
 		POST(
 			"/hello",
 			func(in struct {
-				req Req `gone:"http,body"`
-				req2 *Req `gone:"http,body"`
+				req Req `gone:"http,body"`  //注意：body只能被注入一次，因为 writer被读取后就变成空了
+				// req2 *Req `gone:"http,body"`
 			}) string {
 				fmt.Println(in.req)
 				return fmt.Sprintf("hello, keywords is [%v]", in.req.Keywords)
