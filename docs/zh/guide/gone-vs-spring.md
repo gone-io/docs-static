@@ -102,7 +102,7 @@ type UseConfig struct {
 HTTP参数注入，就是自动读取HTTP请求的Query参数，并注入到Controller的方法中。
 
 **Gone**支持多种HTTP参数注入，可以取到URL、Header、Body、Cookie、Form、Path等参数，
-参考：[HTTP 注入说明](http://localhost:8081/zh/references/http-inject.html)
+参考：[HTTP 注入说明](https://goner.fun/zh/references/http-inject.html)
 
 ### 注入Query参数
 #### Spring
@@ -242,7 +242,7 @@ func (ctr *controller) Mount() gone.GinMountError {
 ```
 
 **Gone**支持多种HTTP参数注入，可以取到URL、Header、Body、Cookie、Form、Path等参数，
-参考：[HTTP 注入说明](http://localhost:8081/zh/references/http-inject.html)
+参考：[HTTP 注入说明](https://goner.fun/zh/references/http-inject.html)
 
 ## 总结
 **Spring**和**Gone**在依赖模块导入、依赖注入、配置注入以及HTTP参数注入方面有不同的实现方式。

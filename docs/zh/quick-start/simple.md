@@ -51,4 +51,4 @@ func main() {
 		Run()
 }
 ```
-在这个例子中，在Gone的准备阶段，通过[**埋葬**](http://localhost:8080/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC)的方式将 Boss 和 Worker 导入到框架。在框架启动后，老板开始工作`in.boss.Do()`；老板工作中调用销售开始工作`b.seller.Do()`。
+在这个例子中，在Gone的准备阶段，通过[**埋葬**](https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC)的方式将 Boss 和 Worker 导入到框架。在框架启动后，老板开始工作`in.boss.Do()`；老板工作中调用销售开始工作`b.seller.Do()`。
