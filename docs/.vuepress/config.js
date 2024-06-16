@@ -214,11 +214,11 @@ module.exports = {
                         }],
                     },
                     {
-                        text: 'References',
+                        text: '参考文档',
                         link: '/zh/references/'
                     },
                     {
-                        text: "Goners",
+                        text: "组件库",
                         link: '/zh/goners/',
                     },
                     {
