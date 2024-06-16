@@ -221,6 +221,10 @@ module.exports = {
                         text: "Goners",
                         link: '/zh/goners/',
                     },
+                    {
+                        text: "博客",
+                        link: '/zh/blogs/',
+                    },
                 ],
 
                 sidebar: [
