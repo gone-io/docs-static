@@ -4,7 +4,7 @@ prev: ../references/
 next: ../
 ---
 
-# Goners
+# Goners（组件库）
 
 ## 核心级Goners
 > 核心组件也是Goner，可以被其他Goner注入，这部分Goners，是Gone运行的基础，是Gone运行不可或缺的部分。
@@ -34,6 +34,8 @@ next: ../
 |urllib|封装`github.com/imroc/req/v3`，提供http调用能力|-|
 |grpc|提供开发grpc服务端和客户端的能力|-|
 |cmux|封装`github.com/soheilhy/cmux`，是统一端口可以提供混合服务的能力|-|
+|zap|封装`go.uber.org/zap`，实现`gone.Logger`日志接口，可以替换`logrus`实现更高效的日志输出|-|
+|viper|封装`github.com/spf13/viper`，用于替换配置接口默认实现，可以支持丰富的配置文件格式|-|
 
 ## 生态级 Goners
 - [emitter](https://github.com/gone-io/emitter)，封装事件处理，可以用于 DDD 的 事件风暴
