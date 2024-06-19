@@ -4,7 +4,7 @@ prev: ./schedule
 next: ./auto-gen-priest
 ---
 
-# 使用gRPC
+# 使用gRPC通信
 首先创建一个grpc目录，在这个目录中初始化一个golang mod：
 ```bash
 mkdir grpc
@@ -205,4 +205,4 @@ go run client/main.go
   3. 将 客户端Goner 注册到 Gone框架
   4. 启动客户端，调用客服端接口方法
 
-本文的代码开源在 [Gone-io/grpc](https://github.com/gone-io/gone/tree/main/example/grpc)。
+本文的代码开源在 [goner/grpc](https://github.com/gone-io/gone/tree/main/example/grpc)。

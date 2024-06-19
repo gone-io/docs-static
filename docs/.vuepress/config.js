@@ -196,7 +196,7 @@ module.exports = {
                                 text: '配置定时任务',
                                 link: '/zh/guide/schedule.md',
                             }, {
-                                text: '使用gRPC',
+                                text: '使用gRPC通信',
                                 link: '/zh/guide/grpc.md',
                             }],
                         }, {
