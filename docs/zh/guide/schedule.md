@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./redis
-next: ./auto-gen-priest
+next: ./grpc
 ---
 
 # 用cron表达式配置定时任务

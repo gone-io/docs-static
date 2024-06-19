@@ -32,7 +32,7 @@ next: ../
 |redis|封装`github.com/gomodule/redigo/redis`，用于操作redis，提供redis缓存和redis分布式锁的功能|[利用redis提供分布式锁和分布式缓存](../guide/redis.md)|
 |schedule|封装`github.com/robfig/cron/v3`，提供定时任务的能力|[用cron表达式配置定时任务](https://goner.fun/zh/guide/schedule.html)|
 |urllib|封装`github.com/imroc/req/v3`，提供http调用能力|-|
-|grpc|提供开发grpc服务端和客户端的能力|-|
+|grpc|提供开发grpc服务端和客户端的能力|[使用gRPC](https://goner.fun/zh/guide/grpc.html)|
 |cmux|封装`github.com/soheilhy/cmux`，是统一端口可以提供混合服务的能力|-|
 |zap|封装`go.uber.org/zap`，实现`gone.Logger`日志接口，可以替换`logrus`实现更高效的日志输出|-|
 |viper|封装`github.com/spf13/viper`，用于替换配置接口默认实现，可以支持丰富的配置文件格式|-|

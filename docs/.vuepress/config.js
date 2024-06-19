@@ -193,8 +193,11 @@ module.exports = {
                                 text: '分布式锁 + 分布式缓存',
                                 link: '/zh/guide/redis',
                             }, {
-                                text: 'cron 格式的任务',
+                                text: '配置定时任务',
                                 link: '/zh/guide/schedule.md',
+                            }, {
+                                text: '使用gRPC',
+                                link: '/zh/guide/grpc.md',
                             }],
                         }, {
                             text: "效率提升",
