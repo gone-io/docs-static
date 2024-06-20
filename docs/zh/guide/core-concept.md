@@ -5,24 +5,29 @@ next: ./gone-and-inject
 ---
 
 # Gone的核心概念
-“我们编写的代码，终究只是死物，除非他在**天国**被**复活**，为此我们需要将他**埋葬**在**墓园**。”
+“我们编写的代码，终究只是死物，除非他在 **天国（程序）** 被 **复活（对Goners完成依赖的装配）**，为此我们需要将他 **埋葬（注册）** 在 **墓园（Gone内部的Goners仓库）**。”
 
 [[toc]]
 
-## Goner（逝者）
-在Gone框架中，最基本的和最核心的概念就是 Goner，**Goner 是指的匿名嵌入了 `gone.Flag` 的结构体**。举个例子：
+## Goner（Gone中的组件，只有实现了Goner接口才能被注册到Gone中）
+
+在Gone框架中，最核心的概念就是 **Goner**，是指通过匿名嵌入了 `gone.Flag` 而实现**Goner**接口的结构体实例指针。
+
+举个例子，下面的worker就是一个goner：
 ```go
 type Worker struct {
 	gone.Flag
 }
+
+worker := &Worker{}
 ```
 
 Goner是Gone框架中的组件，是实现依赖注入的关键：
-1. Goner可以作为属性被注入到其他结构体
-2. Goner的属性可以被其他类型注入
+1. Goner可以作为属性注入到其Goner
+2. Goner的属性可以被其Goners注入
 
 
-为什么需要内嵌一个 `gone.Flag`？是因为我们希望限制依赖注入的范围，让依赖注入只发生在Goners之间，让Gone框架的组件实现有一个统一的模式。
+为什么需要内嵌一个 `gone.Flag`，能通过其他方式实现**Goner**接口吗？
 
 ::: tip
 下面是Goner和gone.Flag的源代码：
@@ -49,8 +54,8 @@ Goner作为接口，要求实现它的“对象”拥有一个私有的方法`go
 在Gone框架中，还包含了三类特殊的Goner，定义如下：
 
 
-### 🔮Prophet（先知）
-一种特殊的 **Goner**，在普通 **Goner** 上实现了 **`AfterRevive() AfterReviveError`** 方法就是 **Prophet（先知）**；**AfterRevive** 会在 **Goner** 被复活后被执行。
+### 🔮Prophet（先知，率先知道复活已经完成）
+一种特殊的 **Goner**，在普通 **Goner** 上实现了 **`AfterRevive() AfterReviveError`** 方法就是 **Prophet（先知）**；**AfterRevive** 会在所有 **Goners** 都完成依赖注入装配流程后被执行。
 
 Prophet接口定义如下：
 ```go
@@ -58,12 +63,12 @@ Prophet接口定义如下：
 type Prophet interface {
 	Goner
 	//AfterRevive 在Goner复活后会被执行
-	AfterRevive() AfterReviveError
+	AfterRevive() error
 }
 ```
 
-### 😇Angel（天使）
-一种特殊的 **Goner**，拥有天使左翼`Start(Cemetery) error` 和 天使右翼`Stop(Cemetery) error`，左翼负责生（用于分配资源，启动某项服务），右翼负责死（用于终止某项服务，回收资源）。
+### 😇Angel（天使，看护服务的开启和结束）
+一种特殊的 **Goner**，拥有天使左翼`Start(Cemetery) error` 和 天使右翼`Stop(Cemetery) error`，左翼负责开始（用于分配资源，启动某项服务），右翼负责结束（用于终止某项服务，回收资源）。
 
 Angel接口定义如下：
 ```go
@@ -74,7 +79,7 @@ type Angel interface {
 }
 ```
 
-### 🧛🏻‍♀️Vampire（吸血鬼）
+### 🧛🏻‍♀️Vampire（吸血鬼，一个可以用于扩展依赖注入的强大工具）
 一种特殊的 **Goner**，拥有特殊能力——吸血`Suck(conf string, v reflect.Value) SuckError`。**Suck**可以将不是**Goner**的值赋予注入给Goner属性。
 
 Vampire接口定义如下：
@@ -87,7 +92,7 @@ type Vampire interface {
 ```
 
 
-## Cemetery（墓园）
+## Cemetery（墓园，goners仓库）
 Cemetery用于管理Goners，主要提供Bury（埋葬）和 revive（复活）的方法，其接口定义如下：
 ```go
 type Cemetery interface {
@@ -105,17 +110,18 @@ type Cemetery interface {
 ```
 从代码上可以看到Cemetery本身也是一个Goner，在Gone框架启动时他会被自动埋葬和复活。
 
-### Bury（埋葬）
-将Goner **埋葬** 到 **Cemetery** 就是将Goner注册到框架，以待后续完成属性的注入；在代码实现上，**Bury**是**Cemetery**上的公开方法，一般在通过 **Priest** 函数调用该方法。
+### Bury（埋葬，完成Goner注册）
+将Goner **埋葬（注册）** 到 **Cemetery（goners仓库）** 就是将Goner注册到框架，以待装配流程完成属性的注入；在代码实现上，**Bury**是**Cemetery**上的公开方法，一般在通过 **Priest** 函数调用该方法。
 
-### Revive（复活）
-Revive（复活）指的是Goner所有需要注入的属性完成注入的过程。在函数`ReviveAllFromTombs() error`中，所有被**埋葬**到**Cemetery**的Goners都会被尝试复活，如果有属性不能正常注入，程序将panic。
+### Revive（复活，Goners依赖的属性的自动装配）
+Revive（复活）指的是Goner所有需要注入的属性完成依赖装配的过程。在函数`ReviveAllFromTombs() error`中，尝试复活所有被注册的Goners，如果存在属性不能正常注入，程序将抛出panic。
+
 ::: tip
 **ReviveAllFromTombs**在完成了复活所有的**Goners**后，会调用所有**Prophet**的 **AfterRevive**方法。
 :::
 
 
-## Heaven（天国）
+## Heaven（天国，代表程序本身）
 Heaven（天国）代表了一个Gone程序，用于管理程序的启动、停止等状态和流程（复活在启动前完成），用于在启动前后以及程序停止前执行一些hook任务。Heaven接收一个牧师函数开始运行，例如：
 ```go
 package main
@@ -157,7 +163,7 @@ func main(){
 }
 ```
 
-## Priest (牧师)
+## Priest (牧师，一个用于完成goners注册的加载函数)
 Priest (牧师)是负责将**Goner**埋葬到**Cemetery**的函数，他的定义如下：
 ```go
 type Priest func(cemetery Cemetery) error

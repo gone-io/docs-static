@@ -4,14 +4,36 @@ prev: false
 next: ./quick-start/
 ---
 # 介绍
+<img src="../img/logo.png" width = "300" alt="logo"/>
 
 ## Gone是什么
-首先，**Gone**是一个轻量的，基于**Golang**的，**依赖注入框架**，灵感来源于Java中的Spring Framework；其次，**Gone**框架中包含了一系列内置组件，通过这些组件提供一整套Web开发方案，提供服务配置、日志追踪、服务调用、数据库访问、消息中间件等微服务常用能力。
+首先，Gone是Golang的一个轻量级的**依赖注入框架**，目前依赖注入的装配流程是通过反射来实现的；虽然golang的反射一直被人诟病太慢，但是在Gone中依赖注入只是程序的启动阶段，不影响运行阶段的速度，最多就是给启动过程增加几毫秒的时间，带来的好处却是不再需关心各种依赖如何创建。
+
+其次，为了方便用户能够快速上手，我们开发了一些列内容的组件，比如 xorm、redis、schedule、tracer、logrus、gin、cmux、zap、viper 等等，后续我们还会支持更多微服务中间件的接入；用户可以利用这些组件快速开发出一个云原生的微服务，所以Gone**一套微服务解决方案**。
 
 
-下面使用**Gone**来编写一个Web服务吧！
+## 特性
+- 定义Goner接口，对依赖进行抽象
+- 依赖注入
+  - 注入Goners
+  - 注入函数参数
+- 模块化，可拆卸设计
+- 启动流程控制
+- 测试支持
+- 内置组件
+  - goner/config，支持配置参数的依赖注入
+  - goner/tracer，给调用链路增加TraceId，支持链路追踪
+  - goner/logrus、goner/zap，支持日志记录
+  - goner/gin，集成gin框架，提供HTTP请求参数的依赖注入
+  - goner/viper，用于解析多种配置文件
+  - ...
 
-## Web服务
+
+
+## 小试牛刀
+
+下面使用**Gone**来编写一个简单的Web服务，更多例子在[快速开始](https://goner.fun/zh/quick-start/) 和 [example](https://github.com/gone-io/gone/tree/main/example)。
+
 ```go
 package main
 
@@ -60,21 +82,85 @@ func main() {
 	})
 }
 ```
+
 运行上面代码：`go run main.go`，程序将监听`8080`端口，使用curl测试：
 ```bash
 curl -X POST 'http://localhost:8080/hello' \
-    -H 'Content-Type: application/json' \
-	--data-raw '{"msg": "你好呀？"}'
+-H 'Content-Type: application/json' \
+--data-raw '{"msg": "你好呀？"}'
 ```
 结果如下：
 ```bash
 {"code":0,"data":"to  msg is: 你好呀？"}
 ```
 
-## 概念
+## 概念与启动流程
+### 人话版本
+> 代码写完了，跑得起来才行。
+
+在Gone框架中，组件叫住Goner，Goner的属性可以是：interface、slice、map，程序启动时他们将被自动装配。在Gone启动前，需要将所有的Goners注册到Gone框架，启动时Gone会对所有Goners的属性进行自动装配，完成依赖注入，编写组件不必关心依赖的实现和依赖的接口是如何来的，只需要直接使用就可以了。
+
+### 鬼话版本
 > 我们编写的代码终究只是死物，除非他们被运行起来。
 
-在Gone中，组件被抽象为**Goner（逝者）**，**Goner**属性可以注入其他的**Goner**。Gone启动前，需要将所有 **Goners** **埋葬（Bury）**到**墓园（cemetery）**；Gone启动后，会将所有 **Goners** **复活**，建立一个 **天国（Heaven）**，“天国的所有人都不再残缺，他们想要的必定得到满足”。
+在Gone中，组件被抽象为 Goner（逝者），Goner 属性可以注入其他的 Goner 。Gone启动前，需要将所有 Goners 埋葬 到 墓园；Gone启动后，会 复活 所有 Goners，建立一个 天国，“天国的所有人都不再残缺，他们想要的必定得到满足”。
 
-了解更多，请阅读 [Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)
 
+### 代码版本
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/gone-io/gone"
+)
+
+// Worker 接口
+type Worker interface {
+	Do()
+}
+type Boss struct {
+	gone.Flag
+	workers []Worker `gone:"*"` //Boss 依赖 Worker接口，通过 gone标签标记为需要依赖注入
+}
+
+func (b *Boss) Do() {
+	for _, w := range b.workers {
+		w.Do()
+	}
+}
+
+// WorkerX 实现 Worker 接口
+type WorkerX struct {
+	gone.Flag
+}
+
+func (w *WorkerX) Do() {
+	fmt.Println("WorkerX Do")
+}
+
+func main() {
+	gone.
+		//Goner启动前的准备工作
+		Prepare(func(cemetery gone.Cemetery) error {
+			cemetery.
+				//注册Boss
+				Bury(&Boss{}).
+
+				//注册多个Worker Goners
+				Bury(&WorkerX{}).
+				Bury(&WorkerX{}).
+				Bury(&WorkerX{})
+			return nil
+		}).
+		//Goner启动
+		Run(func(boss *Boss) { //Run 方法中的参数被自动注入
+			boss.Do()
+		})
+}
+```
+
+了解更多，请阅读 [开发指南](https://goner.fun/zh/guide/)
+
+## 关于Logo
+Golang的吉祥物是一只可爱的地鼠，Gone的Logo是从它衍生出来，加上翅膀加上光圈，是一只天使地鼠，我们感觉这很复活Gone鬼故事的气质。
