@@ -9,7 +9,7 @@ next: ./quick-start/
 ## Gone是什么
 首先，Gone是Golang的一个轻量级的**依赖注入框架**，目前依赖注入的装配流程是通过反射来实现的；虽然golang的反射一直被人诟病太慢，但是在Gone中依赖注入只是程序的启动阶段，不影响运行阶段的速度，最多就是给启动过程增加几毫秒的时间，带来的好处却是不再需关心各种依赖如何创建。
 
-其次，为了方便用户能够快速上手，我们开发了一些列内容的组件，比如 xorm、redis、schedule、tracer、logrus、gin、cmux、zap、viper 等等，后续我们还会支持更多微服务中间件的接入；用户可以利用这些组件快速开发出一个云原生的微服务，所以Gone**一套微服务解决方案**。
+其次，为了方便用户能够快速上手，我们开发了一系列内置组件，比如 xorm、redis、schedule、tracer、logrus、gin、cmux、zap、viper 等等，后续我们还会支持更多微服务中间件的接入；用户可以利用这些组件快速开发出一个云原生的微服务，所以Gone**一套微服务解决方案**。
 
 
 ## 特性
@@ -164,3 +164,10 @@ func main() {
 
 ## 关于Logo
 Golang的吉祥物是一只可爱的地鼠，Gone的Logo是从它衍生出来，加上翅膀加上光圈，是一只天使地鼠，我们感觉这很复活Gone鬼故事的气质。
+
+## 联系方式
+如果您有任何问题，欢迎通过以下方式联系我们：
+- [Github 讨论](https://github.com/gone-io/gone/discussions)
+- 扫码加微信，暗号：gone
+
+  <img src="../img/qr_dapeng.png" width = "250" alt="dapeng wx qr code"/>
