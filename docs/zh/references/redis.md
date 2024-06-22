@@ -19,7 +19,7 @@ import "github.com/gone-io/gone/goner/redis"
 ```
 - bury
 ```go
-//使用 goner.RedisPriest 函数，将 redis 相关的Goner 埋葬到 Cemetery 中
+//使用 goner.RedisPriest 函数，将 redis 相关的Goner注册到Gone
 _ = goner.RedisPriest(cemetery)
 ```
 

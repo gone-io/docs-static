@@ -1,25 +1,26 @@
 ---
 sidebar: auto
-prev: ./config
-next: ./tracer
+prev: ./goner-grpc
+next: ./goner-redis
 ---
 
 # 日志输出
 
 在Gone中，提供了一个内置Goner用于日志输出——[logrus](github.com/gone-io/gone/tree/main/goner/logrus)，是通过将`github.com/sirupsen/logrus`包封装为Goner实现的。希望有小伙伴封装其他的日志输出包，提供更多的日志解决方法。
 
-## 将相关Goners埋葬到Cemetery
+## 将相关Goners注册到Gone
 
 > tip: 了解Gone的核心概念和术语请阅读：[Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)
 
-在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的 **`BasePriest`** 来完成相关Goners的埋葬。在`BasePriest`中同时被埋葬到Cemetery还包括配置和trace相关的Goners，这三个包一般一起使用。
+在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的 **`LogrusLoggerPriest`** 来完成相关Goners的注册。在`LogrusLoggerPriest`中同时被注册的还包括配置和tracer相关的Goners，这三个包一般一起使用。
 
 ```go
 
 func MasterPriest(cemetery gone.Cemetery) error {
-	_ = goner.BasePriest(cemetery)
+	_ = goner.LogrusLoggerPriest(cemetery)
 
-	//埋葬其他Goners
+	//注册其他Goners
+	//todo ...
 	return nil
 }
 ```
@@ -113,3 +114,9 @@ type Logger interface {
 
 ## 关于TraceId
 在web应用中，我们希望有一个统一的编号来标识同一请求产生的日志。这个统一的Id，就是TraceId，如果有这个Id，排查问题时，我们只需要使用这个Id搜索日志，就可以获取请求的所有日志。
+
+## 使用`goner/zap`输出日志
+在v1.x版本中，我们提供了`goner/zap`包，可以替换`goner/logrus`包，输出日志。
+`goner/zap` 封装了[zap](https://github.com/uber-go/zap)包，并实现了`goner.Logger`接口，可以更高效的输出日志，并且支持更多自定义。
+
+具体使用参考：[goner/zap 使用说明](https://goner.fun/zh/references/1-zap.html)

@@ -1,12 +1,12 @@
 ---
 sidebar: auto
-prev: false
-next: ./web
+prev: ../quick-start/
+next: ./
 ---
 
 # 一个极简例子
 
-代码如下：
+## 代码
 ```go
 package main
 
@@ -25,7 +25,6 @@ func (w *Worker) Do() {
 
 type Boss struct {
 	gone.Flag // Goner标志，匿名内嵌`gone.Flag`表示该结构体为一个Goner
-
 	seller *Worker `gone:"*"` //注入Worker
 }
 
@@ -37,18 +36,18 @@ func (b *Boss) Do() {
 func main() {
 	gone.
 		Prepare(func(cemetery gone.Cemetery) error {
-			cemetery.
-				Bury(&Boss{}).
-				Bury(&Worker{})
+			// 注册Worker和Boss到框架
+			cemetery.Bury(&Boss{}).Bury(&Worker{})
 			return nil
 		}).
-		//AfterStart 是一个hook函数，关于hook函数请参考文档：https://goner.fun/zh/guide/hooks.html
-		AfterStart(func(in struct {
+		Run(func(in struct {
 			boss *Boss `gone:"*"` //注入Boss
 		}) {
 			in.boss.Do()
-		}).
-		Run()
+		})
 }
 ```
-在这个例子中，在Gone的准备阶段，通过[**埋葬**](https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC)的方式将 Boss 和 Worker 导入到框架。在框架启动后，老板开始工作`in.boss.Do()`；老板工作中调用销售开始工作`b.seller.Do()`。
+
+## 讲解
+在这个例子中，在Gone的准备阶段（Prepare函数中），通过[**cemetery.Bury**](https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC) 将 `Boss` 和 `Worker` 注册到Gone；Run调用的方法中，依赖注入了 `Boss`，`Boss`依赖注入了 `Worker`；。Gone启动后，“老板”开始工作`in.boss.Do()`；“老板”工作中调用“销售员”开始工作`b.seller.Do()`。
+

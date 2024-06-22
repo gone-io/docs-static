@@ -12,13 +12,13 @@ next: ../
 |接口名 | 实现| GoneId|功能介绍|
 |---|---|---|--|
 |[Heaven](https://pkg.go.dev/github.com/gone-io/gone#Heaven)|[heaven](https://github.com/gone-io/gone/blob/12ea8e3577fbed493766f522ab002136edf3805d/heaven.go#L65)|gone-heaven|负责将Goner从cemetery中复活，执行安装的Hook函数，管理框架的启停流程和状态。|
-|[Cemetery](https://pkg.go.dev/github.com/gone-io/gone#Cemetery)|[cemetery](https://github.com/gone-io/gone/blob/12ea8e3577fbed493766f522ab002136edf3805d/cemetery.go#L17)|gone-cemetery|管理Goners，提供将Goner埋葬的Bury方法；依赖注入的逻辑主要在该结构体中实现。|
+|[Cemetery](https://pkg.go.dev/github.com/gone-io/gone#Cemetery)|[cemetery](https://github.com/gone-io/gone/blob/12ea8e3577fbed493766f522ab002136edf3805d/cemetery.go#L17)|gone-cemetery|管理Goners，提供将Goner注册的Bury方法；依赖注入的逻辑主要在该结构体中实现。|
 
 ## 框架内置Goners
 框架内置Goners，是为丰富Gone的功能而开发的，比如支持Web开发、支持数据库连接、支持Redis等…  
 代码实现在 [goner目录](https://github.com/gone-io/gone/tree/v0.1.4/goner)，该目录下的每个子目录分别实现了一个gone的特性，每个特性包含一个或多个Goner的定义和实现。
 
-为了方便使用，我们在 [goner/priest.go](https://github.com/gone-io/gone/blob/v0.1.4/goner/priest.go) 中定义了`Priest`函数，可以按功能直接批量埋葬相关Goners。
+为了方便使用，我们在 [goner/priest.go](https://github.com/gone-io/gone/blob/v0.1.4/goner/priest.go) 中定义了`Priest`函数，可以按功能直接批量注册相关Goners。
 
 
 

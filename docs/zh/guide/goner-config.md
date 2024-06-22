@@ -1,14 +1,14 @@
 ---
 sidebar: auto
-prev: ./inner-goner
-next: ./logrus
+prev: ./goner-a-use
+next: ./goner-gin
 ---
 
-# 通过内置Goners支持配置文件
+# 配置读取
 
 [[toc]]
 
-在gone中提供了通过内置Goners读取配置文件的方法，配置文件格式暂时只支持`.properties`。
+在 Gone 中提供了通过内置Goners读取配置文件的方法，默认支持的配置文件格式为`.properties`。
 
 
 
@@ -235,6 +235,43 @@ cd /home/degfy/
 如果这些配置文件中存在相同的配置项，后加载的值会先加载的值。也就是环境相关的配置会覆盖默认的配置，当前运行路径的配置会覆盖程序所在目录的配置。
 ::: tip 最佳实践
 1. 将所有配置放到默认配置文件中；在环境相关配置文件中根据环境的需要进行覆盖；
-2. 配置的设计应该尽量少，推荐采用“约定优配置”思路来进行设计，配置可以考虑赋予默认值；
+2. 配置的设计应该尽量少，推荐采用“约定优配置”思路来进行设计，尽量设计默认值；
 3. 为了使代码“开箱可用”，推荐在local.properties中设置完整的配置，让程序不需要任何其他的配置就能运行，让其他小伙伴clone代码后就能丝滑启动程序。
 :::
+
+## 更多格式的配置文件
+在v1.x版本，我们将`github.com/spf13/viper`封装为了 `goner/viper`，可以支持市面上大多数配置文件格式：`.json`、 `.toml`、 `.yaml`、 `.yml`、 `.properties`、 `.props`、 `.prop`、 `.hcl`、 `.tfvars`、 `.dotenv`、 `.env`、 `.ini`。
+
+### 如何使用？
+
+只需要使用`gone_viper.Priest`将相关的Goners提前注册到Gone：
+```go
+func main() {
+	gone.Run(func(cemetery gone.Cemetery) error {
+		// 注册 viper 相关的 Goners
+		_ = gone_viper.Priest(cemetery)
+
+		_ = config.Priest(cemetery)
+		cemetery.Bury(&UseConfig{})
+		return nil
+	})
+}
+```
+### 相名不同后缀，只会读取一个
+
+比如同时存在 `default.json`  和 `default.toml`，只会读取配置文件的后缀为 `.json` 的配置；配置文件读取顺序为：`.json`、 `.toml`、 `.yaml`、 `.yml`、 `.properties`、 `.props`、 `.prop`、 `.hcl`、 `.tfvars`、 `.dotenv`、 `.env`、 `.ini`。
+
+
+### 配置文件读取顺序
+1. ${程序所在目录}/config/default.*
+2. ${程序所在目录}/config/${环境值}.*
+3. ${当前工作路径}/config/default.*
+4. ${当前工作路径}/config/${环境值}.*
+5. ${指定配置目录}/default.*
+6. ${指定配置目录}/${环境值}.*
+
+## 设计思路
+`goner/config` 的设计分成两部分，依赖注入部分 和 配置读取部分；依赖注入部分在`goner/config/config.go`中实现，配置读取部分做了接口抽象`gone.Configure`，方便后续扩展从其他介质读取配置，在`goner/config`中默认只支持读取`.properties`格式的配置文件。
+
+`github.com/spf13/viper`为了能读取多种配置文件，引入了许多依赖，大多数情况不是必须的，我们不希望将这些依赖直接引入到`goner/config`包中。
+后续，我们还打算提供一些链接配置中心的组件。

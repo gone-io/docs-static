@@ -1,17 +1,16 @@
 ---
 sidebar: auto
-prev: ./xorm
-next: ./schedule
+prev: ./goner-logger
+next: ./goner-schedule
 ---
 
 # 利用redis提供分布式锁和分布式缓存
 在本文中，我们将分享在gone中如何使用分布式缓存和分布式锁，其中分布式锁中实现了一种较为自由的处理方式———“智能锁”，对一个处理函数进行上锁，函数执行中会周期性检测锁过期的剩余时间并自动给锁续期，函数执行完后会自动解锁。
 
 
-## 第一步：将redis相关Goner埋葬到Cemetery
+## 第一步：将redis相关Goner注册到Gone
 > 什么是 Goner？
-> 什么是 埋葬？
-> 什么是 Cemetery？
+> 什么是 注册？
 > 参考 [Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)
 
 在Priest函数中增加`_ = goner.RedisPriest(cemetery)`，如下：
@@ -19,7 +18,7 @@ next: ./schedule
 ```go
 func priest(cemetery gone.Cemetery) error {
 
-	//使用 goner.RedisPriest 函数，将 redis 相关的Goner 埋葬到 Cemetery 中
+	//使用 goner.RedisPriest 函数，将 redis 相关的Goner 注册 到 Gone
 	_ = goner.RedisPriest(cemetery)
 
 	cemetery.Bury(&redisUser{})
@@ -159,7 +158,7 @@ import (
 
 func priest(cemetery gone.Cemetery) error {
 
-	//使用 goner.RedisPriest 函数，将 redis 相关的Goner 埋葬到 Cemetery 中
+	//使用 goner.RedisPriest 函数，将 redis 相关的Goner注册到Gone
 	_ = goner.RedisPriest(cemetery)
 
 	cemetery.Bury(&redisUser{})

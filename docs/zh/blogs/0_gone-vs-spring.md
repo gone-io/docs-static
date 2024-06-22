@@ -1,8 +1,8 @@
 ---
 sidebar: auto
 sidebarDepth: 4
-prev: ./goner-inject
-next: ./inner-goner
+prev: ../blogs/
+next: ./1_v1.x_release
 ---
 
 # 对比 Gone 和 Spring 的依赖注入

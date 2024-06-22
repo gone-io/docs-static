@@ -1,30 +1,31 @@
 ---
 sidebar: auto
-prev: ./logrus
-next: ./xorm
+prev: ./goner-schedule
+next: ./goner-xorm
 ---
 
 # 使用traceId追踪日志
 在Web应用中，一次请求可能会经过很多业务流程的处理；为了方便排查问题，我们希望所有业务流程打印的日志拥有一个统一的traceId；拥有traceId，就可以将整个业务流程的日志都串起来，回溯和分析问题出在哪个业务环节。
 在其他开源框架中，一般采用策略是在**所有**的函数中都增加`context.Context`参数，golang官方也是这样推荐的。然而我们认为这样平白无故的多打一些代码实在很难受，我们希望不用在每个函数中传递额外参数实现打印日志中附件traceId。为此，我们在Gone中提供了一个内置的Goner来提供这样的功能。
 
-## 将相关Goners埋葬到Cemetery
+## 将相关Goners注册到Gone
 > tip: 了解Gone的核心概念和术语请阅读：[Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)
 
-在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的 **`BasePriest`** 来完成相关Goners的埋葬。在`BasePriest`中会将 `tracer`、`config`、`logrus` 相关的Goners同埋葬到Cemetery，这三个包一般一起使用。
+在这里，我们采用`github.com/gone-io/gone/tree/main/goner`包中的 **`BasePriest`** 来完成相关Goners的注册。在`BasePriest`中会将 `tracer`、`config`、`logrus` 相关的Goners同注册到Gone，这三个包一般一起使用。
 
 ```go
 
 func MasterPriest(cemetery gone.Cemetery) error {
 	_ = goner.BasePriest(cemetery)
 
-	//埋葬其他Goners
+	//注册其他Goners
+    // todo
 	return nil
 }
 ```
 
 ## 简单使用
-在埋葬了tracer的情况下，我们通过注入的`logrus.Logger`接口打印日志时，日志中会自动添加一串traceId。
+在注册了tracer的情况下，我们通过注入的`logrus.Logger`接口打印日志时，日志中会自动添加一串traceId。
 ```go
 //...
 

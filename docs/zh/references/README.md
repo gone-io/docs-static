@@ -13,3 +13,5 @@ next: ../goners/
 ## [Gone对Xorm的增强](./xorm.md)
 
 ## [Redis 参考文档](./redis.md)
+
+## [`goner/zap` 使用说明](./1-zap.md)

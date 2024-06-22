@@ -1,10 +1,10 @@
 ---
 sidebar: auto
-prev: ./schedule
-next: ./auto-gen-priest
+prev: ./goner-gin
+next: ./goner-logger
 ---
 
-# 使用gRPC通信
+# 提供gRPC服务
 首先创建一个grpc目录，在这个目录中初始化一个golang mod：
 ```bash
 mkdir grpc

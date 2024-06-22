@@ -107,7 +107,7 @@ make run
 - internal/module/: 模块目录，下面的每一个子目录实现一个模块的功能，一般是internal/interface/service/中定义的服务的业务实现；
 - internal/pkg/: 在该目录可以放一些项目共用的工具代码
 - internal/master.go: 存放**MasterPriest**函数
-- internal/priest.go: gone priest 命令生成的 **Priest**函数，用于**埋葬**所有Goner
+- internal/priest.go: gone priest 命令生成的 **Priest**函数，用于**注册**所有Goner
 
 ## Router
 在目录`internal/router`中分别实现了两个`gin.IRouter`:
@@ -253,5 +253,5 @@ type IDemo interface {
 ## 服务启动流程
 ![启动流程](../../img/image5.png)
 
-服务的启动从 **gone.Serve** 开始，该函数可以接收一个或者多个**Priest**函数，**Priest**函数负责将 **Goners**“埋葬**Bury**”到**Cemetery**。**gone.Serve**在所有的**Goners**复活后，等待系统信号，主goroutine将阻塞，具体的业务留给**Angel**通过**Start**方法开启新的goroutine来完成。
+服务的启动从 **gone.Serve** 开始，该函数可以接收一个或者多个**Priest**函数，**Priest**函数负责将 **Goners**“注册**Bury**”到**Cemetery**。**gone.Serve**在所有的**Goners**复活后，等待系统信号，主goroutine将阻塞，具体的业务留给**Angel**通过**Start**方法开启新的goroutine来完成。
 在**Gone**中，几乎所有的组件（包括内置的组件）都是**Goner**。 -->

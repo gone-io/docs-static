@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./tracer
-next: ./redis
+prev: ./goner-tracer
+next: ./x-1-gen-priest
 ---
 
 # 通过内置Goners支持数据库操作
@@ -118,7 +118,7 @@ func (e *SqlExecutor) Execute() {
 func main() {
 	gone.
 		Prepare(func(cemetery gone.Cemetery) error {
-			// 通过 goner.XormPriest 将xorm相关的Goner埋葬到 cemetery
+			// 通过 goner.XormPriest 将xorm相关的Goner注册到Gone
             _ = goner.XormPriest(cemetery)
 
 			cemetery.Bury(&SqlExecutor{})
@@ -166,7 +166,7 @@ demo records:[{1 hello gone} {2 The most Spring programmer-friendly Golang frame
 
 ## 需要注意的点
 ### 1. `github.com/gone-io/gone/goner` 是对 `xorm.io/xorm` 的封装
-封装的大概逻辑是：将xorm包装为一个[Angel Goner](https://goner.fun/zh/guide/core-concept.html#%F0%9F%98%87angel-%E5%A4%A9%E4%BD%BF);在Start方法中完成数据的连接；在Stop方法中关闭数据库连接。使用时不需要导入`xorm.io/xorm`包，只需要导入`github.com/gone-io/gone/goner`即可。封装中依赖了`github.com/gone-io/gone/tree/main/goner/config`来实现配置，在`goner.XormPriest`函数中已经自动完成了配置相关的Goner的[埋葬](https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC)。
+封装的大概逻辑是：将xorm包装为一个[Angel Goner](https://goner.fun/zh/guide/core-concept.html#%F0%9F%98%87angel-%E5%A4%A9%E4%BD%BF);在Start方法中完成数据的连接；在Stop方法中关闭数据库连接。使用时不需要导入`xorm.io/xorm`包，只需要导入`github.com/gone-io/gone/goner`即可。封装中依赖了`github.com/gone-io/gone/tree/main/goner/config`来实现配置，在`goner.XormPriest`函数中已经自动完成了配置相关的Goner的[Bury](https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC)。
 配置文件中支持的配置项：
 
 - database.driver-name 驱动的名称，支持 mysql、postgres 等主流数据库，具体可以参考 [xorm文档](https://xorm.io/zh/docs/chapter-01/1.engine/)

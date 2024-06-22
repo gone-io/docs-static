@@ -74,9 +74,9 @@ func main() {
 		// 调用框架内置组件，加载gin框架
 		_ = goner.GinPriest(cemetery)
 
-		//将 一个controller类型的Goner埋葬到墓园
-		//埋葬是什么意思？ => https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC
-		//墓园是什么意思？ => https://goner.fun/zh/guide/core-concept.html#cemetery-%E5%A2%93%E5%9B%AD
+		//将 一个controller类型的Goner注册到Gone
+		//关于Bury => https://goner.fun/zh/guide/core-concept.html#bury-%E5%9F%8B%E8%91%AC
+		//关于cemetery => https://goner.fun/zh/guide/core-concept.html#cemetery-%E5%A2%93%E5%9B%AD
 		cemetery.Bury(&controller{})
 		return nil
 	})
@@ -103,7 +103,7 @@ curl -X POST 'http://localhost:8080/hello' \
 ### 鬼话版本
 > 我们编写的代码终究只是死物，除非他们被运行起来。
 
-在Gone中，组件被抽象为 Goner（逝者），Goner 属性可以注入其他的 Goner 。Gone启动前，需要将所有 Goners 埋葬 到 墓园；Gone启动后，会 复活 所有 Goners，建立一个 天国，“天国的所有人都不再残缺，他们想要的必定得到满足”。
+在Gone中，组件被抽象为 Goner（逝者），Goner 属性可以注入其他的 Goner 。Gone启动前，需要将所有 Goners 注册 到 墓园；Gone启动后，会 复活 所有 Goners，建立一个 天国，“天国的所有人都不再残缺，他们想要的必定得到满足”。
 
 
 ### 代码版本

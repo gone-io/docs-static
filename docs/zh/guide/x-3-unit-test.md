@@ -1,12 +1,12 @@
 ---
 sidebar: auto
-prev: ./error
-next: false
+prev: ./x-2-error
+next: ./x-4-hooks
 ---
 
 # 单元测试
 
-在一个依赖注入框架中如何进行单元测试，将依赖项先注入后再测试；如果测试内容和注入内容强相关，可以考虑对相关内容做mock；一种方式是手动将mock后的Goner埋葬到系统，另外一种方式时将已经埋葬的Goner，使用`cemetery.ReplaceBury`做替换性埋葬。
+在一个依赖注入框架中如何进行单元测试，将依赖项先注入后再测试；如果测试内容和注入内容强相关，可以考虑对相关内容做mock；一种方式是注册mock后的Goner，另外一种方式时将已经注册的Goner，使用`cemetery.ReplaceBury`做替换性注册。
 
 ## 假设我们编写的Goner如下
 
@@ -98,7 +98,7 @@ func Test_Line(t *testing.T) {
 ```
 
 ## 使用gomock做mock测试
-为了解耦，我们推荐使用接口进行注入；实际上推荐接口注入的另一个原因是，go语言提供了基于接口的mock方案，我们可以将依赖的内容都mock起来。然而使用`mockgen`生成的mock实现，不是`Goner`，无法被埋葬，所以也无法注入；为此，我们在辅助工具中提供了解决方案。
+为了解耦，我们推荐使用接口进行注入；实际上推荐接口注入的另一个原因是，go语言提供了基于接口的mock方案，我们可以将依赖的内容都mock起来。然而使用`mockgen`生成的mock实现，不是`Goner`，无法被注册，所以也无法注入；为此，我们在辅助工具中提供了解决方案。
 
 ```bash
 gone mock  -f ${fromGoFile} -o ${outGoFile}
@@ -214,10 +214,10 @@ func Test_distanceCalculator_CalculateDistanceFromOrigin(t *testing.T) {
 		point.EXPECT().GetX().Return(0)
 		point.EXPECT().GetY().Return(0)
 
-		//将mock对象埋葬到Cemetery
+		//将mock对象注册到Gone
 		cemetery.Bury(point)
 
-		//被测试的对象也需要埋葬到Cemetery
+		//被测试的对象也需要注册到Gone
 		cemetery.Bury(NewDistanceCalculator())
 		return nil
 	})

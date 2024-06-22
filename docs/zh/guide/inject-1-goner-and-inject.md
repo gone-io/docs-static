@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./core-concept
-next: ./goner-inject
+next: ./inject-2-goner
 ---
 
 

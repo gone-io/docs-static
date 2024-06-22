@@ -1,7 +1,7 @@
 ---
 sidebar: auto
 prev: ./mysql
-# next: ./web
+next: ./
 ---
 
 # 封装一个Goner调用GPT
@@ -72,7 +72,7 @@ func (g *chatGPTClient) AfterRevive() error {
 1. 定义用于注入的键值，方便用户按GonerId注入
 我们这里定义为：`gone-gpt`
 
-2. 为了方便用户埋葬这个Goner，我们定义一个开放的New函数
+2. 为了方便用户注册这个Goner，我们定义一个开放的New函数
 ```go
 // NewChatGPTClient returns a new Goner which is ChatGPT client.
 func NewChatGPTClient() (gone.Goner, gone.GonerId) {
@@ -80,15 +80,15 @@ func NewChatGPTClient() (gone.Goner, gone.GonerId) {
 }
 ```
 
-3. 前面我们用到了配置注入，我们实际上依赖了Gone框架中的配置模块，我们希望用户在埋葬我们定义chatGPTClient时能顺便将配置相关的Goner也埋葬了，所以我们再定义一个Priest函数，如下：
+3. 前面我们用到了配置注入，我们实际上依赖了Gone框架中的配置模块，我们希望用户在注册我们定义chatGPTClient时能顺便将配置相关的Goner也注册了，所以我们再定义一个Priest函数，如下：
 ```go
-// Priest 用于埋葬chatGPTClient和其依赖的Goner
+// Priest 用于注册chatGPTClient和其依赖的Goner
 func Priest(cemetery gone.Cemetery) error {
 
-	//使用config.Priest来埋葬Gone配置模块相关的Goner
+	//使用config.Priest来注册Gone配置模块相关的Goner
 	_ = config.Priest(cemetery)
 
-	//埋葬chatGPTClient
+	//注册chatGPTClient
 	cemetery.Bury(NewChatGPTClient())
 	return nil
 }
@@ -123,13 +123,13 @@ func NewChatGPTClient() (gone.Goner, gone.GonerId) {
 	return &chatGPTClient{}, "gone-gpt"
 }
 
-// Priest 用于埋葬chatGPTClient和其依赖的Goner
+// Priest 用于注册chatGPTClient和其依赖的Goner
 func Priest(cemetery gone.Cemetery) error {
 
-	//使用config.Priest来埋葬Gone配置模块相关的Goner
+	//使用config.Priest来注册Gone配置模块相关的Goner
 	_ = config.Priest(cemetery)
 
-	//埋葬chatGPTClient
+	//注册chatGPTClient
 	cemetery.Bury(NewChatGPTClient())
 	return nil
 }

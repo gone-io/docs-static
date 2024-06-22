@@ -53,8 +53,8 @@ gone create [-t ${template} [-m ${modName}]] ${appName}
 
 
 ### 生成Priest函数
-该命令的作用是扫描代码中的特殊注释`//go:gone`，生成一个**Priest**函数，将其标注的New函数生成的**Goner**埋葬到**Cemetery**中。
-> 关于**Priest**函数、**Goner**、**Cemetery**的详细介绍，请参考[Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)。
+该命令的作用是扫描代码中的特殊注释`//go:gone`，生成一个**Priest**函数，将其标注的New函数生成的**Goner**注册到Gone中。
+> 关于**Priest**函数、**Goner**的详细介绍，请参考[Gone的核心概念](https://goner.fun/zh/guide/core-concept.html)。
 
 **命令格式：**
 ```bash

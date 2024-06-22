@@ -41,6 +41,12 @@ module.exports = {
     themeConfig: {
         repo: 'gone-io/gone',
         docsDir: 'docs',
+        docsRepo: 'gone-io/docs-static',
+
+        editLinks: true,
+
+        // 默认为 "Edit this page"
+        editLinkText: '帮助我们改善此页面！',
 
         logo: '/assets/img/logo.png',
 
@@ -141,17 +147,22 @@ module.exports = {
                             text: '极简例子',
                             link: '/zh/quick-start/simple.md',
                         }, {
-                            text: 'Web项目',
-                            link: '/zh/quick-start/web.md',
+                            text: "使用",
+                            items: [
+                                {
+                                    text: 'Web项目',
+                                    link: '/zh/quick-start/web.md',
+                                }, {
+                                    text: 'Web + MySQL',
+                                    link: '/zh/quick-start/mysql.md',
+                                }
+                            ],
                         }, {
-                            text: 'Web + MySQL',
-                            link: '/zh/quick-start/mysql.md',
-                        }, {
-                            text: '封装一个Goner调用GPT',
-                            link: '/zh/quick-start/gpt.md',
-                            // }, {
-                            //     text: 'JWT + MySQL + Redis + Schedule',
-                            //     link: '/zh/quick-start/jwt+mysql+redis+schedule.md',
+                            text: "扩展",
+                            items: [{
+                                text: '封装一个Goner调用GPT',
+                                link: '/zh/quick-start/gpt.md',
+                            }]
                         }]
                     },
                     {
@@ -164,55 +175,58 @@ module.exports = {
                             text: "依赖注入",
                             items: [{
                                 text: 'Goner和依赖注入',
-                                link: '/zh/guide/gone-and-inject.md',
+                                link: '/zh/guide/inject-1-goner-and-inject.md',
                             }, {
-                                text: '支持哪些方式注入？',
-                                link: '/zh/guide/goner-inject.md',
+                                text: '依赖注入方式',
+                                link: '/zh/guide/inject-2-goner.md',
                             }, {
-                                text: 'Gone vs Spring',
-                                link: '/zh/guide/gone-vs-spring.md',
+                                text: '函数参数的依赖注入',
+                                link: '/zh/guide/inject-3-func.md',
                             }],
                         }, {
                             text: "内置模块使用",
                             items: [{
                                 text: '内置Goners',
-                                link: '/zh/guide/inner-goner.md',
+                                link: '/zh/guide/goner-a-use.md',
                             }, {
                                 text: '配置读取',
-                                link: '/zh/guide/config.md',
+                                link: '/zh/guide/goner-config.md',
+                            }, {
+                                text: '提供Web服务',
+                                link: '/zh/guide/goner-gin.md',
+                            }, {
+                                text: '提供gRPC服务',
+                                link: '/zh/guide/goner-grpc.md',
                             }, {
                                 text: '日志输出',
-                                link: '/zh/guide/logrus.md',
+                                link: '/zh/guide/goner-logger.md',
                             }, {
-                                text: '链路追踪',
-                                link: '/zh/guide/tracer.md',
-                            }, {
-                                text: '操作数据库',
-                                link: '/zh/guide/xorm.md',
-                            }, {
-                                text: '分布式锁 + 分布式缓存',
-                                link: '/zh/guide/redis',
+                                text: '使用Redis',
+                                link: '/zh/guide/goner-redis.md',
                             }, {
                                 text: '配置定时任务',
-                                link: '/zh/guide/schedule.md',
+                                link: '/zh/guide/goner-schedule.md',
                             }, {
-                                text: '使用gRPC通信',
-                                link: '/zh/guide/grpc.md',
+                                text: '链路追踪',
+                                link: '/zh/guide/goner-tracer.md',
+                            }, {
+                                text: '使用数据库',
+                                link: '/zh/guide/goner-xorm.md',
                             }],
                         }, {
                             text: "效率提升",
                             items: [{
-                                text: '自动生成 Priest',
-                                link: '/zh/guide/auto-gen-priest.md',
-                            }, {
-                                text: 'Hook 函数',
-                                link: '/zh/guide/hooks.md',
+                                text: '生成 Priest',
+                                link: '/zh/guide/x-1-gen-priest.md',
                             }, {
                                 text: '错误处理',
-                                link: '/zh/guide/error.md',
+                                link: '/zh/guide/x-2-error.md',
                             }, {
                                 text: '单元测试',
-                                link: '/zh/guide/unit-test.md',
+                                link: '/zh/guide/x-3-unit-test.md',
+                            }, {
+                                text: 'Hook 函数',
+                                link: '/zh/guide/x-4-hooks.md',
                             }]
                         }],
                     },

@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./schedule
-next: ./hooks
+prev: ./goner-xorm
+next: ./x-2-error
 ---
 
 # 自动生成Priest

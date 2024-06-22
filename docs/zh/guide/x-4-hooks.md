@@ -1,7 +1,7 @@
 ---
 sidebar: auto
-prev: ./auto-gen-priest
-next: ./error
+prev: ./x-3-unit-test
+next: ./
 ---
 
 # Gone的Hook函数
@@ -82,7 +82,7 @@ worker: Bob
 
 ## Gone的启动流程
 
-1. [复活](core-concept.html#revive-复活)所有**埋葬**的Goners
+1. [装配](core-concept.html#revive-复活)所有**注册**的Goners
 2. 执行所有先知Goners的`AfterRevive`方法
 3. 将**天使**的`Start`方法注册为BeforeStart Hook函数；将**天使**的`Stop`方法注册为BeforeStop Hook 函数；
 4. 业务代码注册 Hook 函数
