@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用goner/gin提供Web服务 | Gone 文档</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/assets/img/logo.png">
+    <script type="text/javascript">
+            if (location.hostname != 'localhost'){
+                var _hmt = _hmt || [];
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?ed9e5a48d8eeb5e6b55a0de9cb8f6486";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+                })();
+                if(location.pathname == '/my-github'){
+                    location.href='https://github.com/gone-io/gone'
+                }
+            }
+            </script>
+    <meta name="description" content="Gone是一个轻量的，基于Golang的，依赖注入框架，集成了Gin、XOrm、Logrus等众多开源工具，用于提供便捷的Web开发。">
+    <link rel="preload" href="/assets/css/0.styles.ef76fb7a.css" as="style"><link rel="preload" href="/assets/js/app.8b26cec7.js" as="script"><link rel="preload" href="/assets/js/2.df7b0cb8.js" as="script"><link rel="preload" href="/assets/js/1.c6213a54.js" as="script"><link rel="preload" href="/assets/js/54.c2fd257e.js" as="script"><link rel="prefetch" href="/assets/js/10.abcbc889.js"><link rel="prefetch" href="/assets/js/11.3d7ad048.js"><link rel="prefetch" href="/assets/js/12.49ea497c.js"><link rel="prefetch" href="/assets/js/13.9dc39076.js"><link rel="prefetch" href="/assets/js/14.8922fe48.js"><link rel="prefetch" href="/assets/js/15.382aeb06.js"><link rel="prefetch" href="/assets/js/16.51d7e299.js"><link rel="prefetch" href="/assets/js/17.9bd91d14.js"><link rel="prefetch" href="/assets/js/18.ed87e536.js"><link rel="prefetch" href="/assets/js/19.86ef63ba.js"><link rel="prefetch" href="/assets/js/20.f4460e08.js"><link rel="prefetch" href="/assets/js/21.c13091e1.js"><link rel="prefetch" href="/assets/js/22.c4a6a3db.js"><link rel="prefetch" href="/assets/js/23.34781893.js"><link rel="prefetch" href="/assets/js/24.9d823454.js"><link rel="prefetch" href="/assets/js/25.ca263dc8.js"><link rel="prefetch" href="/assets/js/26.2c1823fd.js"><link rel="prefetch" href="/assets/js/27.b210ba78.js"><link rel="prefetch" href="/assets/js/28.af7db4f7.js"><link rel="prefetch" href="/assets/js/29.e3d99803.js"><link rel="prefetch" href="/assets/js/3.793f3a57.js"><link rel="prefetch" href="/assets/js/30.b1b60c18.js"><link rel="prefetch" href="/assets/js/31.a2997be1.js"><link rel="prefetch" href="/assets/js/32.145d9ea8.js"><link rel="prefetch" href="/assets/js/33.62ee3133.js"><link rel="prefetch" href="/assets/js/34.4e5f97c9.js"><link rel="prefetch" href="/assets/js/35.b373d06a.js"><link rel="prefetch" href="/assets/js/36.d16f93ad.js"><link rel="prefetch" href="/assets/js/37.c9e6a706.js"><link rel="prefetch" href="/assets/js/38.35730d9e.js"><link rel="prefetch" href="/assets/js/39.6f09be54.js"><link rel="prefetch" href="/assets/js/4.30042917.js"><link rel="prefetch" href="/assets/js/40.20f066fe.js"><link rel="prefetch" href="/assets/js/41.585e0aa3.js"><link rel="prefetch" href="/assets/js/42.4caf2e7f.js"><link rel="prefetch" href="/assets/js/43.c378e86e.js"><link rel="prefetch" href="/assets/js/44.e3478cb1.js"><link rel="prefetch" href="/assets/js/45.5ee118df.js"><link rel="prefetch" href="/assets/js/46.89a696fd.js"><link rel="prefetch" href="/assets/js/47.2c042bf7.js"><link rel="prefetch" href="/assets/js/48.fa43d413.js"><link rel="prefetch" href="/assets/js/49.3b27837d.js"><link rel="prefetch" href="/assets/js/5.793b7e3f.js"><link rel="prefetch" href="/assets/js/50.7ed2e519.js"><link rel="prefetch" href="/assets/js/51.c8f361f4.js"><link rel="prefetch" href="/assets/js/52.0ce85a81.js"><link rel="prefetch" href="/assets/js/53.f6aa63cf.js"><link rel="prefetch" href="/assets/js/55.f3775ce8.js"><link rel="prefetch" href="/assets/js/56.f4125533.js"><link rel="prefetch" href="/assets/js/57.09e1a061.js"><link rel="prefetch" href="/assets/js/58.ccaa988d.js"><link rel="prefetch" href="/assets/js/59.e071b062.js"><link rel="prefetch" href="/assets/js/6.c7132d94.js"><link rel="prefetch" href="/assets/js/60.f91587fd.js"><link rel="prefetch" href="/assets/js/61.d73bf28a.js"><link rel="prefetch" href="/assets/js/62.fcb813b2.js"><link rel="prefetch" href="/assets/js/63.7ecc5621.js"><link rel="prefetch" href="/assets/js/64.307665aa.js"><link rel="prefetch" href="/assets/js/65.588e7134.js"><link rel="prefetch" href="/assets/js/66.4078871a.js"><link rel="prefetch" href="/assets/js/67.ccdfa50d.js"><link rel="prefetch" href="/assets/js/68.b1dfec47.js"><link rel="prefetch" href="/assets/js/69.8d0a1e30.js"><link rel="prefetch" href="/assets/js/7.c8087d7b.js"><link rel="prefetch" href="/assets/js/70.2b235009.js"><link rel="prefetch" href="/assets/js/71.939c7e5d.js"><link rel="prefetch" href="/assets/js/72.d6833dc7.js"><link rel="prefetch" href="/assets/js/73.178b78c4.js"><link rel="prefetch" href="/assets/js/74.c4284fa0.js"><link rel="prefetch" href="/assets/js/75.5a703fb8.js"><link rel="prefetch" href="/assets/js/76.1dd2ced2.js"><link rel="prefetch" href="/assets/js/77.6bebb123.js"><link rel="prefetch" href="/assets/js/78.a43af256.js"><link rel="prefetch" href="/assets/js/79.a07b5188.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.5e758b7f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ef76fb7a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/assets/img/logo.png" alt="Gone 文档" class="logo"> <span class="site-name can-hide">Gone 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><h4>
+          使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-subitem"><a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></li><li class="dropdown-item"><h4>
+          扩展
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inject-1-goner-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/inject-2-goner.html" class="nav-link">
+  依赖注入方式
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/inject-3-func.html" class="nav-link">
+  函数参数的依赖注入
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/goner-a-use.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-gin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  提供Web服务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-grpc.html" class="nav-link">
+  提供gRPC服务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-logger.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-redis.html" class="nav-link">
+  使用Redis
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-schedule.html" class="nav-link">
+  配置定时任务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-xorm.html" class="nav-link">
+  使用数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/x-1-gen-priest.html" class="nav-link">
+  生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-2-error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-3-unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-4-hooks.html" class="nav-link">
+  Hook 函数
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  参考文档
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  组件库
+</a></div><div class="nav-item"><a href="/zh/blogs/" class="nav-link">
+  博客
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/goner-gin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  介绍
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="快速开始" class="dropdown-title"><span class="title">快速开始</span> <span class="arrow down"></span></button> <button type="button" aria-label="快速开始" class="mobile-dropdown-title"><span class="title">快速开始</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/quick-start/simple.html" class="nav-link">
+  极简例子
+</a></li><li class="dropdown-item"><h4>
+          使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/quick-start/web.html" class="nav-link">
+  Web项目
+</a></li><li class="dropdown-subitem"><a href="/zh/quick-start/mysql.html" class="nav-link">
+  Web + MySQL
+</a></li></ul></li><li class="dropdown-item"><h4>
+          扩展
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/quick-start/gpt.html" class="nav-link">
+  封装一个Goner调用GPT
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发指南" class="mobile-dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/core-concept.html" class="nav-link">
+  核心概念
+</a></li><li class="dropdown-item"><h4>
+          依赖注入
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/inject-1-goner-and-inject.html" class="nav-link">
+  Goner和依赖注入
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/inject-2-goner.html" class="nav-link">
+  依赖注入方式
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/inject-3-func.html" class="nav-link">
+  函数参数的依赖注入
+</a></li></ul></li><li class="dropdown-item"><h4>
+          内置模块使用
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/goner-a-use.html" class="nav-link">
+  内置Goners
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-config.html" class="nav-link">
+  配置读取
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-gin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  提供Web服务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-grpc.html" class="nav-link">
+  提供gRPC服务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-logger.html" class="nav-link">
+  日志输出
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-redis.html" class="nav-link">
+  使用Redis
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-schedule.html" class="nav-link">
+  配置定时任务
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-tracer.html" class="nav-link">
+  链路追踪
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/goner-xorm.html" class="nav-link">
+  使用数据库
+</a></li></ul></li><li class="dropdown-item"><h4>
+          效率提升
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/zh/guide/x-1-gen-priest.html" class="nav-link">
+  生成 Priest
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-2-error.html" class="nav-link">
+  错误处理
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-3-unit-test.html" class="nav-link">
+  单元测试
+</a></li><li class="dropdown-subitem"><a href="/zh/guide/x-4-hooks.html" class="nav-link">
+  Hook 函数
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/zh/references/" class="nav-link">
+  参考文档
+</a></div><div class="nav-item"><a href="/zh/goners/" class="nav-link">
+  组件库
+</a></div><div class="nav-item"><a href="/zh/blogs/" class="nav-link">
+  博客
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/guide/goner-gin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/gone-io/gone" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>使用goner/gin提供Web服务</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/guide/goner-gin.html#注册相关的goners" class="sidebar-link">注册相关的Goners</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/goner-gin.html#编写controller挂载路由" class="sidebar-link">编写Controller挂载路由</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/goner-gin.html#路由处理函数" class="sidebar-link">路由处理函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/goner-gin.html#io-reader" class="sidebar-link">io.Reader</a></li><li class="sidebar-sub-header"><a href="/zh/guide/goner-gin.html#chan-any" class="sidebar-link">chan any</a></li></ul></li><li><a href="/zh/guide/goner-gin.html#http请求参数注入" class="sidebar-link">HTTP请求参数注入</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/zh/guide/goner-gin.html#配置项" class="sidebar-link">配置项</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/goner-gin.html#例子-将端口改为-8000" class="sidebar-link">例子，将端口改为 8000</a></li><li class="sidebar-sub-header"><a href="/zh/guide/goner-gin.html#更多配置项" class="sidebar-link">更多配置项</a></li><li class="sidebar-sub-header"><a href="/zh/guide/goner-gin.html#更多例子" class="sidebar-link">更多例子</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用goner-gin提供web服务"><a href="#使用goner-gin提供web服务" class="header-anchor">#</a> 使用<code>goner/gin</code>提供Web服务</h1> <h2 id="注册相关的goners"><a href="#注册相关的goners" class="header-anchor">#</a> 注册相关的Goners</h2> <p>这里我们编写一个<code>Priest</code>函数，用于注册相关的Goners。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/gone-io/gone&quot;</span>
+	<span class="token string">&quot;github.com/gone-io/gone/goner&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// 用于注册Goners的Priest函数</span>
+<span class="token keyword">func</span> <span class="token function">Priest</span><span class="token punctuation">(</span>cemetery gone<span class="token punctuation">.</span>Cemetery<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+	<span class="token comment">//注册gin相关的Goners</span>
+	<span class="token boolean">_</span> <span class="token operator">=</span> goner<span class="token punctuation">.</span><span class="token function">GinPriest</span><span class="token punctuation">(</span>cemetery<span class="token punctuation">)</span>
+    <span class="token comment">//TODO: 注册其他的Goners</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在main函数中使用Priest函数启动服务</span>
+	gone<span class="token punctuation">.</span><span class="token function">Serve</span><span class="token punctuation">(</span>Priest<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>将上面代码保存为<code>main.go</code>，，代码已经能够正常运行起来了，运行中代码会监听本地<code>8080</code>端口，但是所有的请求都是返回404。</p> <h2 id="编写controller挂载路由"><a href="#编写controller挂载路由" class="header-anchor">#</a> 编写Controller挂载路由</h2> <p>为了提供服务，而不只是返回404，我们需要编写一个Controller，挂载路由。
+新建文件<code>controller.go</code>，编写如下代码：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// NewController controller 的构造函数</span>
+<span class="token keyword">func</span> <span class="token function">NewController</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>Goner <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>controller<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> controller <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	gone<span class="token punctuation">.</span>Flag
+	root gone<span class="token punctuation">.</span>RouteGroup <span class="token string">`gone:&quot;*&quot;`</span> <span class="token comment">// 根路由组</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ctr <span class="token operator">*</span>controller<span class="token punctuation">)</span> <span class="token function">Mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gone<span class="token punctuation">.</span>GinMountError <span class="token punctuation">{</span>
+	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/ping&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;hello gone&quot;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>然后，在<code>main.go</code>文件<code>Priest</code>函数中添加注册<code>Controller</code>的代码：</p> <div class="language-go extra-class"><pre class="language-go"><code>	<span class="token comment">//注册Controller</span>
+	cemetery<span class="token punctuation">.</span><span class="token function">Bury</span><span class="token punctuation">(</span><span class="token function">NewController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>再次运行代码：<code>go run .</code>，使用<code>curl</code>命令访问<code>localhost:8080/ping</code>，返回<code>{&quot;code&quot;:0,&quot;data&quot;:&quot;hello gone&quot;}</code>。</p> <p>上面代码中，<code>controller</code>通过实现方法<code>Mount() gone.GinMountError</code>成为<code>gin.Controller</code>，<code>goner/gin</code>启动过程中会自动调用<code>Mount()</code>方法；我们需要再该方法中挂载我们希望处理的路由。</p> <p>为此，我们需要在<code>controller</code>上添加一个<code>gone.RouteGroup</code>类型的<code>root</code>字段，使用<code>gone:&quot;*&quot;</code>标记为依赖注入；Gone会将代表根路由的<code>gone.RouteGroup</code>装配到root属性上。<code>gone.RouteGroup</code>是一个接口，定义了用于挂载路由的<code>GET</code>、<code>POST</code>等方法，下面是其定义：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> IRoutes <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	<span class="token function">Use</span><span class="token punctuation">(</span><span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">Handle</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">Any</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">GET</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">POST</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">DELETE</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">PATCH</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">PUT</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">OPTIONS</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+	<span class="token function">HEAD</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> IRoutes
+<span class="token punctuation">}</span>
+<span class="token keyword">type</span> IRouter <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	IRoutes
+	<span class="token function">GetGinRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> gin<span class="token punctuation">.</span>IRouter
+	<span class="token function">Group</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token operator">...</span>HandlerFunc<span class="token punctuation">)</span> RouteGroup
+	<span class="token function">LoadHTMLGlob</span><span class="token punctuation">(</span>pattern <span class="token builtin">string</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// RouteGroup route group, which is a wrapper of gin.RouterGroup, and can be injected for mount router.</span>
+<span class="token keyword">type</span> RouteGroup <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+	IRouter
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="路由处理函数"><a href="#路由处理函数" class="header-anchor">#</a> 路由处理函数</h2> <p>通过<code>RouteGroup</code>定义可以看到，<code>GET</code>、<code>POST</code>等用于挂载路由的函数，都可以接收多个<code>HandlerFunc</code>参数。HandlerFunc要求是一个函数，这里称为<strong>路由处理函数</strong>。</p> <p>路由处理函数，可以接收多个参数，也可以返回多个值；一般返回两个值，一个正常值 和 一个 error 值，如下：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">processRoute</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>gin<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;hello gone&quot;</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>正常值的类型可以为 golang 的简单类型（int、string、float 等）、结构体、指针、接口、数组、slice、map 等；还可以返回 <code>io.Reader</code> 和 <code>chan any</code>两种特殊类型。</p> <h3 id="io-reader"><a href="#io-reader" class="header-anchor">#</a> io.Reader</h3> <p>通过io.Reader可以返回任意的数据，比如返回一个文件：</p> <div class="language-go extra-class"><pre class="language-go"><code>	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/file&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>io<span class="token punctuation">.</span>Reader<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;main.go&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>重启后，用curl测试：<code>curl -o main.go http://localhost:8080/file</code>，可以下载到main.go文件。</p> <p>特别提醒一下，将<code>http://localhost:8080/file</code>输入到浏览器地址栏并不会触发下载，而是直接显示了文件内容，这是因为返回的是文本内容，并且又缺少触发下载的Header：<code>Content-Disposition</code>。</p> <h3 id="chan-any"><a href="#chan-any" class="header-anchor">#</a> chan any</h3> <p>通过返回chan any，可以方便的实现一个SSE服务。</p> <div class="language-go extra-class"><pre class="language-go"><code>	<span class="token keyword">type</span> Info <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+		Msg   <span class="token builtin">string</span> <span class="token string">`json:&quot;msg&quot;`</span>
+		Index <span class="token builtin">int</span>    <span class="token string">`json:&quot;index&quot;`</span>
+	<span class="token punctuation">}</span>
+	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;/sse&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">chan</span> any <span class="token punctuation">{</span>
+		ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> any<span class="token punctuation">)</span>
+		<span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">defer</span> <span class="token function">close</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token comment">//注意关闭channel</span>
+			<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+				time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+				ch <span class="token operator">&lt;-</span> Info<span class="token punctuation">{</span>
+					Index<span class="token punctuation">:</span> i<span class="token punctuation">,</span>
+					Msg<span class="token punctuation">:</span>   <span class="token string">&quot;hello gone&quot;</span><span class="token punctuation">,</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> ch
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>在<code>Mount</code> 函数中添加上面代码，然后重启服务。使用curl测试：<code>curl http://localhost:8080/sse</code>，可以得到如下输出（每秒收到一个event）：</p> <div class="language-log extra-class"><pre class="language-log"><code><span class="token property">event:</span> data
+<span class="token property">data:</span> <span class="token operator">{</span><span class="token string">&quot;msg&quot;</span><span class="token operator">:</span><span class="token string">&quot;hello gone&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;index&quot;</span><span class="token operator">:</span><span class="token number">0</span><span class="token operator">}</span>
+<span class="token property">event:</span> data
+<span class="token property">data:</span> <span class="token operator">{</span><span class="token string">&quot;msg&quot;</span><span class="token operator">:</span><span class="token string">&quot;hello gone&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;index&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token operator">}</span>
+<span class="token property">event:</span> data
+<span class="token property">data:</span> <span class="token operator">{</span><span class="token string">&quot;msg&quot;</span><span class="token operator">:</span><span class="token string">&quot;hello gone&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;index&quot;</span><span class="token operator">:</span><span class="token number">2</span><span class="token operator">}</span>
+<span class="token property">event:</span> done
+</code></pre></div><h2 id="http请求参数注入"><a href="#http请求参数注入" class="header-anchor">#</a> HTTP请求参数注入</h2> <p>路由处理函数的参数，支持依赖注入。</p> <ol><li>支持注册到Gone的Goners类型直接作为参数，例如以<code>gone.Logger</code>类型作为参数：</li></ol> <div class="language-go extra-class"><pre class="language-go"><code>	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>logger gone<span class="token punctuation">.</span>Logger<span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;inject&quot;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><ol start="2"><li>支持以<code>*gin.Context</code>、<code>*gone.Context</code>类型作为参数:</li></ol> <blockquote><p><code>gone.Context</code> 是对 <code>gin.Context</code>的封装，兼容<code>gin.Context</code>。</p></blockquote> <div class="language-go extra-class"><pre class="language-go"><code>	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>logger gone<span class="token punctuation">.</span>Logger<span class="token punctuation">,</span> ctx <span class="token operator">*</span>gone<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">)</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;hots: %s&quot;</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>Request<span class="token punctuation">.</span>Host<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;inject&quot;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><ol start="3"><li>支持参数为一个匿名结构体，在结构体上做依赖注入标记：</li></ol> <div class="language-go extra-class"><pre class="language-go"><code>	ctr<span class="token punctuation">.</span>root<span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>logger gone<span class="token punctuation">.</span>Logger<span class="token punctuation">,</span> ctx gone<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> in <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+		selects <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span>       <span class="token string">`gone:&quot;http,query=select&quot;`</span> <span class="token comment">//HTTP参数注入：表示取query参数中的select作为数组，要求值可以转为int类型</span>
+		logger2 gone<span class="token punctuation">.</span>Logger <span class="token string">`gone:&quot;*&quot;`</span>                 <span class="token comment">//注入gone.Logger类型的logger</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;inject&quot;</span><span class="token punctuation">)</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;hots: %s&quot;</span><span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>Request<span class="token punctuation">.</span>Host<span class="token punctuation">)</span>
+		logger<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;selects: %v&quot;</span><span class="token punctuation">,</span> in<span class="token punctuation">.</span>selects<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token string">&quot;inject&quot;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>更多关于 HTTP请求参数注入 只是，请参考：<a href="https://goner.fun/zh/references/http-inject.html" target="_blank" rel="noopener noreferrer">HTTP 注入说明<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="配置项"><a href="#配置项" class="header-anchor">#</a> 配置项</h2> <p><code>goner/gin</code>支持通过配置，改变默认行为；关于配置的读取和配置文件的格式参考 <a href="https://goner.fun/zh/guide/goner-config.html" target="_blank" rel="noopener noreferrer">配置读取<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="例子-将端口改为-8000"><a href="#例子-将端口改为-8000" class="header-anchor">#</a> 例子，将端口改为 <code>8000</code></h3> <p>创建配置文件：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> config
+<span class="token builtin class-name">echo</span> <span class="token string">'server.port=8000'</span> <span class="token operator">&gt;</span> config/default.properties
+</code></pre></div><h3 id="更多配置项"><a href="#更多配置项" class="header-anchor">#</a> 更多配置项</h3> <table><thead><tr><th>配置项</th> <th>说明</th> <th>类型</th> <th>默认值</th></tr></thead> <tbody><tr><td>server.port</td> <td>监听端口</td> <td>int</td> <td>8080</td></tr> <tr><td>server.host</td> <td>监听地址</td> <td>string</td> <td>0.0.0.0</td></tr> <tr><td>server.mode</td> <td>gin mode，可选值为：debug、test、release</td> <td>string</td> <td>release</td></tr> <tr><td>server.html-tpl-pattern</td> <td>用于gin.LoadHTMLGlob加载模版路径</td> <td>string</td> <td>&lt;空&gt;</td></tr> <tr><td>server.health-check</td> <td>配置一个路径用于监控检查</td> <td>string</td> <td>&lt;空&gt;</td></tr> <tr><td>server.log.show-access-log</td> <td>是否打印访问日志</td> <td>bool</td> <td>true</td></tr> <tr><td>server.log.show-request-time</td> <td>是否在日志中打印请求耗时</td> <td>bool</td> <td>true</td></tr> <tr><td>server.log.data-max-length</td> <td>日志数据最大长度，超过该长度会截断，0为不限制</td> <td>int</td> <td>0</td></tr> <tr><td>server.proxy.stat</td> <td>代理耗时统计</td> <td>bool</td> <td>false</td></tr> <tr><td>server.return.wrapped-data</td> <td>使用<code>{&quot;code&quot;: ${code}, &quot;msg&quot;: ${msg}, &quot;data&quot;: ${data} }</code>封装数据</td> <td>bool</td> <td>true</td></tr></tbody></table> <h3 id="更多例子"><a href="#更多例子" class="header-anchor">#</a> 更多例子</h3> <p>跳转 <a href="https://goner.fun/zh/quick-start/" target="_blank" rel="noopener noreferrer">快速开始<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/gone-io/docs-static/edit/master/docs/zh/guide/goner-gin.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/guide/goner-config.html" class="prev">
+        配置读取
+      </a></span> <span class="next"><a href="/zh/guide/goner-grpc.html">
+        提供gRPC服务
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8b26cec7.js" defer></script><script src="/assets/js/2.df7b0cb8.js" defer></script><script src="/assets/js/1.c6213a54.js" defer></script><script src="/assets/js/54.c2fd257e.js" defer></script>
+  </body>
+</html>
