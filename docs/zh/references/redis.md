@@ -7,6 +7,8 @@ next: ./
 # Redis 参考文档
 
 ## 配置项
+- redis.server： redis服务器地址，例如：127.0.0.1:6379，无默认值
+- redis.password：redis密码，允许为空
 - redis.max-idle：最大空闲链接数，不配置默认为2
 - redis.max-active：最大活跃链接数，不配置默认为10
 - redis.db：使用的db，不配置默认为0
