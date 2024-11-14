@@ -178,6 +178,7 @@ func (d *distanceCalculator) CalculateDistanceFromOrigin(x, y int) float64 {
 }
 ```
 
+
 `distanceCalculator` 的业务是计算`(x,y int)`到originPoint点的距离，`originPoint`是依赖注入的；现在我们来编写`CalculateDistanceFromOrigin`的测试函数如下：
 ```go
 package test
