@@ -10,14 +10,15 @@ next: ./gpt
 
 ## 安装gone辅助工具
 ```bash
-go install github.com/gone-io/gone/tools/gone@latest
+go install github.com/gone-io/gonectr@latest
+go install go.uber.org/mock/mockgen@latest
 ```
 关于gone命令，更多参考：[gone辅助工具](https://goner.fun/zh/references/gone-tool.html)
 
-## 使用gone命令创建项目
+## 创建项目
 
 ```bash
-gone create -t web+mysql web-mysql-docker
+gonectr create -t web+mysql web-mysql-docker
 ```
 上面命令会在当前目录中创建一个名为web-mysql-docker的目录。
 
@@ -29,10 +30,6 @@ gone create -t web+mysql web-mysql-docker
 ```bash
 # 进入项目目录
 cd web-mysql-docker
-
-# 生成Priest函数：https://goner.fun/zh/guide/auto-gen-priest.html
-make gone
-
 
 # 启动MySql服务
 docker compose up -d mysql

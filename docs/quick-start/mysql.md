@@ -9,14 +9,15 @@ In this document, I will demonstrate how to create a production-ready web projec
 
 ## Install the gone Tool
 ```bash
-go install github.com/gone-io/gone/tools/gone@latest
+go install github.com/gone-io/gonectr@latest
+go install go.uber.org/mock/mockgen@latest
 ```
 For more information about the gone command, refer to: [Gone Tool](https://goner.fun/references/gone-tool.html)
 
 ## Create a Project Using the gone Command
 
 ```bash
-gone create -t web+mysql web-mysql-docker
+gonectr create -t web+mysql web-mysql-docker
 ```
 The above command will create a directory named web-mysql-docker in the current directory.
 
@@ -28,10 +29,6 @@ Execute the following commands:
 ```bash
 # Enter the project directory
 cd web-mysql-docker
-
-# Generate the Priest functions: https://goner.fun/guide/auto-gen-priest.html
-make gone
-
 
 # Start the MySQL service
 docker compose up -d mysql

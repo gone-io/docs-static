@@ -98,12 +98,7 @@ func Test_Line(t *testing.T) {
 ```
 
 ## 使用gomock做mock测试
-为了解耦，我们推荐使用接口进行注入；实际上推荐接口注入的另一个原因是，go语言提供了基于接口的mock方案，我们可以将依赖的内容都mock起来。然而使用`mockgen`生成的mock实现，不是`Goner`，无法被注册，所以也无法注入；为此，我们在辅助工具中提供了解决方案。
-
-```bash
-gone mock  -f ${fromGoFile} -o ${outGoFile}
-```
-`gone mock` 命令可以在一个`mockgen`生成的mock对象中增加`gone.Flag`，让其变成一个Goner，可以进入Cemetery。
+我们编写了一个小工具来为接口生成mock代码：`gonectr mock`
 
 一般的使用方法是，在需要mock的接口上加`//go:generate`注释，让生成过程在`go generate ./...`命令时自动完成，下面是一个例子：
 
@@ -111,19 +106,18 @@ gone mock  -f ${fromGoFile} -o ${outGoFile}
 ```go
 package test
 
-//go:generate sh -c "mockgen -package=mock -source=$GOFILE|gone mock -o mock/$GOFILE"
+//go:generate sh -c "gonectr mock -p=mock -s=$(dirname ${GOFILE}) -d=$(dirname ${GOFILE})/mock"
 type IPoint interface {
 	GetX() int
 	GetY() int
 }
 ```
-上面`//go:generate sh -c "mockgen -package=mock -source=$GOFILE|gone mock -o mock/$GOFILE"`的作用是，先用mock为该接口生成一个mock对象，然后通过管道传递给`gone mock`添加`gone.Flag`标记。
+上面`//go:generate sh -c "gonectr mock -p=mock -s=$(dirname ${GOFILE}) -d=$(dirname ${GOFILE})/mock"`的作用是为`IPoint`接口生成mock代码。
 
 > 注意mockgen工具和gomock包的版本需要保持一致；
 > 运行下面代码，安装最新版本：
 > ```bash
-> go get github.com/golang/mock/gomock
-> go get github.com/golang/mock/mockgen
+> go get go.uber.org/mock
 > ```
 >
 > 需要安装gone辅助工具；安装参考 [gone辅助工具](https://goner.fun/zh/references/gone-tool.html)。
@@ -190,7 +184,7 @@ package test
 
 import (
 	"example/test/mock"
-	"github.com/golang/mock/gomock"
+	gomock "go.uber.org/mock"
 	"github.com/gone-io/gone"
 	"github.com/stretchr/testify/assert"
 	"testing"

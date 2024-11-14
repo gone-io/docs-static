@@ -9,7 +9,8 @@ next: ./http-inject
 ## Installation
 Run the following command:
 ```bash
-go install github.com/gone-io/gone/tools/gone@latest
+go install github.com/gone-io/gonectr@latest
+go install go.uber.org/mock/mockgen@latest
 ```
 
 ## Usage
@@ -17,26 +18,42 @@ go install github.com/gone-io/gone/tools/gone@latest
 ### Testing Installation
 After successful installation, run `gone -h` to verify the installation. You should see the following output:
 ```bash
-➜  demo gone -h
-NAME:
-   gone - A new cli application
+➜ gonectr -h
+gonectr is a command-line tool designed for generating Gone projects
+and serving as a utility for Gone projects, such as code generation,
+compilation, and running Gone projects.
 
-USAGE:
-   gone [global options] command [command options] [arguments...]
+Usage:
+  gonectr [flags]
+  gonectr [command]
 
-DESCRIPTION:
-   generate gone code or generate gone app
+Available Commands:
+  build       build gone project
+  completion  Generate the autocompletion script for the specified shell
+  create      Create a new Gone Project
+  generate    generate gone loading code and import code
+  help        Help about any command
+  mock        generate mock goner code for interface
+  priest      generate priest function
+  run         run gone project
 
-COMMANDS:
-   priest   -s ${scanPackageDir} -p ${pkgName} -f ${funcName} -o ${outputFilePath} [-w]
-   mock     -f ${fromGoFile} -o ${outGoFile}
-   create   [-t ${template} [-m ${modName}]] ${appName}
-   help, h  Shows a list of commands or help for one command
+Flags:
+  -h, --help      help for gonectr
+  -v, --version   Show version
 
-GLOBAL OPTIONS:
-   --help, -h  show help (default: false)
+Use "gonectr [command] --help" for more information about a command.
 ```
 
 ### Generate Project
+```bash
+➜ gonectr create -h
+Create a new Gone Project
 
-### Generate Priest Function
+Usage:
+  gonectr create [flags]
+
+Flags:
+  -h, --help                   help for create
+  -m, --module-name string     module name
+  -t, --template-name string   support template names: web, web+mysql (default "web")
+```

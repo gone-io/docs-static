@@ -9,14 +9,15 @@ next: ./x-2-error
 [什么是Priest?](./core-concept.md)
 
 ## 小试牛刀
-`gone priest`命令可以扫描代码中的特殊注释`//go:gone`生成Priest函数；`//go:gone`暂时只能用于标记`func () gone.Goner` 和 `func () (gone.Goner, gone.GonerId)`这两种形式的函数，函数必须是公开（以大写字母开头）。
+`gonectr priest`命令可以扫描代码中的特殊注释`//go:gone`生成Priest函数；`//go:gone`暂时只能用于标记`func () gone.Goner` 和 `func () (gone.Goner, gone.GonerId)`这两种形式的函数，函数必须是公开（以大写字母开头）。
 
 ### 1. 安装gone辅助工具
 执行如下命令：
 ```bash
-go install github.com/gone-io/gone/tools/gone@latest
+go install github.com/gone-io/gonectr@latest
+go install go.uber.org/mock/mockgen@latest
 ```
-gone更多内容参考文档 [gone辅助工具](../references/gone-tool.md)
+更多内容参考文档 [gone辅助工具](../references/gone-tool.md)
 
 ### 2. 编写Goner
 创建项目，创建文件：
@@ -46,7 +47,7 @@ type Demo struct {
 ### 3. 生成代码
 执行
 ```bash
-gone priest -s ./ -f Priest -o priest.go -p demo
+gonectr priest -s ./ -f Priest -o priest.go -p demo
 ```
 将生成文件：priest.go
 内容如下：
