@@ -10,8 +10,8 @@ next: ../goners/
 
 ## [HTTP 注入说明](./http-inject.md)
 
-## [Gone对Xorm的增强](./xorm.md)
+## [`goner/xorm`使用说明](./xorm.md)
 
-## [Redis 参考文档](./redis.md)
+## [`goner/redis` 使用说明](./redis.md)
 
 ## [`goner/zap` 使用说明](./1-zap.md)

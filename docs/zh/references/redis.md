@@ -4,15 +4,7 @@ prev: ./xorm
 next: ./
 ---
 
-# Redis 参考文档
-
-## 配置项
-- redis.server： redis服务器地址，例如：127.0.0.1:6379，无默认值
-- redis.password：redis密码，允许为空
-- redis.max-idle：最大空闲链接数，不配置默认为2
-- redis.max-active：最大活跃链接数，不配置默认为10
-- redis.db：使用的db，不配置默认为0
-- redis.cache.prefix：key前缀，如果设置了，对redis的增删改查都会拼接该前缀，拼接方式${prefix}#${key}；默认为空
+# `goner/redis` 使用说明
 
 ## import 和 bury
 - import
@@ -24,6 +16,16 @@ import "github.com/gone-io/gone/goner/redis"
 //使用 goner.RedisPriest 函数，将 redis 相关的Goner注册到Gone
 _ = goner.RedisPriest(cemetery)
 ```
+
+## 配置项
+- redis.server： redis服务器地址，例如：127.0.0.1:6379，无默认值
+- redis.password：redis密码，允许为空
+- redis.max-idle：最大空闲链接数，不配置默认为2
+- redis.max-active：最大活跃链接数，不配置默认为10
+- redis.db：使用的db，不配置默认为0
+- redis.cache.prefix：key前缀，如果设置了，对redis的增删改查都会拼接该前缀，拼接方式${prefix}#${key}；默认为空
+
+
 
 ## 使用分布是缓存 redis.Cache
 ### 接口定义
